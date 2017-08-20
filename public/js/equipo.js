@@ -16,7 +16,7 @@ $(document).ready(function(){
     inhabilitar();
 
     /*Fin de llamado de funciones */
-
+    $("#ejemplo").DataTable();
     $("#centro_id").change(function(){
        var id;
         id=$("#centro_id").val();

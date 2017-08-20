@@ -5,6 +5,9 @@
     {!! Html::script('/js/bootstrap.min.js') !!}
     {!! Html::style('/css/bootstrap.min.css') !!}
     {!! Html::script('/js/equipo.js') !!}
+    {!! Html::style('/css/jquery.dataTables.min.css') !!}
+    {!! Html::script('/js/jquery.dataTables.min.js') !!}
+
     <meta name="csrf-token" content="{{csrf_token()}}" >
     <meta charset="UTF-8">
     <title>Inventario - Entradas</title>

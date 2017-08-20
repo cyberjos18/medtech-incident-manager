@@ -1,6 +1,6 @@
 @extends('inventario.equipos')
 @section('content')
-    <div class="container">
+     <div class="container">
         <div class="row">
             <div class="col-xs-12 col-sm-6 col-md-10 col-md-offset-1">
                 <div class="panel panel-default">
@@ -14,9 +14,9 @@
                             @include('mensajes.success')
                         @endif
                     @endif
-                    <div class="panel-body">
-                        <table class="table table-responsive">
-                            <tbody>
+                    <div class="panel-body" >
+                        <table id="ejemplo" class="table table-responsive">
+                            <thead>
                             <tr>
                                 <th>#</th>
                                 <th>Equipo</th>
@@ -25,6 +25,7 @@
                                 <th>Localidad</th>
                                 <th>Accion</th>
                             </tr>
+                            </thead>
                             @foreach($equipos as $equipo)
                                 <tr data-id="{{$equipo->id}}">
                                     <td>{{$equipo->id}}</td>
@@ -39,9 +40,6 @@
                                 </tr>
 
                                 @endforeach
-
-                            </tbody>
-
 
                         </table>
                         {!! $equipos->setPath('')->render() !!}
