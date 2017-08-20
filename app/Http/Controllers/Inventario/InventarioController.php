@@ -16,7 +16,7 @@ class InventarioController extends Controller
     /**
      * Display a listing of the resource
      *
-     * @return \Illuminate\Http\Response viendo los cambios
+     * @return \Illuminate\Http\Response
      */
     public function index()
     {
