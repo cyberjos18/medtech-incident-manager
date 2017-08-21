@@ -14,7 +14,7 @@
                             @include('mensajes.success')
                         @endif
                     @endif
-                    <div class="panel-body" >
+                    <div class="panel-body">
                         <table id="ejemplo" class="table table-responsive">
                             <thead>
                             <tr>
