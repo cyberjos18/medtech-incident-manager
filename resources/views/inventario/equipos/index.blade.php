@@ -15,7 +15,7 @@
                         @endif
                     @endif
                     <div class="panel-body">
-                        <table id="ejemplo" class="table table-responsive">
+                        <table id="ejemplo" class="table table-responsive" cellspacing="0" width="100%">
                             <thead>
                             <tr>
                                 <th>#</th>
@@ -26,6 +26,7 @@
                                 <th>Accion</th>
                             </tr>
                             </thead>
+                            <tbody>
                             @foreach($equipos as $equipo)
                                 <tr data-id="{{$equipo->id}}">
                                     <td>{{$equipo->id}}</td>
@@ -40,9 +41,9 @@
                                 </tr>
 
                                 @endforeach
-
+                            </tbody>
                         </table>
-                        {!! $equipos->setPath('')->render() !!}
+                       {!! $equipos->setPath('')->render() !!}
                         <div class="col-xs-12 col-sm-6 col-md-10 col-md-offset-9">
                             {!! Html::link(route('inventario.equipos.create'),'Incluir',['class'=>'btn btn-success']) !!}
                             {!! Html::link('#','Cancelar',['class'=>'btn btn-primary']) !!}
