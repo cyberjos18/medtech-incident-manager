@@ -16,7 +16,7 @@ $(document).ready(function(){
     inhabilitar();
 
     /*Fin de llamado de funciones */
-    $("#ejemplo").DataTable();
+
     $("#centro_id").change(function(){
        var id;
         id=$("#centro_id").val();
@@ -67,5 +67,11 @@ $(document).ready(function(){
            inhabilitar();
        }
    });
+
+  /*Llamado de DataTable de Equuipo*/
+    $("#ejemplo").DataTable({
+        "paging": false,
+        "info": false
+    });
 
 });
