@@ -3,6 +3,8 @@ $(document).ready(function(){
    {
        $("#responsable_garantia").attr("disabled",true);
        $("#duracion_garantia").attr("disabled",true);
+       $("#aceptar").attr("disabled",true);
+       $("#eliminar").attr("disabled",true);
 
    }
     function habilitar()
@@ -16,7 +18,10 @@ $(document).ready(function(){
     inhabilitar();
 
     /*Fin de llamado de funciones */
-
+    $("#editar").click(function(){
+        $("#aceptar").attr("disabled",false);
+        $("#eliminar").attr("disabled",false);
+    });
     $("#centro_id").change(function(){
        var id;
         id=$("#centro_id").val();
@@ -72,6 +77,7 @@ $(document).ready(function(){
     $("#ejemplo").DataTable({
         "paging": false,
         "info": false
+        
     });
 
 });

@@ -4,6 +4,7 @@ namespace dgmtm\Http\Controllers\Inventario;
 
 use dgmtm\Centro;
 use dgmtm\Equipo;
+use dgmtm\Servicio;
 use dgmtm\Http\Requests\CreateInventarioEntradaRequest;
 use Illuminate\Http\Request;
 
@@ -23,7 +24,6 @@ class InventarioController extends Controller
         $equipos=Equipo::orderBy('nomb_equipo','ASC')
             ->with('centro','servicio')
             ->paginate(10);
-      
         return view('inventario.equipos.index',compact('equipos'));
     }
 
@@ -35,9 +35,7 @@ class InventarioController extends Controller
     public function create()
     {
         $centros=Centro::orderBy('nomb_centro','ASC')
-            
             ->lists('nomb_centro','id');
-        
         return view('inventario.equipos.create',compact('centros'));
     }
 
@@ -79,7 +77,12 @@ class InventarioController extends Controller
     public function show($id)
     {
         $equipo=Equipo::findOrFail($id);
-        return view('inventario.equipos.edit',compact('equipo'));
+        $centros=Centro::orderBy('nomb_centro','ASC')
+            ->lists('nomb_centro','id');
+        $servicios=Servicio::orderBy('nomb_servicio','ASC')
+            ->where('servicios.centro_id','=',$equipo->centro_id)
+            ->lists('nomb_servicio','id');
+        return view('inventario.equipos.edit',compact('centros','equipo','servicios'));
     }
 
     /**
@@ -100,7 +103,7 @@ class InventarioController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(EditInventarioRequest $request, $id)
     {
         //
     }

@@ -9,8 +9,10 @@
                         @include('mensajes.validation')
                         {!! Form::model($equipo,['route'=>['inventario.equipos.update',$equipo->id],'method'=>'PUT','class'=>'']) !!}
                         @include('inventario.equipos.partials.fieldedit')
-                        <div class="col-xs-12 col-sm-6 col-md-10 col-md-offset-8">
-                            {!! Form::submit('Guardar',['id'=>'guardar','class'=>'btn btn-success']) !!}
+                        <div class="col-xs-12 col-sm-6 col-md-10 col-md-offset-6">
+                            {!! Form::button('Editar',['id'=>'editar','class'=>'btn btn-success','style'=>'margin-right:4px']) !!}
+                            {!! Form::submit('Aceptar',['id'=>'aceptar','class'=>'btn btn-warning','style'=>'margin-right:-4px']) !!}
+                            {!! Form::button('Eliminar',['id'=>'eliminar','class'=>'btn btn-danger']) !!}
                             {!! Html::link(route('inventario.equipos.index'),'Cancelar',['class'=>'btn btn-primary']) !!}
                         </div>
                         {!! Form::close() !!}

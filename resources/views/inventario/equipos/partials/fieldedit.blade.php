@@ -1,10 +1,10 @@
 <div class="form-group">
     {!! Form::label('nomb_centro','Centro de atención') !!}
-    {!! Form::text('centro_id',null,['id'=>'centro_id','class'=>'form-control','placeholder'=>'Seleccione...']) !!}
+    {!! Form::select('centro_id',$centros,null,['id'=>'centro_id','class'=>'form-control','placeholder'=>'Seleccione...']) !!}
 </div>
 <div class="form-group">
     {!! Form::label('nomb_servicio','Nombre del servicio del centro') !!}
-    {!! Form::text('servicio_id',null,['id'=>'servicio_id','class'=>'form-control','placeholder'=>'Seleccione...']) !!}
+    {!! Form::select('servicio_id',$servicios,null,['id'=>'servicio_id','class'=>'form-control','placeholder'=>'Seleccione...']) !!}
 </div>
 <div class="form-group">
     {!! Form::label('nomb_equipo','Equipo') !!}
