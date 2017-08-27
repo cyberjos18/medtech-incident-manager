@@ -35,7 +35,7 @@
                                     <td>{{$equipo->centro->nomb_centro}}</td>
                                     <td>{{$equipo->centro->localidad->nomb_localidad}}</td>
                                     <td>
-                                        {!! Html::link('#','Ver') !!}
+                                        {!! Html::link(route('inventario.equipos.show',$equipo->id),'Ver') !!}
                                     </td>
 
                                 </tr>
