@@ -78,7 +78,8 @@ class InventarioController extends Controller
      */
     public function show($id)
     {
-        
+        $equipo=Equipo::findOrFail($id);
+        return view('inventario.equipos.edit',compact('equipo'));
     }
 
     /**
