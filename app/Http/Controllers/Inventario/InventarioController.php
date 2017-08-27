@@ -78,7 +78,7 @@ class InventarioController extends Controller
      */
     public function show($id)
     {
-        //
+        
     }
 
     /**
