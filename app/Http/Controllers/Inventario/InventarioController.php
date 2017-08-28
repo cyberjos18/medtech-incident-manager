@@ -4,6 +4,7 @@ namespace dgmtm\Http\Controllers\Inventario;
 
 use dgmtm\Centro;
 use dgmtm\Equipo;
+use dgmtm\Http\Requests\EditInventarioRequest;
 use dgmtm\Servicio;
 use dgmtm\Http\Requests\CreateInventarioEntradaRequest;
 use Illuminate\Http\Request;
@@ -105,7 +106,24 @@ class InventarioController extends Controller
      */
     public function update(EditInventarioRequest $request, $id)
     {
-        //
+        $equipos=Equipo::findOrFail($id);
+        $equipos->centro_id=$request->centro_id;
+        $equipos->servicio_id=$request->servicio_id;
+        $equipos->nomb_equipo=mb_strtoupper($request->nomb_equipo);
+        $equipos->marca_equipo=mb_strtoupper($request->marca_equipo);
+        $equipos->modelo_equipo=mb_strtoupper($request->modelo_equipo);
+        $equipos->serial_equipo=mb_strtoupper($request->serial_equipo);
+        $equipos->bien_nacional=mb_strtoupper($request->bien_nacional);
+        $equipos->equipo_garantia=mb_strtoupper($request->equipo_garantia);
+        $equipos->responsable_garantia=mb_strtoupper($request->responsable_garantia);
+        $equipos->duracion_garantia=mb_strtoupper($request->duracion_garantia);
+        $equipos->observaciones_equipo=mb_strtoupper($request->observaciones_equipo);
+        $equipos->save();
+        $update=trans('validation.attributes.message.update');
+        $bandera='update';
+        Session::flash('bandera',$bandera);
+        Session::flash('message',$update);
+        return redirect()->route('inventario.equipos.index');
     }
 
     /**
@@ -114,9 +132,18 @@ class InventarioController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request)
     {
-        //
+        if($request->ajax())
+        {
+            $equipo=Equipo::findOrFail($request->id);
+            $equipo->delete();
+            $message=trans('validation.attributes.message.delete');
+            $delete=$message.' al equipo '.$equipo->nomb_equipo;
+            return response()->json([
+                'message'=>$delete,
+            ]);
+        }
     }
     
     public function buscarServicios(Request $request)

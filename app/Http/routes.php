@@ -36,5 +36,6 @@ Route::group(['prefix'=>'inventario','namespace'=>'\Inventario'],function() {
     
     Route::resource('equipos','InventarioController' );
     Route::get('dropDownBuscarServicios','InventarioController@buscarServicios');
+    Route::get('equipoEliminar','InventarioController@destroy');
 
 });

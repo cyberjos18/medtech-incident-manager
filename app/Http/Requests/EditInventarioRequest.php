@@ -3,6 +3,7 @@
 namespace dgmtm\Http\Requests;
 
 use dgmtm\Http\Requests\Request;
+use Illuminate\Routing\Route;
 
 class EditInventarioRequest extends Request
 {
@@ -11,7 +12,7 @@ class EditInventarioRequest extends Request
      *
      * @return bool
      */
-    private $route
+    private $route;
     public function __construct(Route $route)
     {
         $this->route=$route;

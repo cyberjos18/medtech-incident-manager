@@ -1,4 +1,18 @@
 $(document).ready(function(){
+    function limpiar()
+    {
+        $("#centro_id").val("Seleccione...");
+        $("#servicio_id").val("Seleccione...");
+        $("#nomb_equipo").val("");
+        $("#marca_equipo").val("");
+        $("#modelo_equipo").val("");
+        $("#serial_equipo").val("");
+        $("#bien_nacional").val("");
+        $("#equipo_garantia").val("Seleccione...");
+        $("#responsable_garantia").val("");
+        $("#duracion_garantia").val("");
+        $("#observaciones_equipo").val("");
+    }
    function inhabilitar()
    {
        $("#responsable_garantia").attr("disabled",true);
@@ -18,10 +32,43 @@ $(document).ready(function(){
     inhabilitar();
 
     /*Fin de llamado de funciones */
+
     $("#editar").click(function(){
         $("#aceptar").attr("disabled",false);
         $("#eliminar").attr("disabled",false);
     });
+    $("#eliminar").click(function(){
+       var id=$("#equipoid").val();
+       var conf=confirm("Seguro que desea eliminar?");
+        if(conf==true)
+        {
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+            $.ajax({
+                url:'../equipoEliminar',
+                type:'get',
+                data:{'id':id},
+
+                success: function(data)
+                {
+                    alert(data.message);
+                    inhabilitar();
+                    limpiar();
+                    $("#editar").attr("disabled",true);
+                    $("#cancelaredit").html("Regresar");
+
+                },
+                error: function (e)
+                {
+                    alert("Ocurrio un error al actualizar la informacion: "+e);
+                }
+            });
+        }
+    });
+
     $("#centro_id").change(function(){
        var id;
         id=$("#centro_id").val();
