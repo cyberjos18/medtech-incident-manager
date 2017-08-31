@@ -123,7 +123,12 @@ $(document).ready(function(){
   /*Llamado de DataTable de Equuipo*/
     $("#ejemplo").DataTable({
         "paging": false,
-        "info": false
+        "info": false,
+
+        "language": {
+            "search": "Buscar: ",
+            "searchPlaceholder": "Escriba los datos que desea buscar"
+        }
         
     });
 
