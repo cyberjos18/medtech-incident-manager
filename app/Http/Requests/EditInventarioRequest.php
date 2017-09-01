@@ -35,6 +35,7 @@ class EditInventarioRequest extends Request
             'modelo_equipo'         => 'required|max:25',
             'serial_equipo'         => 'required|max:30|unique:equipos,serial_equipo,'.$this->route->getParameter('equipos'),
             'bien_nacional'         => 'required|max:30|unique:equipos,bien_nacional,'.$this->route->getParameter('equipos'),
+            'estatus_equipo'        => 'required',
             'equipo_garantia'       => 'required'
 
 
@@ -56,6 +57,7 @@ class EditInventarioRequest extends Request
                 'bien_nacional.required'   => 'Necesitamos el codigo de bien nacional del equipo',
                 'bien_nacional.unique'     => 'Este codigo de bien nacional ya esta registrado',
                 'bien_nacional.max'        => 'El codigo de bien nacional del equipo debe contener maximo 30 caracteres',
+                'estatus_equipo.required'  => 'Necesitamos que indique el estatus operativo del equipo',
                 'equipo_garantia.required' => 'Necesitamos que indique el status de garantia del equipo'
 
             ];

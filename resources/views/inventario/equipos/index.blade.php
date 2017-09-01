@@ -23,6 +23,7 @@
                                 <th>Unidad</th>
                                 <th>Centro</th>
                                 <th>Localidad</th>
+                                <th>Estatus</th>
                                 <th>Accion</th>
                             </tr>
                             </thead>
@@ -34,6 +35,7 @@
                                     <td>{{$equipo->servicio->nomb_servicio}}</td>
                                     <td>{{$equipo->centro->nomb_centro}}</td>
                                     <td>{{$equipo->centro->localidad->nomb_localidad}}</td>
+                                    <td>{{$equipo->estatus_equipo}}</td>
                                     <td>
                                         {!! Html::link(route('inventario.equipos.show',$equipo->id),'Ver') !!}
                                     </td>
@@ -45,7 +47,7 @@
                         </table>
                        {!! $equipos->setPath('')->render() !!}
                         <div class="col-xs-12 col-sm-6 col-md-10 col-md-offset-9">
-                            {!! Html::link(route('inventario.equipos.create'),'Incluir',['class'=>'btn btn-success']) !!}
+                            {!! Html::link(route('inventario.equipos.create'),'Incluir',['id'=>'incluir','class'=>'btn btn-success']) !!}
                             {!! Html::link('#','Cancelar',['class'=>'btn btn-primary']) !!}
                         </div>
 

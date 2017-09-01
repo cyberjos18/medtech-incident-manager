@@ -4,9 +4,9 @@ namespace dgmtm\Http\Controllers\Inventario;
 
 use dgmtm\Centro;
 use dgmtm\Equipo;
+use dgmtm\Http\Requests\CreateInventarioRequest;
 use dgmtm\Http\Requests\EditInventarioRequest;
 use dgmtm\Servicio;
-use dgmtm\Http\Requests\CreateInventarioEntradaRequest;
 use Illuminate\Http\Request;
 
 use dgmtm\Http\Requests;
@@ -46,7 +46,7 @@ class InventarioController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(CreateInventarioEntradaRequest $request)
+    public function store(CreateInventarioRequest $request)
     {
         $equipos=new Equipo();
         $equipos->centro_id=$request->centro_id;
@@ -56,6 +56,7 @@ class InventarioController extends Controller
         $equipos->modelo_equipo=mb_strtoupper($request->modelo_equipo);
         $equipos->serial_equipo=mb_strtoupper($request->serial_equipo);
         $equipos->bien_nacional=mb_strtoupper($request->bien_nacional);
+        $equipos->estatus_equipo=$request->estatus_equipo;
         $equipos->equipo_garantia=mb_strtoupper($request->equipo_garantia);
         $equipos->responsable_garantia=mb_strtoupper($request->responsable_garantia);
         $equipos->duracion_garantia=mb_strtoupper($request->duracion_garantia);
@@ -114,6 +115,7 @@ class InventarioController extends Controller
         $equipos->modelo_equipo=mb_strtoupper($request->modelo_equipo);
         $equipos->serial_equipo=mb_strtoupper($request->serial_equipo);
         $equipos->bien_nacional=mb_strtoupper($request->bien_nacional);
+        $equipos->estatus_equipo=$request->estatus_equipo;
         $equipos->equipo_garantia=mb_strtoupper($request->equipo_garantia);
         $equipos->responsable_garantia=mb_strtoupper($request->responsable_garantia);
         $equipos->duracion_garantia=mb_strtoupper($request->duracion_garantia);

@@ -1,4 +1,4 @@
-@extends('inventario.equipos')
+@extends('inventario.equiposedit')
 @section('content')
     <div class="container">
         <div class="row">

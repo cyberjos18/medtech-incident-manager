@@ -23,6 +23,7 @@ class CreateEquiposTable extends Migration
             $table->string('serial_equipo',30)->unique();
             $table->string('bien_nacional',30)->unique();
             $table->enum('equipo_garantia',['SI','NO']);
+            $table->enum('estatus_equipo',['Activo','Inactivo']);
             $table->string('responsable_garantia',35)->nullable();
             $table->string('duracion_garantia',15)->nullable();
             $table->mediumText('observaciones_equipo')->nullable();

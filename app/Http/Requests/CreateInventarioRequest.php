@@ -4,7 +4,7 @@ namespace dgmtm\Http\Requests;
 
 use dgmtm\Http\Requests\Request;
 
-class CreateInventarioEntradaRequest extends Request
+class CreateInventarioRequest extends Request
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -29,6 +29,7 @@ class CreateInventarioEntradaRequest extends Request
             'modelo_equipo'         => 'required|max:25',
             'serial_equipo'         => 'required|unique:equipos,serial_equipo|max:30',
             'bien_nacional'         => 'required|unique:equipos,bien_nacional|max:30',
+            'estatus_equipo'        => 'required',
             'equipo_garantia'       => 'required'
              
 
@@ -50,6 +51,7 @@ class CreateInventarioEntradaRequest extends Request
             'bien_nacional.required'   => 'Necesitamos el codigo de bien nacional del equipo',
             'bien_nacional.unique'     => 'Este codigo de bien nacional ya esta registrado',
             'bien_nacional.max'        => 'El codigo de bien nacional del equipo debe contener maximo 30 caracteres',
+            'estatus_equipo.required'  => 'Necesitamos que indique el estatus operativo del equipo',
             'equipo_garantia.required' => 'Necesitamos que indique el status de garantia del equipo'
             
         ];

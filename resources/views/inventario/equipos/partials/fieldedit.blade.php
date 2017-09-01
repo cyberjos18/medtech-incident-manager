@@ -27,6 +27,10 @@
     {!! Form::text('bien_nacional',null,['id'=>'bien_nacional','class'=>'form-control','placeholder'=>'Por favor ingrese el codigo de bien nacional','maxlength'=>'30']) !!}
 </div>
 <div class="form-group">
+    {!! Form::label('estatus_equipo','Estatus') !!}
+    {!! Form::select('estatus_equipo',['Activo'=>'Activo','Inactivo'=>'Inactivo'],null,['id'=>'estatus_equipo','class'=>'form-control','placeholder'=>'Seleccione...']) !!}
+</div>
+<div class="form-group">
     {!! Form::label('equipo_garantia','Equipo en garantia?') !!}
     {!! Form::select('equipo_garantia',['SI'=>'SI','NO'=>'NO'],null,['id'=>'equipo_garantia','class'=>'form-control','placeholder'=>'Seleccione...']) !!}
 </div>
