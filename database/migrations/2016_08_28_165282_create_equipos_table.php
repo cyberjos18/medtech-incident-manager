@@ -17,7 +17,7 @@ class CreateEquiposTable extends Migration
             $table->increments('id');
             $table->integer('centro_id')->unsigned();
             $table->integer('servicio_id')->unsigned();
-            $table->string('nomb_equipo',25);
+            $table->string('tipoequipo_id')->unsigned();
             $table->string('marca_equipo',25);
             $table->string('modelo_equipo',25);
             $table->string('serial_equipo',30)->unique();
@@ -29,6 +29,7 @@ class CreateEquiposTable extends Migration
             $table->mediumText('observaciones_equipo')->nullable();
             $table->foreign('centro_id')->references('id')->on('centros')->onUpdate('cascade')->onDelete('restrict');
             $table->foreign('servicio_id')->references('id')->on('servicios')->onUpdate('cascade')->onDelete('restrict');
+            $table->foreign('tipoequipo_id')->references('id')->on('tiposequipos')->onUpdate('cascade')->onDelete('restrict');
             $table->timestamps();
         });
     }

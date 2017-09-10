@@ -5,6 +5,7 @@
     {!! Html::script('/js/bootstrap.min.js')!!}
     {!! Html::script('/js/servicio2.js') !!}
     {!! Html::style('/css/bootstrap.min.css') !!}
+    <meta name="csrf-token" content="{{csrf_token()}}" >
     <meta charset="UTF-8">
     <title>Maestro de Servicios</title>
 </head>

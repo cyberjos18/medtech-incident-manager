@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 /**
  * Class Solicitud
  */
-class Solicitude extends Model
+class Solicitud extends Model
 {
     protected $table = 'solicitudes';
 
