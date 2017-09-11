@@ -3,11 +3,13 @@
 namespace dgmtm\Http\Controllers\Maestros;
 
 use dgmtm\Http\Requests\CreateTipoEquipoRequest;
+use dgmtm\Http\Requests\EditTipoEquipoRequest;
 use dgmtm\TipoEquipo;
 use Illuminate\Http\Request;
 
 use dgmtm\Http\Requests;
 use dgmtm\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Session;
 
 class TipoEquipoController extends Controller
 {
@@ -18,7 +20,7 @@ class TipoEquipoController extends Controller
      */
     public function index()
     {
-        $tipos=TipoEquipo::orderBy('tipo','ASC')
+        $tipos=TipoEquipo::orderBy('tipo_equipo','ASC')
             ->paginate(10);
         return view('maestros.tiposequipos.index',compact('tipos'));
     }
@@ -41,6 +43,14 @@ class TipoEquipoController extends Controller
      */
     public function store(CreateTipoEquipoRequest $request)
     {
+        $tipoequipo=new TipoEquipo();
+        $tipoequipo->tipo_equipo=mb_strtoupper($request->tipo_equipo);
+        $tipoequipo->save();
+        $insert=trans('validation.attributes.message.insert');
+        $bandera='insert';
+        Session::flash('bandera',$bandera);
+        Session::flash('message',$insert);
+        return redirect()->route('maestros.tiposequipos.index');
 
     }
 
@@ -63,7 +73,8 @@ class TipoEquipoController extends Controller
      */
     public function edit($id)
     {
-        //
+        $tipoequipo=TipoEquipo::findOrFail($id);
+        return view('maestros.tiposequipos.edit',compact('tipoequipo'));
     }
 
     /**
@@ -73,9 +84,17 @@ class TipoEquipoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(EditTipoEquipoRequest $request, $id)
     {
-        //
+        $tipoequipo=TipoEquipo::findOrFail($id);
+        $tipoequipo->tipo_equipo=mb_strtoupper($request->tipo_equipo);
+        $tipoequipo->save();
+        $update=trans('validation.attributes.message.update');
+        $bandera='update';
+        Session::flash('bandera',$bandera);
+        Session::flash('message',$update);
+        return redirect()->route('maestros.tiposequipos.index');
+
     }
 
     /**
@@ -84,8 +103,20 @@ class TipoEquipoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request)
     {
-        //
+        if($request->ajax())
+        {
+            $tipo=TipoEquipo::findOrFail($request->id);
+            $tipo->delete();
+            $message=trans('validation.attributes.message.delete');
+            $nombre=$tipo->tipo_equipo;
+            $delete=$message." al tipo de equipo ".$nombre;
+
+            return response()->json([
+                'message' => $delete
+
+            ]);
+        }
     }
 }

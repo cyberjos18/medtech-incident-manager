@@ -27,10 +27,11 @@
                         @foreach($tipos as $tipo)
                             <tr data-id="{{$tipo->id}}">
                                 <td>{{$tipo->id}}</td>
-                                <td>{{$tipo->tipo}}</td>
+                                <td>{{$tipo->tipo_equipo}}</td>
                                 <td>
+
                                     {!! Html::link(route('maestros.tiposequipos.edit',$tipo->id),'Editar') !!}
-                                    {!! Html::link('#','Eliminar',['class'=>'link-eliminar']) !!}
+
                                 </td>
                             </tr>
                         @endforeach

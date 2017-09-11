@@ -15,7 +15,7 @@ class TipoEquipo extends Model
 
     protected $fillable = [
         'id',
-        'tipo'
+        'tipo_equipo'
     ];
 
     protected $guarded = [];
