@@ -107,14 +107,16 @@ class TipoEquipoController extends Controller
     {
         if($request->ajax())
         {
-            $tipo=TipoEquipo::findOrFail($request->id);
+
+           /* $tipo=TipoEquipo::findOrFail($request->id);
             $tipo->delete();
             $message=trans('validation.attributes.message.delete');
             $nombre=$tipo->tipo_equipo;
-            $delete=$message." al tipo de equipo ".$nombre;
+            $delete=$message." al tipo de equipo ".$nombre;*/
 
             return response()->json([
-                'message' => $delete
+                /*'message' => $delete*/
+                'message' => 'hola'
 
             ]);
         }
