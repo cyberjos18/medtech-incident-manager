@@ -6,8 +6,6 @@ use dgmtm\Http\Requests\CreateTipoEquipoRequest;
 use dgmtm\Http\Requests\EditTipoEquipoRequest;
 use dgmtm\TipoEquipo;
 use Illuminate\Http\Request;
-
-use dgmtm\Http\Requests;
 use dgmtm\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Session;
 
@@ -62,7 +60,8 @@ class TipoEquipoController extends Controller
      */
     public function show($id)
     {
-        //
+        $tipoequipo=TipoEquipo::findOrFail($id);
+        return view('maestros.tiposequipos.edit',compact('tipoequipo'));
     }
 
     /**
@@ -73,8 +72,7 @@ class TipoEquipoController extends Controller
      */
     public function edit($id)
     {
-        $tipoequipo=TipoEquipo::findOrFail($id);
-        return view('maestros.tiposequipos.edit',compact('tipoequipo'));
+
     }
 
     /**
@@ -100,24 +98,23 @@ class TipoEquipoController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param Request $request
      * @return \Illuminate\Http\Response
+     * @internal param int $id
      */
     public function destroy(Request $request)
     {
         if($request->ajax())
         {
 
-           /* $tipo=TipoEquipo::findOrFail($request->id);
+            $tipo=TipoEquipo::findOrFail($request->id);
             $tipo->delete();
             $message=trans('validation.attributes.message.delete');
             $nombre=$tipo->tipo_equipo;
-            $delete=$message." al tipo de equipo ".$nombre;*/
+            $delete=$message." al tipo de equipo ".$nombre;
 
             return response()->json([
-                /*'message' => $delete*/
-                'message' => 'hola'
-
+                'message' => $delete
             ]);
         }
     }

@@ -12,13 +12,15 @@ $(document).ready(function(){
            });
            $.ajax
            ({
-               url:'./tipoEquipoDelete',
+               url:'../tipoDelete',
                type:'get',
                data:{'id':id},
 
                success: function(data)
                {
                    alert(data.message);
+
+                  
 
                },
                error:function(e)

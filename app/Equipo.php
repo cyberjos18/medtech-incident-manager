@@ -16,7 +16,7 @@ class Equipo extends Model
     protected $fillable = [
         'centro_id',
         'servicio_id',
-        'nomb_equipo',
+        'tipoequipo_id',
         'marca_equipo',
         'modelo_equipo',
         'serial_equipo',

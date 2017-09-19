@@ -30,7 +30,7 @@
                                 <td>{{$tipo->tipo_equipo}}</td>
                                 <td>
 
-                                    {!! Html::link(route('maestros.tiposequipos.edit',$tipo->id),'Editar') !!}
+                                    {!! Html::link(route('maestros.tiposequipos.show',$tipo->id),'Ver') !!}
 
                                 </td>
                             </tr>

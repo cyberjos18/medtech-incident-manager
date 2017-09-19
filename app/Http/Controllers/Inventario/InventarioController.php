@@ -22,7 +22,7 @@ class InventarioController extends Controller
      */
     public function index()
     {
-        $equipos=Equipo::orderBy('nomb_equipo','ASC')
+        $equipos=Equipo::orderBy('tipoequipo_id','ASC')
             ->with('centro','servicio')
             ->paginate(10);
         return view('inventario.equipos.index',compact('equipos'));

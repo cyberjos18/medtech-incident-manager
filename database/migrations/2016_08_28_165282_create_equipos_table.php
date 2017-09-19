@@ -17,7 +17,7 @@ class CreateEquiposTable extends Migration
             $table->increments('id');
             $table->integer('centro_id')->unsigned();
             $table->integer('servicio_id')->unsigned();
-            $table->string('tipoequipo_id')->unsigned();
+            $table->integer('tipoequipo_id')->unsigned();
             $table->string('marca_equipo',25);
             $table->string('modelo_equipo',25);
             $table->string('serial_equipo',30)->unique();
