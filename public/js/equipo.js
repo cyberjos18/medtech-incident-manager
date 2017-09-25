@@ -59,6 +59,9 @@ $(document).ready(function(){
            
         }
     });
+    
+    
+    
    $("#equipo_garantia").change(function(){
        var valor=$("#equipo_garantia").val();
        if(valor=="SI")

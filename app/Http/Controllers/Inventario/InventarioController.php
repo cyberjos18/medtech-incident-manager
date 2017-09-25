@@ -7,6 +7,7 @@ use dgmtm\Equipo;
 use dgmtm\Http\Requests\CreateInventarioRequest;
 use dgmtm\Http\Requests\EditInventarioRequest;
 use dgmtm\Servicio;
+use dgmtm\TipoEquipo;
 use Illuminate\Http\Request;
 
 use dgmtm\Http\Requests;
@@ -23,7 +24,7 @@ class InventarioController extends Controller
     public function index()
     {
         $equipos=Equipo::orderBy('tipoequipo_id','ASC')
-            ->with('centro','servicio')
+            ->with('centro','servicio','tipoequipo')
             ->paginate(10);
         return view('inventario.equipos.index',compact('equipos'));
     }
@@ -37,7 +38,10 @@ class InventarioController extends Controller
     {
         $centros=Centro::orderBy('nomb_centro','ASC')
             ->lists('nomb_centro','id');
-        return view('inventario.equipos.create',compact('centros'));
+        $tipos=TipoEquipo::orderBy('tipo_equipo','ASC')
+            ->lists('tipo_equipo','id');
+        return view('inventario.equipos.create',compact('centros','tipos'));
+        
     }
 
     /**
@@ -51,7 +55,7 @@ class InventarioController extends Controller
         $equipos=new Equipo();
         $equipos->centro_id=$request->centro_id;
         $equipos->servicio_id=$request->servicio_id;
-        $equipos->nomb_equipo=mb_strtoupper($request->nomb_equipo);
+        dd($equipos->tipoequipo_id=mb_strtoupper($request->tipoequipo_id));
         $equipos->marca_equipo=mb_strtoupper($request->marca_equipo);
         $equipos->modelo_equipo=mb_strtoupper($request->modelo_equipo);
         $equipos->serial_equipo=mb_strtoupper($request->serial_equipo);

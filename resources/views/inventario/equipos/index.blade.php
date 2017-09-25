@@ -31,7 +31,7 @@
                             @foreach($equipos as $equipo)
                                 <tr data-id="{{$equipo->id}}">
                                     <td>{{$equipo->id}}</td>
-                                    <td>{{$equipo->nomb_equipo}}</td>
+                                    <td>{{$equipo->tipoequipo_id}}</td>
                                     <td>{{$equipo->servicio->nomb_servicio}}</td>
                                     <td>{{$equipo->centro->nomb_centro}}</td>
                                     <td>{{$equipo->centro->localidad->nomb_localidad}}</td>

@@ -7,8 +7,8 @@
     {!! Form::select('servicio_id',[''],null,['id'=>'servicio_id','class'=>'form-control','placeholder'=>'Seleccione...']) !!}
 </div>
 <div class="form-group">
-    {!! Form::label('nomb_equipo','Equipo') !!}
-    {!! Form::text('nomb_equipo',null,['id'=>'nomb_equipo','class'=>'form-control','placeholder'=>'Por favor ingrese el nombre del equipo','maxlength'=>'25']) !!}
+    {!! Form::label('tipo_equipo','Tipo') !!}
+    {!! Form::select('tipoequipo_id',$tipos,null,['id'=>'tipoequipo_id','class'=>'form-control','placeholder'=>'Seleccione...','maxlength'=>'25']) !!}
 </div>
 <div class="form-group">
     {!! Form::label('marca_equipo','Marca') !!}
