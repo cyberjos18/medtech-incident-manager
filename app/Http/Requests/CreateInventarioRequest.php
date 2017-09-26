@@ -39,7 +39,7 @@ class CreateInventarioRequest extends Request
     {
         return
         [
-            'tipoequipo_id.required'     => 'Necesitamos el tipo de equipo',
+            'tipoequipo_id.required'   => 'Necesitamos el tipo de equipo',
             'marca_equipo.required'    => 'Necesitamos la marca del equipo',
             'marca_equipo.max'         => 'La marca del equipo debe contener maximo 25 caracateres',
             'modelo_equipo.required'   => 'Necesitamos el modelo del equipo',

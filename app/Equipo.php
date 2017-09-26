@@ -44,5 +44,10 @@ class Equipo extends Model
         return $this->belongsToMany('dgmtm\Solicitud');
     }
 
+    public function tipoequipo()
+    {
+        return $this->belongsTo('dgmtm\TipoEquipo');
+    }
+
         
 }

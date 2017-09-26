@@ -24,9 +24,9 @@ class InventarioController extends Controller
     public function index()
     {
         $equipos=Equipo::orderBy('tipoequipo_id','ASC')
-            ->with('centro','servicio','tipoequipo')
+            ->with('centro','servicio')
             ->paginate(10);
-        return view('inventario.equipos.index',compact('equipos'));
+            return view('inventario.equipos.index',compact('equipos'));
     }
 
     /**
@@ -55,7 +55,7 @@ class InventarioController extends Controller
         $equipos=new Equipo();
         $equipos->centro_id=$request->centro_id;
         $equipos->servicio_id=$request->servicio_id;
-        dd($equipos->tipoequipo_id=mb_strtoupper($request->tipoequipo_id));
+        $equipos->tipoequipo_id=$request->tipoequipo_id;
         $equipos->marca_equipo=mb_strtoupper($request->marca_equipo);
         $equipos->modelo_equipo=mb_strtoupper($request->modelo_equipo);
         $equipos->serial_equipo=mb_strtoupper($request->serial_equipo);
@@ -88,7 +88,10 @@ class InventarioController extends Controller
         $servicios=Servicio::orderBy('nomb_servicio','ASC')
             ->where('servicios.centro_id','=',$equipo->centro_id)
             ->lists('nomb_servicio','id');
-        return view('inventario.equipos.edit',compact('centros','equipo','servicios'));
+        $tipos=TipoEquipo::orderBy('tipo_equipo','ASC')
+            ->lists('tipo_equipo','id');
+
+        return view('inventario.equipos.edit',compact('centros','equipo','servicios','tipos'));
     }
 
     /**
@@ -114,7 +117,7 @@ class InventarioController extends Controller
         $equipos=Equipo::findOrFail($id);
         $equipos->centro_id=$request->centro_id;
         $equipos->servicio_id=$request->servicio_id;
-        $equipos->nomb_equipo=mb_strtoupper($request->nomb_equipo);
+        $equipos->tipoequipo_id=$request->tipoequipo_id;
         $equipos->marca_equipo=mb_strtoupper($request->marca_equipo);
         $equipos->modelo_equipo=mb_strtoupper($request->modelo_equipo);
         $equipos->serial_equipo=mb_strtoupper($request->serial_equipo);

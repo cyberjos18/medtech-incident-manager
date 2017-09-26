@@ -30,7 +30,7 @@ class EditInventarioRequest extends Request
     public function rules()
     {
         return [
-            'nomb_equipo'           => 'required|max:25',
+            'tipoequipo_id'         => 'required',
             'marca_equipo'          => 'required|max:25',
             'modelo_equipo'         => 'required|max:25',
             'serial_equipo'         => 'required|max:30|unique:equipos,serial_equipo,'.$this->route->getParameter('equipos'),
@@ -45,8 +45,7 @@ class EditInventarioRequest extends Request
     {
         return
             [
-                'nomb_equipo.required'     => 'Necesitamos el nombre del equipo',
-                'nomb_equipo.max'          => 'El nombre del equipo debe contener maximo 25 caracteres',
+                'tipoequipo_id.required'   => 'Necesitamos el tipo de equipo',
                 'marca_equipo.required'    => 'Necesitamos la marca del equipo',
                 'marca_equipo.max'         => 'La marca del equipo debe contener maximo 25 caracateres',
                 'modelo_equipo.required'   => 'Necesitamos el modelo del equipo',

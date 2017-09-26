@@ -3,7 +3,7 @@ $(document).ready(function(){
     {
         $("#centro_id").val("Seleccione...");
         $("#servicio_id").val("Seleccione...");
-        $("#nomb_equipo").val("");
+        $("#tipoequipo_id").val("");
         $("#marca_equipo").val("");
         $("#modelo_equipo").val("");
         $("#serial_equipo").val("");
@@ -18,7 +18,7 @@ $(document).ready(function(){
     {
         $("#centro_id").attr("disabled",true);
         $("#servicio_id").attr("disabled",true);
-        $("#nomb_equipo").attr("disabled",true);
+        $("#tipoequipo_id").attr("disabled",true);
         $("#marca_equipo").attr("disabled",true);
         $("#modelo_equipo").attr("disabled",true);
         $("#serial_equipo").attr("disabled",true);
@@ -32,7 +32,7 @@ $(document).ready(function(){
     {
         $("#centro_id").attr("disabled",false);
         $("#servicio_id").attr("disabled",false);
-        $("#nomb_equipo").attr("disabled",false);
+        $("#tipoequipo_id").attr("disabled",false);
         $("#marca_equipo").attr("disabled",false);
         $("#modelo_equipo").attr("disabled",false);
         $("#serial_equipo").attr("disabled",false);

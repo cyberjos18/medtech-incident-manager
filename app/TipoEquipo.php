@@ -20,5 +20,10 @@ class TipoEquipo extends Model
 
     protected $guarded = [];
 
+    public function equipo()
+    {
+        return $this->hasMany('dgmtm\Equipo');
+    }
+
         
 }
