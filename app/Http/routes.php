@@ -31,13 +31,13 @@ Route::group(['prefix'=>'maestros','namespace'=>'\Maestros'],function(){
     Route::get('servicioListar','ServicioController@index');
     Route::get('tipoDelete','TipoEquipoController@destroy');
 });
-Route::resource('solicitudes','SolicitudController');
-
-
 Route::group(['prefix'=>'inventario','namespace'=>'\Inventario'],function() {
     
     Route::resource('equipos','InventarioController' );
     Route::get('dropDownBuscarServicios','InventarioController@buscarServicios');
     Route::get('equipoEliminar','InventarioController@destroy');
 
+});
+Route::group(['prefix'=>'solicitudes','namespace'=>'\Solicitudes'],function(){
+    Route::resource('solicitudservicio','SolicitudController');
 });

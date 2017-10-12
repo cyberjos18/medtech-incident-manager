@@ -1,13 +1,14 @@
 <?php
 
-namespace dgmtm\Http\Controllers;
+namespace dgmtm\Http\Controllers\Solicitudes;
 
+use dgmtm\Centro;
 use Illuminate\Http\Request;
 
 use dgmtm\Http\Requests;
 use dgmtm\Http\Controllers\Controller;
 
-class AutorizacionController extends Controller
+class SolicitudController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,7 +17,7 @@ class AutorizacionController extends Controller
      */
     public function index()
     {
-        //
+        return view('solicitudes.solicitudservicio.index');
     }
 
     /**
@@ -26,7 +27,10 @@ class AutorizacionController extends Controller
      */
     public function create()
     {
-        //
+        $centros=Centro::with('equipo')
+            ->orderBy('nomb_centro','DESC')
+            ->lists('nomb_centro','id');
+        return view('solicitudes.solicitudservicio.create',compact('centros'));
     }
 
     /**

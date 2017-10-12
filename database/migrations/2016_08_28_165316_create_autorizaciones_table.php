@@ -18,7 +18,7 @@ class CreateAutorizacionesTable extends Migration
             $table->integer('proveedor_id')->unsigned();
             $table->integer('numero_autorizacion')->unique();
             $table->date('fecha_autorizacion');
-            $table->enum('status',['En Proceso','Falta Repuesto','No Procede','Talleres','Ejecutado']);
+            $table->enum('status',['En Proceso','Falta Repuesto','Cancelada','Talleres','Ejecutado']);
             $table->mediumText('seguimiento')->nullable();
             $table->foreign('proveedor_id')->references('id')->on('proveedores')->onUpdate('cascade')->onDelete('restrict');
             $table->timestamps();
