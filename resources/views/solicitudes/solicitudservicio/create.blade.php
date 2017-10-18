@@ -7,14 +7,13 @@
                     <div class="panel panel-heading"><h4>Registro de solicitud</h4></div>
                     <div class="panel-body">
                         @include('solicitudes.solicitudservicio.partials.fields')
+
                     </div>
-
-
-                </div>
 
             </div>
 
         </div>
 
+    </div>
     </div>
     @endsection
