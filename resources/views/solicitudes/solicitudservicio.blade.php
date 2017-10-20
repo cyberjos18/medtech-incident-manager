@@ -4,9 +4,9 @@
     {!! Html::script('/js/jquery-3.1.1.min.js') !!}
     {!! Html::script('/js/bootstrap.min.js') !!}
     {!! Html::script('/js/angular.js') !!}
-    {!! Html::script('/js/datepicker.js') !!}
-    {!! Html::script('/js/datepicker/jquery-ui.js') !!}
-    {!! Html::style('/css/datepicker/jquery-ui.css') !!}
+    {!! Html::script('/js/bootstrap-datepicker/bootstrap-datepicker.min.js') !!}
+    {!! Html::script('/js/bootstrap-datepicker/bootstrap-datepicker.es.js') !!}
+    {!! Html::style('/css/bootstrap-datepicker/bootstrap-datepicker3.min.css') !!}
     {!! Html::style('/css/bootstrap.min.css') !!}
 
     <meta name="csrf-token" content="{{csrf_token()}}">
