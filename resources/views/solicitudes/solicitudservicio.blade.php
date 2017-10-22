@@ -17,4 +17,4 @@
 </br>
 @yield('content');
 </body>
-</html>
+</html> 
