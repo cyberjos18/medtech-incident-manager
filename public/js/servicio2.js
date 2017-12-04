@@ -17,5 +17,8 @@ $(document).ready(function(){
   $("#editar_serv").click(function(){
     habilitar();
   });
+  $("#eliminar_serv").click(function(){
+    var $id=$("#id").val();
     
+  });
 });

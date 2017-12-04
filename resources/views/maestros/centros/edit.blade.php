@@ -31,8 +31,8 @@
                             <div id="serviciosdelcentro" class="tab-pane fade ">
                                <p>@include('maestros.centros.partials.fields2')</p>
                                 <div class="col-xs-12 col-sm-8 col-md-10 col-md-offset-8">
-                                {!! Form::button('Incluir',['id'=>'incluir','class'=>'btn btn-success']) !!}
                                 {!! Form::button('Ver',['id'=>'ver','class'=>'btn btn-warning']) !!}
+                                {!! Form::button('Guardar',['id'=>'guardar','class'=>'btn btn-success']) !!}
                                 {!! Html::link(route('maestros.centros.index'),'Regresar',['id'=>'cancelar','class'=>'btn btn-primary']) !!}
                                 </div>
 

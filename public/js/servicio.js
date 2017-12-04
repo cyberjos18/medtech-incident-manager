@@ -5,7 +5,7 @@ $(document).ready(function(){
         $("#nomb_servicio").val("");
     }
 
-  $("#incluir").click(function(){
+  $("#guardar").click(function(){
        var centroID=$("#centroId").val();
        var servicio=$("#nomb_servicio").val();
        if(servicio=="")
@@ -24,7 +24,7 @@ $(document).ready(function(){
                data: {'centroId': centroID, 'nombServicio': servicio},
 
                success: function (data) {
-                   alert(data.message);
+                   //alert(data.message);
                    limpiar();
                    $.ajaxSetup({
                        headers: {

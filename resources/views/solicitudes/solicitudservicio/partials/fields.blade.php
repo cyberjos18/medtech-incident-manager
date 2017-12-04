@@ -40,18 +40,21 @@
     </br>
     </br>
     <div class="panel-body">
-        <table class="table table-responsive" >
-            <tr>
-                <th>#</th>
-                <th>Tipo de equipo</th>
-                <th>Marca</th>
-                <th>Serial</th>
-                <th>Falla reportada</th>
-            </tr>
-            <tbody id="contenido">
+        <div id="table" class="table table-responsive">
+            <table id="equiposreparar" class="table table-bordered" >
+                <tr>
+                    <th>#</th>
+                    <th>Tipo de equipo</th>
+                    <th>Marca</th>
+                    <th>Serial</th>
+                    <th>Falla reportada</th>
+                </tr>
+                <tbody id="contenido">
 
-            </tbody>
-        </table>
+                </tbody>
+            </table>
+
+        </div>
 
     </div>
 </div>
