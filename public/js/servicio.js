@@ -37,13 +37,14 @@ $(document).ready(function(){
                        data: {'centroId': centroID},
 
 
+
                        success: function (data) {
 
-                           $("#contenido").html('');
-                           $.each(data.resultado,function (index,value) {
-                               $("#contenido").append("<tr><td>"+value.id+"</td><td>"+value.nomb_servicio+"</td><td><a  href='http://127.0.0.1/dgmtm/public/maestros/servicios/"+value.id+"/edit'>Editar</a></td></tr>").fadeIn();
-                               
-                           })
+                                $("#contenido").html('');
+                                $.each(data.resultado,function (index,value) {
+                                    $("#contenido").fadeIn("slow").append("<tr><td>"+value.id+"</td><td>"+value.nomb_servicio+"</td><td><a  href='http://127.0.0.1/dgmtm/public/maestros/servicios/"+value.id+"/edit'>Editar</a></td></tr>");
+                                })
+
 
                        },
                        error: function (e) {
@@ -71,14 +72,19 @@ $(document).ready(function(){
           url: '../servicioListar',
           type: 'GET',
           data: {'centroId': centroID},
+          dataType:'json',
 
 
           success: function (data) {
-              
-            $("#contenido").html('');
-              $.each(data.resultado,function (index,value) {
-                  $("#contenido").append("<tr><td>"+value.id+"</td><td>"+value.nomb_servicio+"</td><td><a  href='http://127.0.0.1/dgmtm/public/maestros/servicios/"+value.id+"/edit'>Editar</a></td></tr>");
-              })
+              $bandera=data.resultado;
+              if($bandera!="")
+              {
+                  $("#contenido").html('');
+                  $.each(data.resultado,function (index,value) {
+                      $("#contenido").append("<tr><td>"+value.id+"</td><td>"+value.nomb_servicio+"</td><td><a  href='http://127.0.0.1/dgmtm/public/maestros/servicios/"+value.id+"/edit'>Editar</a></td></tr>");
+                  })
+              }
+
 
           },
           error: function (e) {

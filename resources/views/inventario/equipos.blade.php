@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     {!! Html::script('/js/jquery-3.0.0.min.js') !!}
-   {!! Html::script('/js/bootstrap.min.js') !!}
+    {!! Html::script('/js/bootstrap.min.js') !!}
     {!! Html::script('/js/equipo.js') !!}
     {!! Html::script('/js/jquery.dataTables.min.js') !!}
     {!! Html::script('js/dataTables.bootstrap4.min.js') !!}

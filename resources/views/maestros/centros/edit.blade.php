@@ -39,16 +39,22 @@
                                 </br>
                                 </br>
                                 <div class="panel-body">
-                                    <table class="table table-responsive" >
-                                        <tr>
-                                            <th>#</th>
-                                            <th>Nombre del Servicio</th>
-                                            <th>Accion</th>
-                                        </tr>
-                                        <tbody id="contenido">
+                                    <div id="table" class="table table-responsive">
+                                        <table class="table table-bordered" >
+                                            <tr>
+                                                <th>#</th>
+                                                <th>Nombre del Servicio</th>
+                                                <th>Accion</th>
+                                            </tr>
+                                            <tbody id="contenido">
+                                            <tr>
+                                                <td colspan="3" align="center">No hay registros</td>
+                                            </tr>
 
-                                        </tbody>
+                                            </tbody>
                                         </table>
+
+                                    </div>
 
                             </div>
                         </div>

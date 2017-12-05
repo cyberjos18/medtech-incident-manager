@@ -29,6 +29,7 @@ Route::group(['prefix'=>'maestros','namespace'=>'\Maestros'],function(){
     Route::get('centroEliminar','CentroController@destroy');
     Route::get('servicioAgregar','ServicioController@store');
     Route::get('servicioListar','ServicioController@index');
+    Route::get('servicioEliminar','ServicioController@destroy');
     Route::get('tipoDelete','TipoEquipoController@destroy');
 });
 Route::group(['prefix'=>'inventario','namespace'=>'\Inventario'],function() {
