@@ -25,7 +25,7 @@ Route::group(['prefix'=>'maestros','namespace'=>'\Maestros'],function(){
     Route::resource('tiposequipos','TipoEquipoController');
     Route::get('estado','EstadoController@eliminar');
     Route::get('proveedorDelete','ProveedorController@eliminar');
-    Route::get('dropdown','CentroController@buscarLocalidades');
+    Route::get('buscarLocalidad','CentroController@buscarLocalidades');
     Route::get('centroEliminar','CentroController@destroy');
     Route::get('servicioAgregar','ServicioController@store');
     Route::get('servicioListar','ServicioController@index');

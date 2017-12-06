@@ -4,6 +4,7 @@
     {!! Html::script('/js/jquery-3.1.1.min.js') !!}
     {!! Html::script('/js/bootstrap.min.js') !!}
     {!! Html::script('/js/angular.js') !!}
+    {!! Html::script('/js/solicitud.js') !!}
     {!! Html::script('/js/bootstrap-datepicker/bootstrap-datepicker.min.js') !!}
     {!! Html::script('/js/bootstrap-datepicker/bootstrap-datepicker.es.js') !!}
     {!! Html::style('/css/bootstrap-datepicker/bootstrap-datepicker3.min.css') !!}

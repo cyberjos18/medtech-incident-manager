@@ -17,7 +17,7 @@ $(document).ready(function () {
         else
         {
             $.ajax({
-                url: '../dropdown',
+                url: '../buscarLocalidad',
                 type: 'get',
                 data: {'id': id},
 
