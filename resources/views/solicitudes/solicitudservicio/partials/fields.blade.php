@@ -47,6 +47,7 @@
                     <th>Tipo de equipo</th>
                     <th>Marca</th>
                     <th>Serial</th>
+                    <th>Bien nacional</th>
                     <th>Falla reportada</th>
                 </tr>
                 <tbody id="contenido">

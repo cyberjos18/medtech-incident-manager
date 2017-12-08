@@ -3,6 +3,7 @@
 namespace dgmtm\Http\Controllers\Solicitudes;
 
 use dgmtm\Centro;
+use dgmtm\Equipo;
 use Illuminate\Http\Request;
 
 use dgmtm\Http\Requests;
@@ -41,7 +42,7 @@ class SolicitudController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
     }
 
     /**
@@ -50,9 +51,19 @@ class SolicitudController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($id,Request $request)
     {
-        //
+        if($request->ajax())
+        {
+            $equipoListar=Equipo::where('centro_id','=',$request->centroId)
+                ->with('tipoequipo')
+                ->get();
+            return response()->json([
+                'equipoListar' => $equipoListar
+            ]);
+
+
+        }
     }
 
     /**

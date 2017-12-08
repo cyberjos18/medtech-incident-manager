@@ -41,4 +41,5 @@ Route::group(['prefix'=>'inventario','namespace'=>'\Inventario'],function() {
 });
 Route::group(['prefix'=>'solicitudes','namespace'=>'\Solicitudes'],function(){
     Route::resource('solicitudservicio','SolicitudController');
+    Route::get('equipoListar','SolicitudController@show');
 });

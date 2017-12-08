@@ -30,6 +30,8 @@ class EditInventarioRequest extends Request
     public function rules()
     {
         return [
+            'centro_id'             => 'required',
+            'servicio_id'           => 'required',
             'tipoequipo_id'         => 'required',
             'marca_equipo'          => 'required|max:25',
             'modelo_equipo'         => 'required|max:25',
@@ -45,6 +47,8 @@ class EditInventarioRequest extends Request
     {
         return
             [
+                'centro_id.required'       => 'Necesitamos que elija el centro de atención',
+                'servicio_id.required'     => 'Necesitamos que elija el servicio del centro',
                 'tipoequipo_id.required'   => 'Necesitamos el tipo de equipo',
                 'marca_equipo.required'    => 'Necesitamos la marca del equipo',
                 'marca_equipo.max'         => 'La marca del equipo debe contener maximo 25 caracateres',
