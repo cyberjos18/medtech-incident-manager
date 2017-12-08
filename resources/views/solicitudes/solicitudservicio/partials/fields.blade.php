@@ -42,6 +42,7 @@
     <div class="panel-body">
         <div id="table" class="table table-responsive">
             <table id="equiposreparar" class="table table-bordered" >
+                <thead>
                 <tr>
                     <th>#</th>
                     <th>Tipo de equipo</th>
@@ -50,7 +51,9 @@
                     <th>Bien nacional</th>
                     <th>Falla reportada</th>
                 </tr>
-                <tbody id="contenido">
+                </thead>
+                <tbody>
+
 
                 </tbody>
             </table>

@@ -16,6 +16,6 @@
 </head>
 <body>
 </br>
-@yield('content');
+@yield('content')
 </body>
 </html>
