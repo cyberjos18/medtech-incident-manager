@@ -76,16 +76,35 @@ $(document).ready(function () {
 
             $("td.clic").click(function(){
                 var valores="";
+                var identy="";
+                var $objeto=[];
+                var c=0;
+
                 // Obtenemos todos los valores contenidos en los <td> de la fila
                 // seleccionada
 
                 $(this).parents("tr").find("td").each(function(){
-
-                    valores+=$(this).text()+"\n";
-                    alert($(this).attr("id"));
+                    $objeto[c]=[];
+                    identy=$(this).attr("id");
+                    valores=$(this).text();
+                    $objeto[c][identy]=valores;
+                    c++;
 
                 });
-               console.log(valores);
+                console.log($objeto);
+                $.each($objeto,function (index,value) {
+                    $("#equiposreportados tbody").fadeIn("slow").append(
+                        "<tr>" +
+                        "<td>"+value.id+"</td>" +
+                        "<td>"+value.tipoequipo+"</td>" +
+                        "<td>"+value.marca+"</td>" +
+                        "<td>"+value.serial+"</td>" +
+                        "<td>"+value.bien+"</td>" +
+                        "</tr>");
+                })
+
+
+
 
             });
 
