@@ -41,32 +41,7 @@ $(document).ready(function () {
 
         }
     });
-
-    function validarClic($td)
-    {
-        var $this = $td;
-        var $id = $this.attr("id");
-        var Value = $this.text();
-
-        /*Se crea un input dinamico*/
-        var $input = $('<input type="text" value="' + Value + '"/>');
-
-        /*Finalmente se agrega el input al campo TD y se le crea el foco*/
-        $this.html("").append($input);
-        $input.focus();
-
-        /*Se crea una funcion para indicar que cuando el input pierda el foco ejecute lo siguiente:*/
-        $input.on("blur", function () {
-
-            var text = $input.val();
-            $input.remove();
-            $this.text(text);
-        }).on("click", function (e) {
-            e.stopPropagation()
-        });
-    }
-
-       $("#centro_id").change(function () {
+        $("#mas").click(function () {
         var $centroId = $("#centro_id").val();
         $.ajax
         ({
@@ -80,12 +55,12 @@ $(document).ready(function () {
             console.log($resultado);
             var $filas = '';
                $.each($resultado, function (index, valor) {
-                var $id = '<td id="id" class="">'+ valor.id +'</td>';
+                var $id = '<td id="id" class="clic"><a href="#">'+ valor.id +'</a></td>';
                 var $tipoequipo = '<td id="tipoequipo" class="">'+ valor.tipoequipo.tipo_equipo +'</td>';
                 var $marca = '<td id="marca" class="">'+ valor.marca_equipo+ '</td>';
                 var $serial = '<td id="serial" class="">'+ valor.serial_equipo +'</td>';
                 var $bien = '<td id="bien" class="">'+ valor.bien_nacional +'</td>';
-                var $falla = '<td id="falla" class="edit"><div class="form-group"><textarea class="form-control" id="exampleTextarea" rows="1"></textarea></div></td>';
+                // var $falla = '<td id="falla" class=""><div class="form-group"><textarea class="form-control" id="exampleTextarea" rows="1"></textarea></div></td>';
 
                 $filas += '<tr>';
                 $filas += $id;
@@ -93,17 +68,30 @@ $(document).ready(function () {
                 $filas += $marca;
                 $filas += $serial;
                 $filas += $bien;
-                $filas += $falla;
+                // $filas += $falla;
                 $filas += '</tr>';
 
             });
             $("#equiposreparar tbody").html($filas);
-            // $("td.edit").on("click", function () {
-            //     validarClic($(this));
-            //
-            // });
+
+            $("td.clic").click(function(){
+                var valores="";
+                // Obtenemos todos los valores contenidos en los <td> de la fila
+                // seleccionada
+
+                $(this).parents("tr").find("td").each(function(){
+
+                    valores+=$(this).text()+"\n";
+                    alert($(this).attr("id"));
+
+                });
+               console.log(valores);
+
+            });
+
         })
 
     });
+
 
 });

@@ -33,7 +33,7 @@
 <hr  style="color:#000000;" />
 <div class="form-group">
     <div class="col-xs-12 col-sm-8 col-md-08 col-md-offset-10">
-        {!! Form::button('+',['id'=>'mas','class'=>'btn btn-info']) !!}
+        {!! Form::button('+',['id'=>'mas','class'=>'btn btn-info','data-toggle'=>'modal','data-target'=>'#myModal']) !!}
         {!! Form::button('-',['id'=>'menos','class'=>'btn btn-info']) !!}
     </div>
 
@@ -41,7 +41,7 @@
     </br>
     <div class="panel-body">
         <div id="table" class="table table-responsive">
-            <table id="equiposreparar" class="table table-bordered" >
+            <table id="equiposreportados" class="table table-bordered" >
                 <thead>
                 <tr>
                     <th>#</th>
