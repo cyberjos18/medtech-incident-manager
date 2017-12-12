@@ -41,7 +41,7 @@ $(document).ready(function () {
 
         }
     });
-        $("#mas").click(function () {
+    $("#mas").click(function () {
         var $centroId = $("#centro_id").val();
         $.ajax
         ({
@@ -52,15 +52,17 @@ $(document).ready(function () {
 
         }).done(function (data) {
             var $resultado = data.equipoListar;
-            console.log($resultado);
+
+            /* Mostramos la lista de equipos que pertenecen al centro */
+
             var $filas = '';
-               $.each($resultado, function (index, valor) {
-                var $id = '<td id="id" class="clic"><a href="#">'+ valor.id +'</a></td>';
-                var $tipoequipo = '<td id="tipoequipo" class="">'+ valor.tipoequipo.tipo_equipo +'</td>';
-                var $marca = '<td id="marca" class="">'+ valor.marca_equipo+ '</td>';
-                var $serial = '<td id="serial" class="">'+ valor.serial_equipo +'</td>';
-                var $bien = '<td id="bien" class="">'+ valor.bien_nacional +'</td>';
-                // var $falla = '<td id="falla" class=""><div class="form-group"><textarea class="form-control" id="exampleTextarea" rows="1"></textarea></div></td>';
+            $.each($resultado, function (index, valor) {
+                var $id = '<td id="id" class="clic"><a href="#">' + valor.id + '</a></td>';
+                var $tipoequipo = '<td id="tipoequipo" class="">' + valor.tipoequipo.tipo_equipo + '</td>';
+                var $marca = '<td id="marca" class="">' + valor.marca_equipo + '</td>';
+                var $serial = '<td id="serial" class="">' + valor.serial_equipo + '</td>';
+                var $bien = '<td id="bien" class="">' + valor.bien_nacional + '</td>';
+
 
                 $filas += '<tr>';
                 $filas += $id;
@@ -68,48 +70,52 @@ $(document).ready(function () {
                 $filas += $marca;
                 $filas += $serial;
                 $filas += $bien;
-                // $filas += $falla;
                 $filas += '</tr>';
 
             });
             $("#equiposreparar tbody").html($filas);
 
-            $("td.clic").click(function(){
-                var valores="";
-                var identy="";
-                var $objeto=[];
-                var c=0;
+            $("td.clic").click(function () {
+                var valores = "";
+                var identy = "";
+                var $objeto = [];
 
                 // Obtenemos todos los valores contenidos en los <td> de la fila
                 // seleccionada
 
-                $(this).parents("tr").find("td").each(function(){
-                    $objeto[c]=[];
-                    identy=$(this).attr("id");
-                    valores=$(this).text();
-                    $objeto[c][identy]=valores;
-                    c++;
+                $(this).parents("tr").find("td").each(function () {
+                    identy = $(this).attr("id");
+                    valores = $(this).text();
+                    $objeto[identy] = valores;
 
                 });
-                console.log($objeto);
-                $.each($objeto,function (index,value) {
-                    $("#equiposreportados tbody").fadeIn("slow").append(
-                        "<tr>" +
-                        "<td>"+value.id+"</td>" +
-                        "<td>"+value.tipoequipo+"</td>" +
-                        "<td>"+value.marca+"</td>" +
-                        "<td>"+value.serial+"</td>" +
-                        "<td>"+value.bien+"</td>" +
-                        "</tr>");
-                })
 
+                /* Creamos el datatble que indica cuales son los equipos que se repararan del centro esto se obtiene al hacer clic de la lista
+                 * de los equipos que son del centro */
 
+                $("#equiposreportados tbody").append(
+                    "<tr>" +
+                    "<td>" + $objeto.id + "</td>" +
+                    "<td>" + $objeto.tipoequipo + "</td>" +
+                    "<td>" + $objeto.marca + "</td>" +
+                    "<td>" + $objeto.serial + "</td>" +
+                    "<td>" + $objeto.bien + "</td>" +
+                    '<td id="falla" class=""><div class="form-group"><textarea class="form-control" id="exampleTextarea" rows="1"></textarea></div></td>' +
+                    "</tr>");
+
+                $("#myModal").modal("hide");
 
 
             });
 
-        })
+        });
 
+    });
+
+    $("#menos").click(function () {
+        $("#equiposreportados tbody tr:last").fadeOut(function () {
+            $(this).remove();
+        })
     });
 
 
