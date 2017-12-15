@@ -47,6 +47,8 @@ $(document).ready(function () {
             $(this).remove();
         });
     }
+
+    var $c=0;
     $("#mas").click(function () {
         var $centroId = $("#centro_id").val();
         if ($centroId !== "")
@@ -84,6 +86,7 @@ $(document).ready(function () {
 
                 });
                 $("#equiposreparar tbody").html($filas);
+
 
                 $("td.clic").click(function () {
                     var valores = "";
@@ -127,8 +130,16 @@ $(document).ready(function () {
                     else
                     if($objeto.tipoequipo==$tipoEquipo && $objeto.serial==$serialEquipo)
                     {
-                        alert("Este equipo ya esta reportado en la lista");
-                        removerFilas();
+                        $c++;
+                        console.log($c);
+                        if($c>1)
+                        {
+                            alert("Este equipo ya esta reportado en la lista");
+                            removerFilas();
+
+                        }
+
+
                     }
 
 
