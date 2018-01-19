@@ -92,6 +92,8 @@ $(document).ready(function () {
                     var valores = "";
                     var identy = "";
                     var $objeto = [];
+                    var $valor="";
+
 
                     // Obtenemos todos los valores contenidos en los <td> de la fila
                     // seleccionada
@@ -103,44 +105,54 @@ $(document).ready(function () {
 
                     });
 
-                    /* Creamos el datatble que indica cuales son los equipos que se repararan del centro esto se obtiene al hacer clic de la lista
-                     * de los equipos que son del centro */
+
+                              $("#equiposreportados tbody").append(
+                                  "<tr>" +
+                                  "<td>" + $objeto.id + "</td>" +
+                                  "<td class='tipo'>" + $objeto.tipoequipo + "</td>" +
+                                  "<td>" + $objeto.marca + "</td>" +
+                                  "<td class='serial'>" + $objeto.serial + "</td>" +
+                                  "<td>" + $objeto.bien + "</td>" +
+                                  '<td id="falla" class=""><div class="form-group"><textarea class="form-control" id="exampleTextarea" rows="1"></textarea></div></td>' +
+                                  "</tr>");
+
+                              $("#myModal").modal("hide");
 
 
-                    $("#equiposreportados tbody").append(
-                        "<tr>" +
-                        "<td>" + $objeto.id + "</td>" +
-                        "<td class='tipo'>" + $objeto.tipoequipo + "</td>" +
-                        "<td>" + $objeto.marca + "</td>" +
-                        "<td class='serial'>" + $objeto.serial + "</td>" +
-                        "<td>" + $objeto.bien + "</td>" +
-                        '<td id="falla" class=""><div class="form-group"><textarea class="form-control" id="exampleTextarea" rows="1"></textarea></div></td>' +
-                        "</tr>");
-
-                    $("#myModal").modal("hide");
-
-                    var $tipoEquipo=$("td.tipo:first").text();
-                    var $serialEquipo=$("td.serial:first").text();
-
-                    if($objeto.tipoequipo!==$tipoEquipo)
-                    {
-                        alert("En la solicitud de servicio los equipos a reparar deben ser del mismo tipo");
-                        removerFilas();
-                    }
-                    else
-                    if($objeto.tipoequipo==$tipoEquipo && $objeto.serial==$serialEquipo)
-                    {
-                        $c++;
-                        console.log($c);
-                        if($c>1)
-                        {
-                            alert("Este equipo ya esta reportado en la lista");
-                            removerFilas();
-
-                        }
-
-
-                    }
+                    // $("#equiposreportados tbody").append(
+                    //     "<tr>" +
+                    //     "<td>" + $objeto.id + "</td>" +
+                    //     "<td class='tipo'>" + $objeto.tipoequipo + "</td>" +
+                    //     "<td>" + $objeto.marca + "</td>" +
+                    //     "<td class='serial'>" + $objeto.serial + "</td>" +
+                    //     "<td>" + $objeto.bien + "</td>" +
+                    //     '<td id="falla" class=""><div class="form-group"><textarea class="form-control" id="exampleTextarea" rows="1"></textarea></div></td>' +
+                    //     "</tr>");
+                    //
+                    // $("#myModal").modal("hide");
+                    //
+                    // var $tipoEquipo=$("td.tipo:first").text();
+                    // var $serialEquipo=$("td.serial:first").text();
+                    //
+                    // if($objeto.tipoequipo!==$tipoEquipo)
+                    // {
+                    //     alert("En la solicitud de servicio los equipos a reparar deben ser del mismo tipo");
+                    //     removerFilas();
+                    // }
+                    // else
+                    // if($objeto.tipoequipo==$tipoEquipo && $objeto.serial==$serialEquipo)
+                    // {
+                    //     $c++;
+                    //     console.log($c);
+                    //     if($c>1)
+                    //     {
+                    //         alert("Este equipo ya esta reportado en la lista");
+                    //         removerFilas();
+                    //
+                    //     }
+                    //
+                    //
+                    // }
 
 
 
