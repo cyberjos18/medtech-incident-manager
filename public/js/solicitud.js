@@ -41,18 +41,17 @@ $(document).ready(function () {
 
         }
     });
-    function removerFilas()
-    {
+
+    function removerFilas() {
         $("#equiposreportados tbody tr:last").fadeOut(function () {
             $(this).remove();
         });
     }
 
-    var $c=0;
+    var $c = 0;
     $("#mas").click(function () {
         var $centroId = $("#centro_id").val();
-        if ($centroId !== "")
-        {
+        if ($centroId !== "") {
             $("#myModal").modal("show");
 
             $.ajax
@@ -92,7 +91,9 @@ $(document).ready(function () {
                     var valores = "";
                     var identy = "";
                     var $objeto = [];
-                    var $valor="";
+                    var iden="";
+                    var valu="";
+                    var $obje=[];
 
 
                     // Obtenemos todos los valores contenidos en los <td> de la fila
@@ -105,63 +106,72 @@ $(document).ready(function () {
 
                     });
 
+                    $("#equiposreportados tbody").append(
+                        "<tr>" +
+                        "<td class='id'>" + $objeto.id + "</td>" +
+                        "<td class='tipo'>" + $objeto.tipoequipo + "</td>" +
+                        "<td>" + $objeto.marca + "</td>" +
+                        "<td class='serial'>" + $objeto.serial + "</td>" +
+                        "<td>" + $objeto.bien + "</td>" +
+                        '<td id="falla" class=""><div class="form-group"><textarea class="form-control" id="exampleTextarea" rows="1"></textarea></div></td>' +
+                        "</tr>");
 
-                              $("#equiposreportados tbody").append(
-                                  "<tr>" +
-                                  "<td>" + $objeto.id + "</td>" +
-                                  "<td class='tipo'>" + $objeto.tipoequipo + "</td>" +
-                                  "<td>" + $objeto.marca + "</td>" +
-                                  "<td class='serial'>" + $objeto.serial + "</td>" +
-                                  "<td>" + $objeto.bien + "</td>" +
-                                  '<td id="falla" class=""><div class="form-group"><textarea class="form-control" id="exampleTextarea" rows="1"></textarea></div></td>' +
-                                  "</tr>");
+                    /*Convierte un table en un array*/
+                    var myArr = $("#equiposreportados").find('tr').map(function(){
+                        return [$("td", this).map(function(){ return $(this).text();}).get()];
+                    }).get();
+                    console.log(myArr);
 
-                              $("#myModal").modal("hide");
+                    /*Elimina valores duplicados de un array*/
+                    function eliminateDuplicates(arr) {
+                        var i,
+                            len=arr.length,
+                            out=[],
+                            obj={};
+
+                        for (i=0;i<len;i++) {
+                            obj[arr[i]]=0;
+                        }
+                        for (i in obj) {
+                            out.push(i);
+                        }
+                        return out;
+                    }
+                    console.log(eliminateDuplicates(myArr));
 
 
-                    // $("#equiposreportados tbody").append(
-                    //     "<tr>" +
-                    //     "<td>" + $objeto.id + "</td>" +
-                    //     "<td class='tipo'>" + $objeto.tipoequipo + "</td>" +
-                    //     "<td>" + $objeto.marca + "</td>" +
-                    //     "<td class='serial'>" + $objeto.serial + "</td>" +
-                    //     "<td>" + $objeto.bien + "</td>" +
-                    //     '<td id="falla" class=""><div class="form-group"><textarea class="form-control" id="exampleTextarea" rows="1"></textarea></div></td>' +
-                    //     "</tr>");
+                    $("#myModal").modal("hide");
+
+
+
+                    // var $tipoEquipo = $("td.tipo:first").text();
+                    // var $serialEquipo = $("td.serial:first").text();
+                    // var $tipoEquipo2 = $("td.tipo:last").text();
+                    // var $serialEquipo2 = $("td.serial:last").text();
                     //
-                    // $("#myModal").modal("hide");
-                    //
-                    // var $tipoEquipo=$("td.tipo:first").text();
-                    // var $serialEquipo=$("td.serial:first").text();
-                    //
-                    // if($objeto.tipoequipo!==$tipoEquipo)
-                    // {
+                    // if ($objeto.tipoequipo !== $tipoEquipo) {
                     //     alert("En la solicitud de servicio los equipos a reparar deben ser del mismo tipo");
                     //     removerFilas();
                     // }
-                    // else
-                    // if($objeto.tipoequipo==$tipoEquipo && $objeto.serial==$serialEquipo)
+                    // else if ($objeto.tipoequipo == $tipoEquipo && $objeto.serial == $serialEquipo || $objeto.tipoequipo == $tipoEquipo2 && $objeto.serial == $serialEquipo2)
                     // {
                     //     $c++;
                     //     console.log($c);
-                    //     if($c>1)
-                    //     {
+                    //     if ($c > 1) {
                     //         alert("Este equipo ya esta reportado en la lista");
                     //         removerFilas();
+                    //
                     //
                     //     }
                     //
                     //
                     // }
 
-
-
                 });
 
             });
-    }
-        else
-        {
+        }
+        else {
             alert("Debe elegir el centro de atencion");
 
         }
@@ -169,7 +179,7 @@ $(document).ready(function () {
     });
 
     $("#menos").click(function () {
-     removerFilas();
+        removerFilas();
     });
 
 
