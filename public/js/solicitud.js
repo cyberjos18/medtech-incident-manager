@@ -118,9 +118,15 @@ $(document).ready(function () {
 
                     /*Convierte un table en un array*/
                     var myArr = $("#equiposreportados").find('tr').map(function(){
-                        return [$("td", this).map(function(){ return $(this).text();}).get()];
+                        return [$("td", this).map(function(){
+                            return $(this).text();}).get()];
                     }).get();
                     console.log(myArr);
+                    Array.prototype.unique=function(a){
+                        return function(){return this.filter(a)}}(function(a,b,c){return c.indexOf(a,b+1)<0
+                    });
+                    console.log(myArr.unique());
+
 
                     /*Elimina valores duplicados de un array*/
                     function eliminateDuplicates(arr) {
