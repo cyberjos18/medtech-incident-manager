@@ -91,9 +91,6 @@ $(document).ready(function () {
                     var valores = "";
                     var identy = "";
                     var $objeto = [];
-                    var iden="";
-                    var valu="";
-                    var $obje=[];
 
 
                     // Obtenemos todos los valores contenidos en los <td> de la fila
@@ -116,37 +113,72 @@ $(document).ready(function () {
                         '<td id="falla" class=""><div class="form-group"><textarea class="form-control" id="exampleTextarea" rows="1"></textarea></div></td>' +
                         "</tr>");
 
-                    /*Convierte un table en un array*/
-                    var myArr = $("#equiposreportados").find('tr').map(function(){
-                        return [$("td", this).map(function(){
-                            return $(this).text();}).get()];
-                    }).get();
-                    console.log(myArr);
-                    Array.prototype.unique=function(a){
-                        return function(){return this.filter(a)}}(function(a,b,c){return c.indexOf(a,b+1)<0
+                    /*Se convierte la tabla equipos reportados en un arreglo despues de cargar los equipos*/
+
+                    var TableData= new Array();
+                    $('#equiposreportados tr').each(function(row, tr){
+                        TableData[row] = {
+                            "id":     $(tr).find('td:eq(0)').text(),  // id.
+                            "tipo":   $(tr).find('td:eq(1)').text(),  // tipoequipo
+                            "marca":  $(tr).find('td:eq(2)').text(),  // marca
+                            "serial": $(tr).find('td:eq(3)').text(),  // serial
+                            "bien":   $(tr).find('td:eq(4)').text(),  // bien
+                            "falla":  $(tr).find('td:eq(5)').text()   // falla
+                        };
+
                     });
-                    console.log(myArr.unique());
+                    TableData.shift();
+                    console.log(TableData);
+                    /*Seguir leyendo esto: https://www.fourfront.us/blog/store-html-table-data-to-javascript-array*/
 
+                    function existeID(id) {
+                        $('.id').each(function () {
+                            var valor=$(this).text();
+                            if ( valor === id)
+                            {
+                                console.log("Esta repetido");
+                            }
 
-                    /*Elimina valores duplicados de un array*/
-                    function eliminateDuplicates(arr) {
-                        var i,
-                            len=arr.length,
-                            out=[],
-                            obj={};
+                        });
 
-                        for (i=0;i<len;i++) {
-                            obj[arr[i]]=0;
-                        }
-                        for (i in obj) {
-                            out.push(i);
-                        }
-                        return out;
                     }
-                    console.log(eliminateDuplicates(myArr));
+                    console.log(existeID($objeto.id));
+
+
 
 
                     $("#myModal").modal("hide");
+
+                    // /*Convierte un table en un array*/
+                    // var myArr = $("#equiposreportados").find('tr').map(function(){
+                    //     return [$("td", this).map(function(){
+                    //         return $(this).text();}).get()];
+                    // }).get();
+                    // console.log(myArr);
+                    // Array.prototype.unique=function(a){
+                    //     return function(){return this.filter(a)}}(function(a,b,c){return c.indexOf(a,b+1)<0
+                    // });
+                    // console.log(myArr.unique());
+                    //
+                    //
+                    // /*Elimina valores duplicados de un array*/
+                    // function eliminateDuplicates(arr) {
+                    //     var i,
+                    //         len=arr.length,
+                    //         out=[],
+                    //         obj={};
+                    //
+                    //     for (i=0;i<len;i++) {
+                    //         obj[arr[i]]=0;
+                    //     }
+                    //     for (i in obj) {
+                    //         out.push(i);
+                    //     }
+                    //     return out;
+                    // }
+                    // console.log(eliminateDuplicates(myArr));
+
+
 
 
 
@@ -174,6 +206,7 @@ $(document).ready(function () {
                     // }
 
                 });
+
 
             });
         }
