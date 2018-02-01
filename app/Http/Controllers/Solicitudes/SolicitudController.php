@@ -99,4 +99,24 @@ class SolicitudController extends Controller
     {
         //
     }
+
+    public function buscarEquipo(Request $request)
+    {
+        if($request->ajax())
+        {
+            $equipoBuscar=Equipo::where('centro_id','=',$request->centro)
+                ->where('id','=',$request->id)
+                ->with('tipoequipo')
+                ->get();
+            return response()->json([
+                'equipoBuscar' => $equipoBuscar
+            ]);
+
+
+
+        }
+
+    }
+
+
 }
