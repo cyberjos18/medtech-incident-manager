@@ -133,7 +133,7 @@ $(document).ready(function () {
                         "<td>" + $objeto.marca + "</td>" +
                         "<td class='serial'>" + $objeto.serial + "</td>" +
                         "<td>" + $objeto.bien + "</td>" +
-                        '<td class="falla"></td>' +
+                        '<td class="falla" title="Describa la falla, haga clic aqui"></td>' +
                         "</tr>");
                     $("td.falla").click(function(){
                        insertarInput($(this));
