@@ -117,6 +117,7 @@ $(document).ready(function () {
             data: {id: $objeto.id, centro: $centroId},
             dataType: 'json'
         }).done(function (data) {
+
             var resultado = data.equipoBuscar;
             $.each(resultado, function (index, valor) {
                 $("#equiposreportados tbody").append(
@@ -128,8 +129,14 @@ $(document).ready(function () {
                     "<td>" + valor.bien_nacional + "</td>" +
                     '<td id="falla" class=""><div class="form-group"><textarea class="form-control" id="exampleTextarea" rows="1"></textarea></div></td>' +
                     "</tr>");
+
+                if(valor.id===$objeto.id)
+                {
+                    console.log("esta repetido");
+                }
             });
             $("#myModal").modal("hide");
+
         });
 
     });
