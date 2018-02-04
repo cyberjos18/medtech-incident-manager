@@ -10,9 +10,12 @@
             <span class="glyphicon glyphicon-calendar"></span>
         </div>
     </div>
-
-
 </div>
+<div class="form-group">
+    {!! Form::label('Estatus','Estatus') !!}
+    {!! Form::select('estatus',['Recibida'=>'Recibida','Autorizada'=>'Autorizada','No Procede'=>'No Procede'],null,['id'=>'estatus','class'=>'form-control','placeholder'=>'Seleccione']) !!}
+</div>
+
 <br>
 <div ><h5>Centro de atencion</h5></div>
 <hr  style="color:#000000;" />
@@ -54,10 +57,15 @@
                 </thead>
                 <tbody>
 
-
                 </tbody>
+
             </table>
 
+        </div>
+        <div class="col-xs-12 col-sm-10 col-md-08 col-md-offset-8">
+            {!! Form::submit('Guardar',['id'=>'guardar','class'=>'btn btn-success']) !!}
+            {!! Html::link(route('solicitudes.solicitudservicio.index'),'Cancelar',['class'=>'btn btn-primary']) !!}
+        </div>
         </div>
 
     </div>

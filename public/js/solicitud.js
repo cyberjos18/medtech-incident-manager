@@ -47,6 +47,30 @@ $(document).ready(function () {
             $(this).remove();
         });
     }
+    function insertarInput($td)
+    {
+        var $this = $td;
+        var $id = $this.attr("id");
+        var Value = $this.text();
+
+        /*Se crea un input dinamico*/
+        var $input = $('<input type="text" value="' + Value + '"/>');
+
+        /*Finalmente se agrega el input al campo TD y se le crea el foco*/
+        $this.html("").append($input);
+        $input.focus();
+
+        /*Se crea una funcion para indicar que cuando el input pierda el foco ejecute lo siguiente:*/
+        $input.on("blur", function () {
+
+            var text = $input.val();
+            $input.remove();
+            $this.text(text);
+
+        }).on("click", function (e) {
+            e.stopPropagation()
+        });
+    }
 
     $("#mas").click(function () {
         var $centroId = $("#centro_id").val();
@@ -109,8 +133,11 @@ $(document).ready(function () {
                         "<td>" + $objeto.marca + "</td>" +
                         "<td class='serial'>" + $objeto.serial + "</td>" +
                         "<td>" + $objeto.bien + "</td>" +
-                        '<td id="falla" class=""><div class="form-group"><textarea class="form-control" id="exampleTextarea" rows="1"></textarea></div></td>' +
+                        '<td class="falla"></td>' +
                         "</tr>");
+                    $("td.falla").click(function(){
+                       insertarInput($(this));
+                    });
 
                     /*Se convierte la tabla equipos reportados en un arreglo despues de cargar los equipos*/
 

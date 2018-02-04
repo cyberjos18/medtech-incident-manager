@@ -4,6 +4,7 @@ namespace dgmtm\Http\Controllers\Solicitudes;
 
 use dgmtm\Centro;
 use dgmtm\Equipo;
+use dgmtm\Http\Requests\CreateSolicitudRequest;
 use Illuminate\Http\Request;
 
 use dgmtm\Http\Requests;
@@ -40,7 +41,7 @@ class SolicitudController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CreateSolicitudRequest $request)
     {
 
     }
