@@ -120,21 +120,22 @@ $(document).ready(function () {
                     // seleccionada
 
                     $(this).parents("tr").find("td").each(function () {
-                        identy = $(this).attr("id");
-                        valores = $(this).text();
-                        $objeto[identy] = valores;
+                       identy = $(this).attr("id");
+                       valores = $(this).text();
+                       $objeto[identy] = valores;
 
                     });
 
                     $("#equiposreportados tbody").append(
                         "<tr>" +
-                        "<td class='id'>" + $objeto.id + "</td>" +
-                        "<td class='tipo'>" + $objeto.tipoequipo + "</td>" +
-                        "<td>" + $objeto.marca + "</td>" +
-                        "<td class='serial'>" + $objeto.serial + "</td>" +
-                        "<td>" + $objeto.bien + "</td>" +
-                        '<td class="falla" title="Describa la falla, haga clic aqui"></td>' +
+                        "<td id='id' class='id'>" + $objeto.id + "</td>" +
+                        "<td id='tipo' class='tipo'>" + $objeto.tipoequipo + "</td>" +
+                        "<td id='marca'>" + $objeto.marca + "</td>" +
+                        "<td id='serial' class='serial'>" + $objeto.serial + "</td>" +
+                        "<td id='bien'>" + $objeto.bien + "</td>" +
+                        "<td id='falla' class='falla' title='Describa la falla, haga clic aqui'></td>" +
                         "</tr>");
+
                     $("td.falla").click(function(){
                        insertarInput($(this));
                     });
@@ -189,18 +190,28 @@ $(document).ready(function () {
         var $jefeservicio=$("#jefe_servicio").val();
         var $responsable=$("#responsable_emision").val();
 
-        var equiposreportados = new Array();
-        $('#equiposreportados tr').each(function (row, tr) {
-            equiposreportados[row] = {
-                "id": $(tr).find('td:eq(0)').text(),  // id
-                "falla": $(tr).find('td:eq(5)').text()   // falla
-            };
-        });
-        equiposreportados.shift();
-        var info 	= new FormData();
-        var aInfo 	= JSON.stringify(equiposreportados);
+        var valores = "";
+        var identy = "";
+        var $objeto = [];
 
-        info.append('data', aInfo);
+
+
+        // var equiposreportados = new Array();
+        // $('#equiposreportados tr').each(function (row, tr) {
+        //     equiposreportados[row] = {
+        //         "id": $(tr).find('td:eq(0)').text(),  // id
+        //         "falla": $(tr).find('td:eq(5)').text()   // falla
+        //     };
+        // });
+        // equiposreportados.shift();
+        //
+
+        $("#equiposreportados tr").find("td").each(function () {
+            identy = $(this).attr("id");
+            valores = $(this).text();
+            $objeto[identy] = valores;
+
+        });
 
         /*http://pandamonios.com/blog/array-dinamico-en-jquery-php/*/
 
@@ -208,12 +219,12 @@ $(document).ready(function () {
         ({
             url:'../solicitudGuardar',
             type:'GET',
-            data:{'numerosolicitud':$numerosolicitud,'fecharecibo':$fecharecibo,'status':$status,'centroid':$centroid,'jefeservicio':$jefeservicio,'responsable':$responsable,'ereportados':info},
+            data:{'numerosolicitud':$numerosolicitud,'fecharecibo':$fecharecibo,'status':$status,'centroid':$centroid,'jefeservicio':$jefeservicio,'responsable':$responsable,'ereportados':JSON.stringify($objeto)},
             dataType:'json'
-
+        
         }).done(function(data){
             console.log(data.mensaje);
-
+        
         });
     });
 
