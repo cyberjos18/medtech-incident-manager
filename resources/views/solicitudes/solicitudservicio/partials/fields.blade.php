@@ -12,8 +12,8 @@
     </div>
 </div>
 <div class="form-group">
-    {!! Form::label('Estatus','Estatus') !!}
-    {!! Form::select('estatus',['Recibida'=>'Recibida','Autorizada'=>'Autorizada','No Procede'=>'No Procede'],null,['id'=>'estatus','class'=>'form-control','placeholder'=>'Seleccione']) !!}
+    {!! Form::label('status','Status') !!}
+    {!! Form::select('status',['Recibida'=>'Recibida','Autorizada'=>'Autorizada','No Procede'=>'No Procede'],null,['id'=>'status','class'=>'form-control','placeholder'=>'Seleccione']) !!}
 </div>
 
 <br>
@@ -29,7 +29,7 @@
 </div>
 <div class="form-group">
     {!! Form::label('responsable_emision','Emisor responsable') !!}
-    {!! Form::text('responsable_emisor',null,['id'=>'responsable_emisor','class'=>'form-control','placeholder'=>'Por favor ingrese el nombre del emisor de la solicitud de servicio','maxlength'=>'25']) !!}
+    {!! Form::text('responsable_emision',null,['id'=>'responsable_emision','class'=>'form-control','placeholder'=>'Por favor ingrese el nombre del emisor de la solicitud de servicio','maxlength'=>'25']) !!}
 </div>
 <br>
 <div ><h5>Equipos reportados</h5></div>
@@ -63,7 +63,7 @@
 
         </div>
         <div class="col-xs-12 col-sm-10 col-md-08 col-md-offset-8">
-            {!! Form::submit('Guardar',['id'=>'guardar','class'=>'btn btn-success']) !!}
+            {!! Form::button('Guardar',['id'=>'guardar','class'=>'btn btn-success']) !!}
             {!! Html::link(route('solicitudes.solicitudservicio.index'),'Cancelar',['class'=>'btn btn-primary']) !!}
         </div>
         </div>

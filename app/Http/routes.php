@@ -43,4 +43,5 @@ Route::group(['prefix'=>'solicitudes','namespace'=>'\Solicitudes'],function(){
     Route::resource('solicitudservicio','SolicitudController');
     Route::get('equipoListar','SolicitudController@show');
     Route::get('equipoBuscar','SolicitudController@buscarEquipo');
+    Route::get('solicitudGuardar','SolicitudController@store');
 });

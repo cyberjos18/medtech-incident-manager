@@ -17,9 +17,9 @@ class Solicitud extends Model
         'id',
         'autorizacion_id',
         'numero_solicitud',
-        'fecha_solicitud',
+        'fecha_recibo',
+        'status',
         'centro_id',
-        'falla_reportada',
         'responsable_emision',
         'jefe_servicio'
     ];
@@ -38,7 +38,7 @@ class Solicitud extends Model
     
     public function equipo()
     {
-        return $this->belongsToMany('dgmtm\Equipo');
+        return $this->belongsToMany('dgmtm\Equipo','equipo_solicitud','solicitud_id','equipo_id')->withPivot('falla_reportada');
     }
 
         

@@ -163,8 +163,6 @@ $(document).ready(function () {
                             removerFilas();
                         }
                     });
-
-                    /*Seguir leyendo esto: https://www.fourfront.us/blog/store-html-table-data-to-javascript-array*/
                     $("#myModal").modal("hide");
 
                     var $tipoEquipo = $("td.tipo:first").text();
@@ -182,4 +180,41 @@ $(document).ready(function () {
     $("#menos").click(function () {
         removerFilas();
     });
+
+    $("#guardar").click(function(){
+        var $numerosolicitud=$("#numero_solicitud").val();
+        var $fecharecibo=$("#fecha_recibo").val();
+        var $status=$("#status").val();
+        var $centroid=$("#centro_id").val();
+        var $jefeservicio=$("#jefe_servicio").val();
+        var $responsable=$("#responsable_emision").val();
+
+        var equiposreportados = new Array();
+        $('#equiposreportados tr').each(function (row, tr) {
+            equiposreportados[row] = {
+                "id": $(tr).find('td:eq(0)').text(),  // id
+                "falla": $(tr).find('td:eq(5)').text()   // falla
+            };
+        });
+        equiposreportados.shift();
+        var info 	= new FormData();
+        var aInfo 	= JSON.stringify(equiposreportados);
+
+        info.append('data', aInfo);
+
+        /*http://pandamonios.com/blog/array-dinamico-en-jquery-php/*/
+
+        $.ajax
+        ({
+            url:'../solicitudGuardar',
+            type:'GET',
+            data:{'numerosolicitud':$numerosolicitud,'fecharecibo':$fecharecibo,'status':$status,'centroid':$centroid,'jefeservicio':$jefeservicio,'responsable':$responsable,'ereportados':info},
+            dataType:'json'
+
+        }).done(function(data){
+            console.log(data.mensaje);
+
+        });
+    });
+
 });
