@@ -41,7 +41,6 @@ $(document).ready(function () {
 
         }
     });
-
     function removerFilas() {
         $("#equiposreportados tbody tr:last").fadeOut(function () {
             $(this).remove();
@@ -71,6 +70,69 @@ $(document).ready(function () {
             e.stopPropagation()
         });
     }
+    function limpiarSolicitud()
+    {
+        $("#numero_solicitud").val('');
+        $("#fecha_recibo").val('');
+        $("#status").val('');
+        $("#centro_id").val('');
+        $("#jefe_servicio").val('');
+        $("#responsable_emision").val('');
+
+    }
+    function tablaToArray(tablaId, numero, fecha, estatus,centro,jefe,responsable)
+    {
+        //tenemos 2 variables, la primera será el Array principal donde estarán nuestros datos y la segunda es el objeto tabla
+        var DATA 	= [];
+        var TABLA 	= $(tablaId);
+
+        //una vez que tenemos la tabla recorremos esta misma recorriendo cada TR y por cada uno de estos se ejecuta el siguiente codigo
+        TABLA.each(function(e){
+            //por cada fila o TR que encuentra rescatamos 2 datos, el ID de cada fila y la Descripción que tiene asociada en el input text
+            var $id		= $(this).find("td[id='id']").text();
+            var $falla 	= $(this).find("td[id='falla']").text();
+            if($falla==="")
+            {
+                alert("No hay falla reportada");
+                e.stop();
+            }
+            else
+                if($falla!=="")
+            {
+                //entonces declaramos un array para guardar estos datos, lo declaramos dentro del each para así reemplazarlo y cada vez
+                item = {};
+                item ["id"] 	= $id;
+                item ["falla"] 	= $falla;
+                //una vez agregados los datos al array "item" declarado anteriormente hacemos un .push() para agregarlos a nuestro array principal "DATA".
+                DATA.push(item);
+            }
+
+        });
+
+        if($.isEmptyObject(DATA))
+        {
+            alert("No hay equipos reportados")
+        }
+        else
+        {
+            //eventualmente se lo vamos a enviar por PHP por ajax de una forma bastante simple y además convertiremos el array en json para evitar cualquier incidente con compativilidades.
+            aInfo 	= JSON.stringify(DATA);
+            console.log(aInfo);
+            $.ajax
+            ({
+                url:'../solicitudGuardar',
+                type:'get',
+                data:{'numerosolicitud':numero,'fecharecibo':fecha,'status':estatus,'centroid':centro,'jefeservicio':jefe,'responsable':responsable,'ereportados':aInfo}
+
+            }).done(function(data){
+                console.log(data.mensaje);
+                limpiarSolicitud();
+                location.reload();
+
+            })
+        }
+
+        }
 
     $("#mas").click(function () {
         var $centroId = $("#centro_id").val();
@@ -181,51 +243,67 @@ $(document).ready(function () {
     $("#menos").click(function () {
         removerFilas();
     });
-
-    $("#guardar").click(function(){
-        var $numerosolicitud=$("#numero_solicitud").val();
-        var $fecharecibo=$("#fecha_recibo").val();
-        var $status=$("#status").val();
-        var $centroid=$("#centro_id").val();
-        var $jefeservicio=$("#jefe_servicio").val();
-        var $responsable=$("#responsable_emision").val();
-
-        var valores = "";
-        var identy = "";
-        var $objeto = [];
-
-
-
-        // var equiposreportados = new Array();
-        // $('#equiposreportados tr').each(function (row, tr) {
-        //     equiposreportados[row] = {
-        //         "id": $(tr).find('td:eq(0)').text(),  // id
-        //         "falla": $(tr).find('td:eq(5)').text()   // falla
-        //     };
-        // });
-        // equiposreportados.shift();
-        //
-
-        $("#equiposreportados tr").find("td").each(function () {
-            identy = $(this).attr("id");
-            valores = $(this).text();
-            $objeto[identy] = valores;
-
-        });
-
-        /*http://pandamonios.com/blog/array-dinamico-en-jquery-php/*/
-
+    $("#formularioajax").submit(function(e){
+        e.preventDefault();
+        var $formdata=new FormData($("#formularioajax")[0]);
         $.ajax
         ({
-            url:'../solicitudGuardar',
-            type:'GET',
-            data:{'numerosolicitud':$numerosolicitud,'fecharecibo':$fecharecibo,'status':$status,'centroid':$centroid,'jefeservicio':$jefeservicio,'responsable':$responsable,'ereportados':JSON.stringify($objeto)},
-            dataType:'json'
-        
-        }).done(function(data){
-            console.log(data.mensaje);
-        
-        });
-    });
+            url:'../validarCampos',
+            type:'POST',
+            data:$formdata,
+            dataType:'json',
+            cache: false,
+            contentType: false,
+            processData: false
 
+        }).done(function(data){
+            if(data.bandera===0)
+            {
+                location.reload();
+            }
+            else
+            {
+                    var $numerosolicitud=$("#numero_solicitud").val();
+                    var $fecharecibo=$("#fecha_recibo").val();
+                    var $status=$("#status").val();
+                    var $centroid=$("#centro_id").val();
+                    var $jefeservicio=$("#jefe_servicio").val();
+                    var $responsable=$("#responsable_emision").val();
+                    var tabla=$("#equiposreportados tbody > tr");
+                    tablaToArray(tabla,$numerosolicitud,$fecharecibo,$status,$centroid,$jefeservicio,$responsable);
+
+
+
+            }
+
+        });
+
+    });
+    $("#solicitud").DataTable({
+        // "paging": false,
+        // "info": false,
+        //
+        "language": {
+            "search": "Buscar: ",
+            "searchPlaceholder": "Escriba los datos que desea buscar",
+            "sProcessing": "Procesando...",
+            "sLengthMenu": "Mostrar _MENU_ registros",
+            "sZeroRecords": "No se encontraron resultados",
+            "sEmptyTable": "Ningún dato disponible en esta tabla",
+            "sInfo": "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+            "sInfoEmpty": "Mostrando registros del 0 al 0 de un total de 0 registros",
+            "sInfoFiltered": "(filtrado de un total de _MAX_ registros)",
+            "sInfoPostFix": "",
+            "sUrl": "",
+            "sInfoThousands": ",",
+            "sLoadingRecords": "Cargando...",
+            "oPaginate": {
+                "sFirst": "Primero",
+                "sLast": "Último",
+                "sNext": "Siguiente",
+                "sPrevious": "Anterior"
+            }
+        }
+
+    });
 });

@@ -8,7 +8,10 @@
     {!! Html::script('/js/bootstrap-datepicker/bootstrap-datepicker.min.js') !!}
     {!! Html::script('/js/bootstrap-datepicker/bootstrap-datepicker.es.js') !!}
     {!! Html::style('/css/bootstrap-datepicker/bootstrap-datepicker3.min.css') !!}
+    {!! Html::script('/js/jquery.dataTables.min.js') !!}
+    {!! Html::script('js/dataTables.bootstrap4.min.js') !!}
     {!! Html::style('/css/bootstrap.min.css') !!}
+    {!! Html::style('/css/dataTables.bootstrap4.min.css') !!}
 
     <meta name="csrf-token" content="{{csrf_token()}}">
     <meta charset="UTF-8">

@@ -63,7 +63,7 @@
 
         </div>
         <div class="col-xs-12 col-sm-10 col-md-08 col-md-offset-8">
-            {!! Form::button('Guardar',['id'=>'guardar','class'=>'btn btn-success']) !!}
+            {!! Form::submit('Guardar',['id'=>'guardar','class'=>'btn btn-success']) !!}
             {!! Html::link(route('solicitudes.solicitudservicio.index'),'Cancelar',['class'=>'btn btn-primary']) !!}
         </div>
         </div>

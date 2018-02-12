@@ -17,7 +17,6 @@
                             {!! Html::link(route('inventario.equipos.index'),'Cancelar',['id'=>'cancelaredit','class'=>'btn btn-primary']) !!}
                         </div>
                         {!! Form::close() !!}
-
                     </div>
                 </div>
 
