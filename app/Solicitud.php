@@ -38,7 +38,7 @@ class Solicitud extends Model
     
     public function equipo()
     {
-        return $this->belongsToMany('dgmtm\Equipo','equipo_solicitud','solicitud_id','equipo_id')->withPivot('falla_reportada');
+        return $this->belongsToMany('dgmtm\Equipo','equipo_solicitud','solicitud_id','equipo_id')->withPivot('falla_reportada','solicitud_id');
     }
 
         

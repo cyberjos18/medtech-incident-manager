@@ -50,6 +50,16 @@
                 </tr>
                 </thead>
                 <tbody>
+                @foreach($solicitudes->equipo as $solicitud)
+                    <tr>
+                        <td>{{$solicitud->id}}</td>
+                        <td>{{$solicitud->tipoequipo->tipo_equipo}}</td>
+                        <td>{{$solicitud->marca_equipo}}</td>
+                        <td>{{$solicitud->serial_equipo}}</td>
+                        <td>{{$solicitud->bien_nacional}}</td>
+                        <td>{{$solicitud->pivot->falla_reportada}}</td>
+                    </tr>
+                @endforeach
 
 
                 </tbody>
