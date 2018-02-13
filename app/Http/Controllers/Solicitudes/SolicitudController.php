@@ -5,6 +5,7 @@ namespace dgmtm\Http\Controllers\Solicitudes;
 use dgmtm\Centro;
 use dgmtm\Equipo;
 use dgmtm\Http\Requests\CreateSolicitudRequest;
+use dgmtm\Http\Requests\EditSolicitudRequest;
 use dgmtm\Solicitud;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
@@ -118,7 +119,7 @@ class SolicitudController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(EditSolicitudRequest $request, $id)
     {
         $solicitud=Solicitud::findOrFail($id);
         $solicitud->numero_solicitud=mb_strtoupper($request->numero_solicitud);
