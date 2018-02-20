@@ -41,6 +41,7 @@ class EditSolicitudRequest extends Request
             'numero_solicitud'   => 'required|max:25|unique:solicitudes,numero_solicitud,'.$this->route->getParameter('solicitudservicio'),
             'fecha_recibo'       => 'required',
             'status'             => 'required',
+            'observaciones'      => 'required'
 
         ];
     }
@@ -52,6 +53,7 @@ class EditSolicitudRequest extends Request
             'numero_solicitud.unique'     => 'EL numero de solicitud ya existe !!!',
             'fecha_recibo.required'       => 'Necesitamos la fecha de recibo de la solicitud',
             'status.required'             => 'Necesitamos que indique el estatus de la solicitud',
+            'observaciones.required'      => 'Debe describir en el campo "Observaciones" por que no procede la solicitud'
 
         ];
 

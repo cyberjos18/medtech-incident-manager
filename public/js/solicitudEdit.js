@@ -29,9 +29,48 @@ $(document).ready(function () {
         $("#jefe_servicio").attr("disabled",true);
         $("#responsable_emision").attr("disabled",true);
     }
+    function observacionOculta()
+    {
+        $observaciones=$("#observaciones");
+        $observaciones.hide();
+        $observaciones.val("NA");
+        $("#lblObservaciones").hide();
+
+    }
+    function observacionVisible()
+    {
+        $observaciones.fadeIn(function()
+        {
+            $(this).show();
+            $observaciones.val("");
+        });
+        $("#lblObservaciones").fadeIn(function()
+        {
+            $(this).show();
+        });
+
+    }
 
     $("#editar").click(function(){
        habilitar();
     });
+    $("#status").change(function()
+    {
+        var $status=$(this).val();
+
+        if($status!=='No Procede')
+        {
+
+            observacionOculta();
+
+        }
+        else
+        {
+            observacionVisible();
+
+        }
+
+    });
+
 
 });

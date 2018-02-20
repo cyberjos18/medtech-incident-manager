@@ -131,6 +131,7 @@ class SolicitudController extends Controller
         $solicitud->numero_solicitud=mb_strtoupper($request->numero_solicitud);
         $solicitud->fecha_recibo=date('Y-m-d',strtotime($request->fecha_recibo));
         $solicitud->status=$request->status;
+        $solicitud->observaciones=mb_strtoupper(($request->observaciones));
         $solicitud->save();
         $update=trans('validation.attributes.message.update');
         $bandera='update';
@@ -200,7 +201,7 @@ class SolicitudController extends Controller
                 'jefe_servicio.max'           => 'El nombre del jefe de servicio debe contener maximo 25 caracteres',
                 'responsable_emision.required' => 'Necesitamos el nombre del emisor de la solicitud',
                 'responsable_emision.max'      => 'El nombre del emisor debe contener maximo 25 caracteres',
-                'observaciones.required'       => 'Debe describir en el campo "Observacones" por que no procede la solicitud'
+                'observaciones.required'       => 'Debe describir en el campo "Observaciones" por que no procede la solicitud'
 
             );
 

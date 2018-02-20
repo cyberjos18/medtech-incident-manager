@@ -31,6 +31,10 @@
     {!! Form::label('responsable_emision','Emisor responsable') !!}
     {!! Form::text('responsable_emision',null,['id'=>'responsable_emision','class'=>'form-control','placeholder'=>'Por favor ingrese el nombre del emisor de la solicitud de servicio','maxlength'=>'25']) !!}
 </div>
+<div class="form-group">
+    {!! Form::label('observaciones','Observaciones',['id'=>'lblObservaciones']) !!}
+    {!! Form::text('observaciones',null,['id'=>'observaciones','class'=>'form-control','placeholder'=>'Describa por que la solicitud no procede']) !!}
+</div>
 <br>
 <div ><h5>Equipos reportados</h5></div>
 <hr  style="color:#000000;" />
