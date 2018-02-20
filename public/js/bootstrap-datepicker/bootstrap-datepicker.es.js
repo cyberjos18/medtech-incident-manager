@@ -10,7 +10,7 @@ $(document).ready(function(){
         monthsTitle: "Meses",
         clear: "Borrar",
         weekStart: 1,
-        format: "dd/mm/yyyy",
+        format: "dd-mm-yyyy"
 
     };
     $( "#fecha_recibo" ).datepicker({

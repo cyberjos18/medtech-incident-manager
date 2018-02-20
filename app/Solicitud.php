@@ -2,6 +2,7 @@
 
 namespace dgmtm;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 
 /**
@@ -21,7 +22,8 @@ class Solicitud extends Model
         'status',
         'centro_id',
         'responsable_emision',
-        'jefe_servicio'
+        'jefe_servicio',
+        'observaciones'
     ];
 
     protected $guarded = [];
@@ -39,6 +41,9 @@ class Solicitud extends Model
     public function equipo()
     {
         return $this->belongsToMany('dgmtm\Equipo','equipo_solicitud','solicitud_id','equipo_id')->withPivot('falla_reportada','solicitud_id');
+    }
+    function convertirFormatoFechaMysql($date){
+       return $nuevaFecha=implode('-',array_reverse(explode('-',$date)));
     }
 
         

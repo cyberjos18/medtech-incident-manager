@@ -8,6 +8,7 @@ use dgmtm\Equipo;
 use dgmtm\Http\Requests\CreateSolicitudRequest;
 use dgmtm\Http\Requests\EditSolicitudRequest;
 use dgmtm\Solicitud;
+use Faker\Provider\zh_TW\DateTime;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
@@ -55,8 +56,9 @@ class SolicitudController extends Controller
         if($request->ajax()) {
 
             $solicitud=new Solicitud();
+            $date=$solicitud->convertirFormatoFechaMysql($request->fecharecibo);
             $solicitud->numero_solicitud=mb_strtoupper($request->numerosolicitud);
-            $solicitud->fecha_recibo=date('Y-m-d',strtotime($request->fecharecibo));
+            $solicitud->fecha_recibo=$date;
             $solicitud->status=$request->status;
             $solicitud->centro_id=$request->centroid;
             $solicitud->jefe_servicio=mb_strtoupper($request->jefeservicio);
@@ -111,7 +113,7 @@ class SolicitudController extends Controller
         $centros=Centro::with('equipo')
             ->orderBy('nomb_centro','DESC')
             ->lists('nomb_centro','id');
-//        $solicitudes=Solicitud::select('numero_solicitud',DB::raw("DATE_FORMAT (fecha_recibo,'%d-%m-%Y')as fecha_recibo"),
+//        $solicitudes=Solicitud::select('numero_solicitud',DB::raw('DATE_FORMAT(fecha_recibo,"%d-%m-%Y") as fecha_recibo',
 //            'status','centro_id','jefe_servicio','responsable_emision')
 //            ->findOrFail($id);
         $solicitudes=Solicitud::findOrFail($id);
@@ -127,6 +129,7 @@ class SolicitudController extends Controller
      */
     public function update(EditSolicitudRequest $request, $id)
     {
+        $data=new Solicitud();
         $solicitud=Solicitud::findOrFail($id);
         $solicitud->numero_solicitud=mb_strtoupper($request->numero_solicitud);
         $solicitud->fecha_recibo=date('Y-m-d',strtotime($request->fecha_recibo));
@@ -181,7 +184,7 @@ class SolicitudController extends Controller
             $rules = array
             (
                 'numero_solicitud'   => 'required|max:25|unique:solicitudes',
-                'fecha_recibo'       => 'required|date_format:d/m/Y',
+//                'fecha_recibo'       => 'required|date_format:d/m/Y',
                 'status'             => 'required',
                 'centro_id'          => 'required',
                 'jefe_servicio'      => 'required|max:25',
@@ -194,7 +197,7 @@ class SolicitudController extends Controller
                 'numero_solicitud.max'        => 'El numero de solicitud debe contener maximo 25 caracteres',
                 'numero_solicitud.unique'     => 'EL numero de solicitud ya existe !!!',
                 'fecha_recibo.required'       => 'Necesitamos la fecha de recibo de la solicitud',
-                'fecha_recibo.date_format'    => 'El formato de la fecha es incorrecto debe ser: DD/MM/YYYY, DD/MM/YY',
+//                'fecha_recibo.date_format'    => 'El formato de la fecha es incorrecto debe ser: DD/MM/YYYY, DD/MM/YY',
                 'status.required'             => 'Necesitamos que indique el estatus de la solicitud',
                 'centro_id.required'          => 'Necesitamos el nombre del centro',
                 'jefe_servicio.required'      => 'Necesitamos el nombre del jefe de servicio',
