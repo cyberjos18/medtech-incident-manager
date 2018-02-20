@@ -41,6 +41,28 @@ $(document).ready(function () {
 
         }
     });
+    function observacionOculta()
+    {
+        $observaciones=$("#observaciones");
+        $observaciones.hide();
+        $observaciones.val("NA");
+        $("#lblObservaciones").hide();
+
+    }
+    function observacionVisible()
+    {
+        $observaciones.fadeIn(function()
+        {
+            $(this).show();
+            $observaciones.val("");
+        });
+        $("#lblObservaciones").fadeIn(function()
+        {
+           $(this).show();
+        });
+
+    }
+
     function removerFilas() {
         $("#equiposreportados tbody tr:last").fadeOut(function () {
             $(this).remove();
@@ -80,7 +102,7 @@ $(document).ready(function () {
         $("#responsable_emision").val('');
 
     }
-    function tablaToArray(tablaId, numero, fecha, estatus,centro,jefe,responsable)
+    function tablaToArray(tablaId, numero, fecha, estatus,centro,jefe,responsable,observaciones)
     {
         //tenemos 2 variables, la primera será el Array principal donde estarán nuestros datos y la segunda es el objeto tabla
         var DATA 	= [];
@@ -122,7 +144,7 @@ $(document).ready(function () {
             ({
                 url:'../solicitudGuardar',
                 type:'get',
-                data:{'numerosolicitud':numero,'fecharecibo':fecha,'status':estatus,'centroid':centro,'jefeservicio':jefe,'responsable':responsable,'ereportados':aInfo}
+                data:{'numerosolicitud':numero,'fecharecibo':fecha,'status':estatus,'centroid':centro,'jefeservicio':jefe,'responsable':responsable,'ereportados':aInfo,'observaciones':observaciones}
 
             }).done(function(data){
                 console.log(data.mensaje);
@@ -261,6 +283,7 @@ $(document).ready(function () {
             {
                 location.reload();
             }
+
             else
             {
                     var $numerosolicitud=$("#numero_solicitud").val();
@@ -269,10 +292,9 @@ $(document).ready(function () {
                     var $centroid=$("#centro_id").val();
                     var $jefeservicio=$("#jefe_servicio").val();
                     var $responsable=$("#responsable_emision").val();
+                    var $observaciones=$("#observaciones").val();
                     var tabla=$("#equiposreportados tbody > tr");
-                    tablaToArray(tabla,$numerosolicitud,$fecharecibo,$status,$centroid,$jefeservicio,$responsable);
-
-
+                    tablaToArray(tabla,$numerosolicitud,$fecharecibo,$status,$centroid,$jefeservicio,$responsable,$observaciones);
 
             }
 
@@ -306,4 +328,21 @@ $(document).ready(function () {
         }
 
     });
+    observacionOculta();
+    $("#status").change(function()
+    {
+        var $status=$("#status").val();
+
+        if($status==='No Procede')
+        {
+           observacionVisible();
+
+        }
+        else
+        {
+            observacionOculta();
+        }
+
+    });
+
 });

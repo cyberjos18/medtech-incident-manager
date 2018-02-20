@@ -2,11 +2,13 @@
 
 namespace dgmtm\Http\Controllers\Solicitudes;
 
+use Carbon\Carbon;
 use dgmtm\Centro;
 use dgmtm\Equipo;
 use dgmtm\Http\Requests\CreateSolicitudRequest;
 use dgmtm\Http\Requests\EditSolicitudRequest;
 use dgmtm\Solicitud;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
@@ -59,6 +61,7 @@ class SolicitudController extends Controller
             $solicitud->centro_id=$request->centroid;
             $solicitud->jefe_servicio=mb_strtoupper($request->jefeservicio);
             $solicitud->responsable_emision=mb_strtoupper($request->responsable);
+            $solicitud->observaciones=mb_strtoupper($request->observaciones);
             $solicitud->save();
             $arreglo=json_decode($request->ereportados);
             foreach ($arreglo as $array)
@@ -108,6 +111,9 @@ class SolicitudController extends Controller
         $centros=Centro::with('equipo')
             ->orderBy('nomb_centro','DESC')
             ->lists('nomb_centro','id');
+//        $solicitudes=Solicitud::select('numero_solicitud',DB::raw("DATE_FORMAT (fecha_recibo,'%d-%m-%Y')as fecha_recibo"),
+//            'status','centro_id','jefe_servicio','responsable_emision')
+//            ->findOrFail($id);
         $solicitudes=Solicitud::findOrFail($id);
         return view('solicitudes.solicitudservicio.edit',compact('centros','solicitudes'));
     }
@@ -125,9 +131,6 @@ class SolicitudController extends Controller
         $solicitud->numero_solicitud=mb_strtoupper($request->numero_solicitud);
         $solicitud->fecha_recibo=date('Y-m-d',strtotime($request->fecha_recibo));
         $solicitud->status=$request->status;
-        $solicitud->centro_id=$request->centro_id;
-        $solicitud->jefe_servicio=mb_strtoupper($request->jefe_servicio);
-        $solicitud->responsable_emision=mb_strtoupper($request->responsable_emision);
         $solicitud->save();
         $update=trans('validation.attributes.message.update');
         $bandera='update';
@@ -181,7 +184,8 @@ class SolicitudController extends Controller
                 'status'             => 'required',
                 'centro_id'          => 'required',
                 'jefe_servicio'      => 'required|max:25',
-                'responsable_emision' => 'required|max:25'
+                'responsable_emision' => 'required|max:25',
+                'observaciones'       => 'required'
             );
             $messages = array
             (
@@ -195,7 +199,8 @@ class SolicitudController extends Controller
                 'jefe_servicio.required'      => 'Necesitamos el nombre del jefe de servicio',
                 'jefe_servicio.max'           => 'El nombre del jefe de servicio debe contener maximo 25 caracteres',
                 'responsable_emision.required' => 'Necesitamos el nombre del emisor de la solicitud',
-                'responsable_emision.max'      => 'El nombre del emisor debe contener maximo 25 caracteres'
+                'responsable_emision.max'      => 'El nombre del emisor debe contener maximo 25 caracteres',
+                'observaciones.required'       => 'Debe describir en el campo "Observacones" por que no procede la solicitud'
 
             );
 

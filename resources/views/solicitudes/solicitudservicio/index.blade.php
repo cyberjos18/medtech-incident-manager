@@ -44,7 +44,8 @@
 
                        </table>
 
-                       <div class="col-xs-12 col-sm-06 col-md-10 col-md-offset-9">
+                       <div class="col-xs-12 col-sm-06 col-md-10">
+                           <br>
                            {!! Html::link(route('solicitudes.solicitudservicio.create'),'Incluir',['class'=>'btn btn-success']) !!}
                            {!! Html::link('#','Cancelar',['class'=>'btn btn-primary']) !!}
                        </div>
