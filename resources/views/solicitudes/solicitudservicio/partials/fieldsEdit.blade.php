@@ -5,7 +5,7 @@
 <div class="form-group">
     {!! Form::label('fecha_recibo','Fecha de recibo') !!}
     <div class="input-group date" >
-        {!! Form::text('fecha_recibo',null,['id'=>'fecha_recibo','class'=>'form-control','placeholder'=>'Seleccione la fecha de recibo']) !!}
+        {!! Form::text('fecha_recibo',date('d-m-Y',strtotime($solicitudes->fecha_recibo)),['id'=>'fecha_recibo','class'=>'form-control','placeholder'=>'Seleccione la fecha de recibo']) !!}
         <div class="input-group-addon">
             <span class="glyphicon glyphicon-calendar"></span>
         </div>

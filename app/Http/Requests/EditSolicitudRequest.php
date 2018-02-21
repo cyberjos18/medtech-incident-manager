@@ -39,7 +39,7 @@ class EditSolicitudRequest extends Request
     {
         return [
             'numero_solicitud'   => 'required|max:25|unique:solicitudes,numero_solicitud,'.$this->route->getParameter('solicitudservicio'),
-            'fecha_recibo'       => 'required',
+            'fecha_recibo'       => 'required|date_format:d-m-Y',
             'status'             => 'required',
             'observaciones'      => 'required'
 
@@ -52,6 +52,7 @@ class EditSolicitudRequest extends Request
             'numero_solicitud.max'        => 'El numero de solicitud debe contener maximo 25 caracteres',
             'numero_solicitud.unique'     => 'EL numero de solicitud ya existe !!!',
             'fecha_recibo.required'       => 'Necesitamos la fecha de recibo de la solicitud',
+            'fecha_recibo.date_format'    => 'El formato de la fecha es incorrecto debe ser: DD-MM-YYYY',
             'status.required'             => 'Necesitamos que indique el estatus de la solicitud',
             'observaciones.required'      => 'Debe describir en el campo "Observaciones" por que no procede la solicitud'
 

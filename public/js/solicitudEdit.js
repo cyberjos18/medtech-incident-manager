@@ -4,7 +4,7 @@
 
 $(document).ready(function () {
     inhabilitar();
-
+    $status=$("#status");
     function inhabilitar()
     {
         $("#editar").attr("disabled",false);
@@ -54,7 +54,7 @@ $(document).ready(function () {
     $("#editar").click(function(){
        habilitar();
     });
-    $("#status").change(function()
+    $status.change(function()
     {
         var $status=$(this).val();
 
@@ -72,5 +72,9 @@ $(document).ready(function () {
 
     });
 
+    if($status.val()==='Autorizada')
+    {
+        $("#editar").attr("disabled",true);
+    }
 
 });

@@ -45,6 +45,14 @@ class Solicitud extends Model
     function convertirFormatoFechaMysql($date){
        return $nuevaFecha=implode('-',array_reverse(explode('-',$date)));
     }
+    static function  convertirFormatoFechaCarbon($date)
+    {
+        /*CreateFromFormat convierte el dato que estoy recibiend en una fecha, debo especificar el formato de la
+        fecha enviada, luego toDateString lo convierte al formato ISO.*/
+        $fecha=Carbon::createFromFormat('d-m-Y',$date)->toDateString();
+        return $fecha;
+
+    }
 
         
 }
