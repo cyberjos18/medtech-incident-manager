@@ -16,13 +16,14 @@ class Autorizacion extends Model
 
     protected $fillable = [
         'id',
+        'numero_autorizacion',
         'fecha_autorizacion',
         'proveedor_id',
         'status',
         'seguimiento'
     ];
 
-    protected $guarded = [];
+    protected $guarded = ['id'];
 
     public function solicitud()
     {

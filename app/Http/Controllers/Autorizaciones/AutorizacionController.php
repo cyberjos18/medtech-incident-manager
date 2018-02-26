@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 
 use dgmtm\Http\Requests;
 use dgmtm\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Session;
 
 class AutorizacionController extends Controller
 {
@@ -45,7 +46,18 @@ class AutorizacionController extends Controller
      */
     public function store(CreateAutorizacionRequest $request)
     {
-        //
+        $autorizacion= new Autorizacion();
+        $autorizacion->numero_autorizacion=mb_strtoupper($request->numero_autorizacion);
+        $autorizacion->fecha_autorizacion=Autorizacion::convertirFormatoFechaCarbon($request->fecha_autorizacion);
+        $autorizacion->proveedor_id=$request->proveedor_id;
+        $autorizacion->status=$request->status;
+        $autorizacion->seguimiento=mb_strtoupper($request->seguimiento);
+        $autorizacion->save();
+        $insert=trans('validation.attributes.message.insert');
+        $bandera='insert';
+        Session::flash('bandera',$bandera);
+        Session::flash('message',$insert);
+
     }
 
     /**
