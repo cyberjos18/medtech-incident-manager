@@ -24,7 +24,7 @@ class CreateProveedorRequest extends Request
     public function rules()
     {
         return [
-            'rif_proveedor'      =>'required | regex:/^[vejg]{1}[0-9]+/i | max:10| min:9 | unique:proveedores,rif_proveedor',
+            'rif_proveedor'      =>'required | regex:/^[vejg]{1}[0-9]+/i | max:10| min:10 | unique:proveedores,rif_proveedor',
             'nomb_proveedor'     => 'required',
             'telf_proveedor'     => 'required',
             'correo_proveedor'   => 'email|unique:proveedores,correo_proveedor',
@@ -36,9 +36,9 @@ class CreateProveedorRequest extends Request
         return [
             'rif_proveedor.required'      => 'Necesitamos el RIF del proveedor',
             'rif_proveedor.unique'        => 'El RIF que intenta registrar ya existe !!!',
-            'rif_proveedor.regex'         => 'El formato de RIF es invalido verifiquelo',
+            'rif_proveedor.regex'         => 'El RIF ingresado no tiene un formato valido ej: J123456789',
             'rif_proveedor.max'           => 'El RIF debe contener maximo 10 caracteres',
-            'rif_proveedor.min'           => 'El RIF debe contener minimo 9 caracteres',
+            'rif_proveedor.min'           => 'El RIF debe contener minimo 10 caracteres',
             'nomb_proveedor.required'     => 'Necesitamos el nombre del proveedor',
             'telf_proveedor.required'     => 'Necesitamos el telefono del proveedor',
             'correo_proveedor.email'      => 'El correo ingresado no tiene un formato valido ej: correo@dominio.com',

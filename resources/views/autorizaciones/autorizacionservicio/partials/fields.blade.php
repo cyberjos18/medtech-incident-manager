@@ -3,7 +3,7 @@
     {!! Form::text('numero_autorizacion',null,['id'=>'numero_autorizacion','class'=>'form-control','placeholder'=>'Por favor ingrese el numero de autorizacion']) !!}
 </div>
 <div class="form-group">
-    {!! Form::label('fecha_autorizacion','Fecha de Autorizacion') !!}
+    {!! Form::label('fecha_autorizacion','Fecha') !!}
     <div class="input-group date" >
         {!! Form::text('fecha_autorizacion',null,['id'=>'fecha_autorizacion','class'=>'form-control','placeholder'=>'Seleccione la fecha de autorizacion']) !!}
         <div class="input-group-addon">
@@ -13,7 +13,7 @@
 </div>
 <div class="form-group">
     {!! Form::label('proveedor_id','Proveedor') !!}
-    {!! Form::select('proveedor_id',[],null,['id'=>'proveedor_id','class'=>'form-control','placeholder'=>'Seleccione...']) !!}
+    {!! Form::select('proveedor_id',$proveedores,null,['id'=>'proveedor_id','class'=>'form-control','placeholder'=>'Seleccione...']) !!}
 </div>
 <div class="form-group">
     {!! Form::label('status','Status') !!}

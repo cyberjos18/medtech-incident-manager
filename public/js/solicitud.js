@@ -149,7 +149,7 @@ $(document).ready(function () {
             }).done(function(data){
                 console.log(data.mensaje);
                 limpiarSolicitud();
-                location.reload();
+                location.href='../solicitudservicio';
 
             })
         }

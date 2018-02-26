@@ -3,6 +3,8 @@
 namespace dgmtm\Http\Controllers\Autorizaciones;
 
 use dgmtm\Autorizacion;
+use dgmtm\Http\Requests\CreateAutorizacionRequest;
+use dgmtm\Proveedor;
 use Illuminate\Http\Request;
 
 use dgmtm\Http\Requests;
@@ -30,7 +32,9 @@ class AutorizacionController extends Controller
      */
     public function create()
     {
-        return view('autorizaciones.autorizacionservicio.create');
+        $proveedores=Proveedor::orderBy("nomb_proveedor",'ASC')
+            ->lists('nomb_proveedor','id');
+        return view('autorizaciones.autorizacionservicio.create',compact('proveedores'));
     }
 
     /**
@@ -39,7 +43,7 @@ class AutorizacionController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CreateAutorizacionRequest $request)
     {
         //
     }
