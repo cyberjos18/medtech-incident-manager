@@ -27,6 +27,7 @@ class CreateAutorizacionRequest extends Request
             [
                 'numero_autorizacion' => 'required|max:11|unique:autorizaciones',
                 'fecha_autorizacion'  => 'required|date_format:d-m-Y',
+                'solicitud_id'        => 'required',
                 'proveedor_id'        => 'required',
                 'status'              => 'required'
             //
@@ -38,8 +39,10 @@ class CreateAutorizacionRequest extends Request
             [
                 'numero_autorizacion.required'     => 'Necesitamos el numero de autorizacion',
                 'numero_autorizacion.max'          => 'El numero de autorizacion debe contener maximo 11 caracteres',
+                'numero_autorizacion.unique'       => 'El numero de autorizacion ya existe !!!',
                 'fecha_autorizacion.required'      => 'Necesitamos la fecha de registro de autorizacion',
                 'fecha_autorizacion.date_format'   => 'El formato de la fecha es incorrecto debe ser: DD-MM-YYYY, DD-MM-YY',
+                'solicitud_id.required'            => 'Necesitamos que seleccione el numero de solicitud',
                 'proveedor_id.required'            => 'Necesitamos que seleccione el proveedor responsable',
                 'status.required'                  => 'Necesitamos que seleccione el status de la autorizacion'
 

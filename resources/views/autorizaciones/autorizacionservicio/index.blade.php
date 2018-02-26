@@ -48,6 +48,7 @@
                             <br>
                             {!! Html::link(route('autorizaciones.autorizacionservicio.create'),'Incluir',['class'=>'btn btn-success col-lg-1 col-xs-12 col-sm-06 col-md-10']) !!}
                             {!! Html::link('#','Cancelar',['class'=>'btn btn-primary col-lg-1 col-xs-12 col-sm-06 col-md-10','style'=>'margin-left:0.5%']) !!}
+
                         </div>
 
                     </div>

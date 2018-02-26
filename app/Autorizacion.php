@@ -18,6 +18,7 @@ class Autorizacion extends Model
         'id',
         'numero_autorizacion',
         'fecha_autorizacion',
+        'solicitud_id',
         'proveedor_id',
         'status',
         'seguimiento'
@@ -27,7 +28,7 @@ class Autorizacion extends Model
 
     public function solicitud()
     {
-        return $this->hasMany('dgmtm\Solicitud');
+        return $this->belongsTo('dgmtm\Solicitud');
     }
 
     public function proveedor()

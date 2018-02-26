@@ -16,7 +16,6 @@ class Solicitud extends Model
 
     protected $fillable = [
         'id',
-        'autorizacion_id',
         'numero_solicitud',
         'fecha_recibo',
         'status',

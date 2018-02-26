@@ -12,6 +12,10 @@
     </div>
 </div>
 <div class="form-group">
+    {!! Form::label('solicitud_id','Numero de Solicitud') !!}
+    {!! Form::select('solicitud_id',$solicitudes,null,['id'=>'solicitud_id','class'=>'form-control','placeholder'=>'Seleccione...']) !!}
+</div>
+<div class="form-group">
     {!! Form::label('proveedor_id','Proveedor') !!}
     {!! Form::select('proveedor_id',$proveedores,null,['id'=>'proveedor_id','class'=>'form-control','placeholder'=>'Seleccione...']) !!}
 </div>

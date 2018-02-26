@@ -5,6 +5,7 @@ namespace dgmtm\Http\Controllers\Autorizaciones;
 use dgmtm\Autorizacion;
 use dgmtm\Http\Requests\CreateAutorizacionRequest;
 use dgmtm\Proveedor;
+use dgmtm\Solicitud;
 use Illuminate\Http\Request;
 
 use dgmtm\Http\Requests;
@@ -33,9 +34,11 @@ class AutorizacionController extends Controller
      */
     public function create()
     {
-        $proveedores=Proveedor::orderBy("nomb_proveedor",'ASC')
+        $proveedores=Proveedor::orderBy('nomb_proveedor','ASC')
             ->lists('nomb_proveedor','id');
-        return view('autorizaciones.autorizacionservicio.create',compact('proveedores'));
+        $solicitudes=Solicitud::orderBy('numero_solicitud','ASC')
+            ->lists('numero_solicitud','id');
+        return view('autorizaciones.autorizacionservicio.create',compact('proveedores','solicitudes'));
     }
 
     /**
@@ -50,6 +53,7 @@ class AutorizacionController extends Controller
         $autorizacion->numero_autorizacion=mb_strtoupper($request->numero_autorizacion);
         $autorizacion->fecha_autorizacion=Autorizacion::convertirFormatoFechaCarbon($request->fecha_autorizacion);
         $autorizacion->proveedor_id=$request->proveedor_id;
+        $autorizacion->solicitud_id=$request->solicitud_id;
         $autorizacion->status=$request->status;
         $autorizacion->seguimiento=mb_strtoupper($request->seguimiento);
         $autorizacion->save();
@@ -57,6 +61,7 @@ class AutorizacionController extends Controller
         $bandera='insert';
         Session::flash('bandera',$bandera);
         Session::flash('message',$insert);
+        return redirect()->route('autorizaciones.autorizacionservicio.index');
 
     }
 
