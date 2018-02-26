@@ -60,6 +60,10 @@ class SolicitudController extends Controller
             $solicitud->responsable_emision = mb_strtoupper($request->responsable);
             $solicitud->observaciones = mb_strtoupper($request->observaciones);
             $solicitud->save();
+            $insert=trans('validation.attributes.message.insert');
+            $bandera='insert';
+            Session::flash('bandera',$bandera);
+            Session::flash('message',$insert);
             $arreglo = json_decode($request->ereportados);
             foreach ($arreglo as $array) {
                 $solicitud->equipo()->attach($array->id, ['falla_reportada' => $array->falla]);

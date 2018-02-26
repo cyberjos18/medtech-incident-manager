@@ -19,7 +19,12 @@ $(document).ready(function(){
         todayBtn: true,
         clearBtn:true,
         todayHighlight:true
-
-
+    });
+    $( "#fecha_autorizacion" ).datepicker({
+        language: "es",
+        autoclose: true,
+        todayBtn: true,
+        clearBtn:true,
+        todayHighlight:true
     });
 });

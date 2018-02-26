@@ -23,7 +23,7 @@ class CreateSolicitudesTable extends Migration
             $table->string('responsable_emision',25);
             $table->string('jefe_servicio',25);
             $table->foreign('centro_id')->references('id')->on('centros')->onUpdate('cascade')->onDelete('restrict');
-            $table->foreign('autorizacion_id')->references('id')->on('autorizaciones')->onUpdate('cascade')->onDelete('restrict');
+            $table->foreign('autorizacion_id')->references('id')->on('autorizacion')->onUpdate('cascade')->onDelete('restrict');
             $table->timestamps();
         });
     }

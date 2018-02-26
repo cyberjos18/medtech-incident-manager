@@ -12,7 +12,7 @@ class CreateAutorizacionesTable extends Migration
      */
     public function up()
     {
-        Schema::create('autorizaciones', function (Blueprint $table) {
+        Schema::create('autorizacion', function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->increments('id');
             $table->integer('proveedor_id')->unsigned();
@@ -23,7 +23,7 @@ class CreateAutorizacionesTable extends Migration
             $table->foreign('proveedor_id')->references('id')->on('proveedores')->onUpdate('cascade')->onDelete('restrict');
             $table->timestamps();
         });
-        //DB::statement("ALTER TABLE 'autorizaciones' CHANGE  'numero_autorizacion' 'numero_autorizacion' INT(2) UNSIGNED ZEROFILL NOT NULL DEFAULT '1';");
+        //DB::statement("ALTER TABLE 'autorizacion' CHANGE  'numero_autorizacion' 'numero_autorizacion' INT(2) UNSIGNED ZEROFILL NOT NULL DEFAULT '1';");
     }
 
     /**
@@ -33,6 +33,6 @@ class CreateAutorizacionesTable extends Migration
      */
     public function down()
     {
-        Schema::drop('autorizaciones');
+        Schema::drop('autorizacion');
     }
 }

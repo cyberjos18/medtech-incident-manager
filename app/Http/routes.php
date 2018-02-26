@@ -46,3 +46,6 @@ Route::group(['prefix'=>'solicitudes','namespace'=>'\Solicitudes'],function(){
     Route::get('solicitudGuardar','SolicitudController@store');
     Route::post('validarCampos', 'SolicitudController@validarCampos');
 });
+Route::group(['prefix'=>'autorizaciones','namespace'=>'\Autorizaciones'],function(){
+   Route::resource('autorizacionservicio','AutorizacionController');
+});

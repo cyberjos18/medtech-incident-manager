@@ -13,7 +13,7 @@
 </div>
 <div class="form-group">
     {!! Form::label('status','Status') !!}
-    {!! Form::select('status',['Recibida'=>'Recibida','Autorizada'=>'Autorizada','No Procede'=>'No Procede'],null,['id'=>'status','class'=>'form-control','placeholder'=>'Seleccione']) !!}
+    {!! Form::select('status',['Recibida'=>'Recibida','Autorizada'=>'Autorizada','No Procede'=>'No Procede'],null,['id'=>'status','class'=>'form-control','placeholder'=>'Seleccione...']) !!}
 </div>
 
 <br>

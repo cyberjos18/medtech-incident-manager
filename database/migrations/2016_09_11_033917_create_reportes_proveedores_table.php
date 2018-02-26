@@ -22,7 +22,7 @@ class CreateReportesProveedoresTable extends Migration
             $table->date('fecha_atencion');
             $table->string('tecnico_responsable',25);
             $table->mediumText('observaciones');
-            $table->foreign('autorizacion_id')->references('id')->on('autorizaciones')->onUpdate('cascade')->onDelete('restrict');
+            $table->foreign('autorizacion_id')->references('id')->on('autorizacion')->onUpdate('cascade')->onDelete('restrict');
             $table->foreign('proveedor_id')->references('id')->on('proveedores')->onUpdate('cascade')->onDelete('restrict');
             $table->timestamps();
         });
