@@ -28,6 +28,9 @@
     {!! Form::textarea('seguimiento',null,['segumiento','cols'=>'5','rows'=>'3','class'=>'form-control','placeholder'=>'Por favor ingrese el seguimiento que esta haciendo al caso']) !!}
 </div>
 <div class="">
-    {!! Form::submit('Guardar',['id'=>'guardar','class'=>'btn btn-success col-lg-1 col-xs-12 col-sm-10 col-md-08 col-md-offset-9']) !!}
-    {!! Html::link(route('autorizaciones.autorizacionservicio.index'),'Cancelar',['class'=>'btn btn-primary col-lg-1 col-xs-12 col-sm-10 col-md-08','style'=>'margin-left:0.5%']) !!}
+    {!! Form::button('Editar',['id'=>'editar','class'=>'btn btn-success col-xs-12 col-sm-12 col-md-12 col-lg-1','style'=>'margin-right:4px']) !!}
+    {!! Form::submit('Aceptar',['id'=>'aceptar','class'=>'btn btn-warning col-xs-12 col-sm-12 col-md-12 col-lg-1']) !!}
+    {!! Html::link(route('solicitudes.solicitudservicio.index'),'Cancelar',['class'=>'btn btn-primary col-xs-12 col-sm-12 col-md-12 col-lg-1','style'=>'margin-left:0.5%;padding-right:7.5%']) !!}
+    {!! Form::button('Probando',['id'=>'probando','class'=>'btn btn']) !!}
 </div>
+

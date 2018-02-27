@@ -4,6 +4,7 @@ namespace dgmtm\Http\Controllers\Autorizaciones;
 
 use dgmtm\Autorizacion;
 use dgmtm\Http\Requests\CreateAutorizacionRequest;
+use dgmtm\Http\Requests\EditAutorizacionRequest;
 use dgmtm\Proveedor;
 use dgmtm\Solicitud;
 use Illuminate\Http\Request;
@@ -100,9 +101,9 @@ class AutorizacionController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(EditAutorizacionRequest $request, $id)
     {
-        //
+        
     }
 
     /**
