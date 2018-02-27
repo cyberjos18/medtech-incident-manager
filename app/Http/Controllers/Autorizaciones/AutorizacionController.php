@@ -84,7 +84,13 @@ class AutorizacionController extends Controller
      */
     public function edit($id)
     {
-        //
+        $proveedores=Proveedor::orderBy('nomb_proveedor','ASC')
+            ->lists('nomb_proveedor','id');
+        $solicitudes=Solicitud::orderBy('numero_solicitud','ASC')
+            ->lists('numero_solicitud','id');
+        
+        $autorizaciones=Autorizacion::findOrFail($id);
+        return view("autorizaciones.autorizacionservicio.edit",compact('proveedores','solicitudes','autorizaciones'));
     }
 
     /**

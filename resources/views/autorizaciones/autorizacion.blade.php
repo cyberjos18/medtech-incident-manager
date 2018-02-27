@@ -15,6 +15,7 @@
     <title>Autorizacion</title>
 </head>
 <body>
+</br>
 @yield('content')
 </body>
 </html>

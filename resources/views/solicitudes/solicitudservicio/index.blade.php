@@ -2,7 +2,7 @@
 @section('content')
     <div class="container">
         <div class="row">
-           <div class="col-xs-12 col-sm-06 col-md-10 col-md-offset-1">
+           <div class="col">
                <div class="panel panel-default">
                    <div class="panel-heading"><h4>Solicitudes de Servicio</h4></div>
                    @if(Session::has('message') && Session::has('bandera'))
