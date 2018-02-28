@@ -1,6 +1,6 @@
 @extends('autorizaciones.autorizacion')
 @section('script')
-    {!! Html::script('/js/autorizacion.js') !!}
+
 @endsection
 @section('content')
         <div class="container">

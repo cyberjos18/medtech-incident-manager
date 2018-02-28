@@ -1,4 +1,7 @@
 $(document).ready(function(){
+    $("#cancelar").click(function(){
+        location.href='../../autorizacionservicio'
+    });
     $("#autorizacion").DataTable({
         // "paging": false,
         // "info": false,

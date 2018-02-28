@@ -48,4 +48,5 @@ Route::group(['prefix'=>'solicitudes','namespace'=>'\Solicitudes'],function(){
 });
 Route::group(['prefix'=>'autorizaciones','namespace'=>'\Autorizaciones'],function(){
    Route::resource('autorizacionservicio','AutorizacionController');
+
 });

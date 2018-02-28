@@ -3,6 +3,7 @@
 <head>
     {!! Html::script('/js/jquery-3.1.1.min.js') !!}
     @yield('script')
+    {!! Html::script('/js/autorizacion.js') !!}
     {!! Html::script('/js/bootstrap.min.js') !!}
     {!! Html::script('/js/bootstrap-datepicker/bootstrap-datepicker.min.js') !!}
     {!! Html::script('/js/bootstrap-datepicker/bootstrap-datepicker.es.js') !!}
