@@ -20,7 +20,7 @@ $(document).ready(function(){
         $seguimiento.attr("disabled",true);
         $editar.attr("disabled",false);
         $aceptar.attr("disabled",true);
-        $cancelar.attr("disabled",true);
+
     }
     function habilitar()
     {
@@ -32,7 +32,7 @@ $(document).ready(function(){
         $seguimiento.attr("disabled",false);
         $editar.attr("disabled",true);
         $aceptar.attr("disabled",false);
-        $cancelar.attr("disabled",false);
+        
     }
 
     //////////////////////////////////////////*Llamamos a las funciones*///////////////////////////////////////////////
