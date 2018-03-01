@@ -24,6 +24,7 @@
                                <th>#</th>
                                <th>Numero de Autorizacion</th>
                                <th>Proveedor</th>
+                               <th>N # Solicitud Asignada</th>
                                <th>Fecha de Autorizacion</th>
                                <th>Status</th>
                                <th>Ver</th>
@@ -35,6 +36,7 @@
                                    <td>{{$autorizacion->id}}</td>
                                    <td>{{$autorizacion->numero_autorizacion}}</td>
                                    <td>{{$autorizacion->proveedor->nomb_proveedor}}</td>
+                                   <td>{{$autorizacion->solicitud->numero_solicitud}}</td>
                                    <td>{{date('d-m-Y',strtotime($autorizacion->fecha_autorizacion))}}</td>
                                    <td>{{$autorizacion->status}}</td>
                                    <td>

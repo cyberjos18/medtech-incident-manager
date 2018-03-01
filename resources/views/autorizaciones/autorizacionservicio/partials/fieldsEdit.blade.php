@@ -30,6 +30,6 @@
 <div class="">
     {!! Form::button('Editar',['id'=>'editar','class'=>'btn btn-success col-xs-12 col-sm-12 col-md-12 col-lg-1','style'=>'margin-right:0.18%']) !!}
     {!! Form::submit('Aceptar',['id'=>'aceptar','class'=>'btn btn-warning col-xs-12 col-sm-12 col-md-12 col-lg-1']) !!}
-    {!! Form::button('Cancelar',['id'=>'cancelar','class'=>'btn btn-primary col-xs-12 col-sm-12 col-md-12 col-lg-1', 'style'=>'margin-left:0.18%']) !!}
+    {!! Html::link(route('autorizaciones.autorizacionservicio.index'),'Cancelar',['id'=>'cancelar','class'=>'btn btn-primary col-lg-1 col-xs-12 col-sm-06 col-md-10','style'=>'margin-left:0.18%']) !!}
 </div>
 

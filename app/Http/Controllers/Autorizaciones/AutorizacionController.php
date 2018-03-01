@@ -24,6 +24,7 @@ class AutorizacionController extends Controller
     {
         $autorizaciones=Autorizacion::orderBy('numero_autorizacion','ASC')
             ->with('proveedor')
+            ->with('solicitud')
             ->get();
         return view('autorizaciones.autorizacionservicio.index',compact('autorizaciones'));
     }
@@ -103,7 +104,21 @@ class AutorizacionController extends Controller
      */
     public function update(EditAutorizacionRequest $request, $id)
     {
-        
+        $autorizaciones=Autorizacion::findOrFail($id);
+        $autorizaciones->numero_autorizacion=$request->numero_autorizacion;
+        $autorizaciones->fecha_autorizacion=Autorizacion::convertirFormatoFechaCarbon($request->fecha_autorizacion);
+        $autorizaciones->solicitud_id=$request->solicitud_id;
+        $autorizaciones->proveedor_id=$request->proveedor_id;
+        $autorizaciones->status=$request->status;
+        $autorizaciones->seguimiento=$request->seguimiento;
+        $autorizaciones->save();
+        $update=trans('validation.attributes.message.update');
+        $bandera='update';
+        Session::flash('bandera',$bandera);
+        Session::flash('message',$update);
+        return redirect()->route('autorizaciones.autorizacionservicio.index');
+
+
     }
 
     /**
