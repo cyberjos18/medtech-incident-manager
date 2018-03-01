@@ -11,6 +11,7 @@ use Illuminate\Http\Request;
 
 use dgmtm\Http\Requests;
 use dgmtm\Http\Controllers\Controller;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
 
 class AutorizacionController extends Controller
@@ -40,6 +41,14 @@ class AutorizacionController extends Controller
             ->lists('nomb_proveedor','id');
         $solicitudes=Solicitud::orderBy('numero_solicitud','ASC')
             ->lists('numero_solicitud','id');
+//      dd ($prueba=Solicitud::select('numero_solciitud')
+//           ->whereNotIn('id',['select autorizaciones.solicitud_id from autorizaciones'])
+//           ->get());
+        dd($prueba2=DB::table('solicitudes')
+        ->select('id')
+        ->where('id','','not in (select autorizaciones.solicitud_id from autorizaciones)')
+        ->get());
+
         return view('autorizaciones.autorizacionservicio.create',compact('proveedores','solicitudes'));
     }
 
