@@ -46,7 +46,7 @@ class AutorizacionController extends Controller
 //           ->get());
         dd($prueba2=DB::table('solicitudes')
         ->select('id')
-        ->where('id','','not in (select autorizaciones.solicitud_id from autorizaciones)')
+        ->where('id',DB::raw('not in (select autorizaciones.solicitud_id from autorizaciones)'))
         ->get());
 
         return view('autorizaciones.autorizacionservicio.create',compact('proveedores','solicitudes'));
