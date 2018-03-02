@@ -54,7 +54,7 @@ class AutorizacionController extends Controller
 //            ->select('id')
 //            ->whereRaw('id not in( select autorizaciones.solicitud_id from autorizaciones)')
 //            ->get());
-$valor=DB::select('select solicitud_id from autorizaciones');
+$valor=DB::select('select solicitud_id from autorizaciones');  
         $array=[];
         foreach ($valor as $val)
         {
@@ -65,7 +65,7 @@ $valor=DB::select('select solicitud_id from autorizaciones');
             ->whereNotIn('id',array())
             ->get());
 
-
+//leer https://laravel.montogeek.com/4.1/queries
 
 
         return view('autorizaciones.autorizacionservicio.create',compact('proveedores','solicitudes'));
