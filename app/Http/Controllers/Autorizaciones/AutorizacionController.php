@@ -39,31 +39,17 @@ class AutorizacionController extends Controller
     {
         $proveedores=Proveedor::orderBy('nomb_proveedor','ASC')
             ->lists('nomb_proveedor','id');
-        $solicitudes=Solicitud::orderBy('numero_solicitud','ASC')
+
+        $solicitudes=Solicitud::select('id','numero_solicitud','status')
+            ->whereRaw('id not in( select autorizaciones.solicitud_id from autorizaciones)')
+            ->where('status','!=','No Procede')
             ->lists('numero_solicitud','id');
-//      dd ($prueba=Solicitud::select('numero_solciitud')
-//           ->whereNotIn('id',['select autorizaciones.solicitud_id from autorizaciones'])
-//           ->get());
-//        dd($prueba2=DB::table('solicitudes')
-//            ->select('id')
-//            ->whereRaw('( select autorizaciones.solicitud_id from autorizaciones)',[],'id not in')
-//            ->get());
 //        dd($prueba3=DB::select('select id from solicitudes where id not in(select autorizaciones.solicitud_id from autorizaciones)'));
 //
 //        dd($prueba4=DB::table('solicitudes')
 //            ->select('id')
 //            ->whereRaw('id not in( select autorizaciones.solicitud_id from autorizaciones)')
 //            ->get());
-$valor=DB::select('select solicitud_id from autorizaciones');  
-        $array=[];
-        foreach ($valor as $val)
-        {
-            $array=$val->solicitud_id;
-        }
-        
-        dd($prueba5=Solicitud::select('i')
-            ->whereNotIn('id',array())
-            ->get());
 
 //leer https://laravel.montogeek.com/4.1/queries
 
@@ -91,6 +77,14 @@ $valor=DB::select('select solicitud_id from autorizaciones');
         $bandera='insert';
         Session::flash('bandera',$bandera);
         Session::flash('message',$insert);
+
+        /*Se actualiza el status de una solicitud, si se hace una autorizacon de una solicitud entonces
+        ya esta autorizada*/
+
+        Solicitud::select('id')
+            ->where('id','=',$request->solicitud_id)
+            ->update(['status'=>'Autorizada']);
+
         return redirect()->route('autorizaciones.autorizacionservicio.index');
 
     }

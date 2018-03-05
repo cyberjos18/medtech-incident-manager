@@ -22,7 +22,7 @@
                                <th>Numero de Solicitud</th>
                                <th>Fecha de Recibo</th>
                                <th>Centro</th>
-                               <th>Estatus</th>
+                               <th>Status</th>
                                <th>Accion</th>
                            </tr>
                            </thead>

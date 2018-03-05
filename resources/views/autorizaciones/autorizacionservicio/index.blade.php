@@ -1,7 +1,5 @@
 @extends('autorizaciones.autorizacion')
-@section('script')
 
-@endsection
 @section('content')
         <div class="container">
         <div class="row">

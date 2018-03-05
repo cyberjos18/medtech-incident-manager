@@ -1,4 +1,7 @@
 @extends('autorizaciones.autorizacion')
+@section('script')
+{!! Html::script('/js/autorizacionEdit.js') !!}
+@endsection
 @section('content')
     <div class="container">
         <div class="row">
