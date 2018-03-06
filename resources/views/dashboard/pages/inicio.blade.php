@@ -55,6 +55,7 @@
             </div>
             <!-- /.navbar-header -->
 
+            <!-- icon message-->
             <ul class="nav navbar-top-links navbar-right">
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">
@@ -106,7 +107,11 @@
                     </ul>
                     <!-- /.dropdown-messages -->
                 </li>
+                <!--/icon message-->
+
                 <!-- /.dropdown -->
+
+                <!-- icon task-->
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                         <i class="fa fa-tasks fa-fw"></i> <i class="fa fa-caret-down"></i>
@@ -185,7 +190,10 @@
                     </ul>
                     <!-- /.dropdown-tasks -->
                 </li>
+                <!--/icon task-->
                 <!-- /.dropdown -->
+
+                <!-- icon alert -->
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                         <i class="fa fa-bell fa-fw"></i> <i class="fa fa-caret-down"></i>
@@ -244,8 +252,11 @@
                         </li>
                     </ul>
                     <!-- /.dropdown-alerts -->
+                    <!--/end icon alert -->
                 </li>
                 <!-- /.dropdown -->
+
+                <!-- icon user log -->
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                         <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
@@ -262,6 +273,8 @@
                     <!-- /.dropdown-user -->
                 </li>
                 <!-- /.dropdown -->
+                <!-- /end icon user log -->
+
             </ul>
             <!-- /.navbar-top-links -->
 
