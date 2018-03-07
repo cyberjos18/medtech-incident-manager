@@ -12,9 +12,8 @@
 */
 
 Route::get('/', function () {
-    return view('dashboard.pages.inicio');
+    return view('dashboard.inicio');
 });
-Route::resource('pendejo','PendejoController');
 Route::group(['prefix'=>'maestros','namespace'=>'\Maestros'],function(){
     
     Route::resource('centros','CentroController');

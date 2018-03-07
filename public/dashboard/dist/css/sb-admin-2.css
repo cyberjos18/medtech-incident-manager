@@ -6,6 +6,12 @@
 body {
   background-color: #f8f8f8;
 }
+.centro
+{
+  height: 1024px;
+  width: 100%;
+
+}
 #wrapper {
   width: 100%;
 }
