@@ -55,7 +55,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="inicio.blade.php">SB Admin v2.0</a>
+                <a class="navbar-brand" id="reload" href="">SB Admin v2.0</a>
             </div>
             <!-- /.navbar-header -->
 
