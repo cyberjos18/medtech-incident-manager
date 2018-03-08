@@ -7,6 +7,7 @@ $(document).ready(function(){
     var $notificacionpanel=$("#notificacionpanel");
     var $chardonut=$("#chartdonut");
     var $chat=$("#chat");
+    var $cabecera=$("#cabecera");
 
     function ocultarDivIframe()
     {
@@ -22,6 +23,7 @@ $(document).ready(function(){
        $notificacionpanel.hide();
        $chardonut.hide();
        $chat.hide();
+       $cabecera.hide();
 
     }
 ////////////////////////////////////// Llamar funciones ///////////////////////////////////

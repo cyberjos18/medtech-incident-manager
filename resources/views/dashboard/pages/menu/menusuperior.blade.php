@@ -1,10 +1,10 @@
 <!--top menu -->
 <!-- icon message-->
-<ul class="nav navbar-top-links navbar-right">
-    <li class="dropdown">
-        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-            <i class="fa fa-envelope fa-fw"></i> <i class="fa fa-caret-down"></i>
-        </a>
+    <ul class="nav navbar-top-links navbar-right">
+        <li class="dropdown">
+            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                <i class="fa fa-envelope fa-fw"></i> <i class="fa fa-caret-down"></i>
+            </a>
         <ul class="dropdown-menu dropdown-messages">
             <li>
                 <a href="#">
@@ -50,15 +50,15 @@
             </li>
         </ul>
         <!-- /.dropdown-messages -->
-    </li>
-    <!--/end icon message-->
+        </li>
+        <!--/end icon message-->
 
-    <!-- /.dropdown -->
+        <!-- /.dropdown -->
 
-    <!-- icon task-->
-    <li class="dropdown">
-        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-            <i class="fa fa-tasks fa-fw"></i> <i class="fa fa-caret-down"></i>
+        <!-- icon task-->
+        <li class="dropdown">
+            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                <i class="fa fa-tasks fa-fw"></i> <i class="fa fa-caret-down"></i>
         </a>
         <ul class="dropdown-menu dropdown-tasks">
             <li>
@@ -133,13 +133,13 @@
             </li>
         </ul>
         <!-- /.dropdown-tasks -->
-    </li>
-    <!--/end icon task-->
-    <!-- /.dropdown -->
+        </li>
+        <!--/end icon task-->
+        <!-- /.dropdown -->
 
-    <!-- icon alert -->
-    <li class="dropdown">
-        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+        <!-- icon alert -->
+        <li class="dropdown">
+            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
             <i class="fa fa-bell fa-fw"></i> <i class="fa fa-caret-down"></i>
         </a>
         <ul class="dropdown-menu dropdown-alerts">
@@ -197,14 +197,14 @@
         </ul>
         <!-- /.dropdown-alerts -->
         <!--/end icon alert -->
-    </li>
-    <!-- /.dropdown -->
+         </li>
+        <!-- /.dropdown -->
 
-    <!-- icon user log -->
-    <li class="dropdown">
-        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+        <!-- icon user log -->
+        <li class="dropdown">
+            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
             <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
-        </a>
+             </a>
         <ul class="dropdown-menu dropdown-user">
             <li><a href="#"><i class="fa fa-user fa-fw"></i> User Profile</a>
             </li>
@@ -215,9 +215,9 @@
             </li>
         </ul>
         <!-- /.dropdown-user -->
-    </li>
-    <!-- /.dropdown -->
-    <!-- /end icon user log -->
-</ul>
+        </li>
+        <!-- /.dropdown -->
+        <!-- /end icon user log -->
+    </ul>
 <!-- /.navbar-top-links -->
 <!--/ end top menu -->
