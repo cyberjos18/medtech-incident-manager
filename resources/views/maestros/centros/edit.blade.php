@@ -1,8 +1,8 @@
 @extends('maestros.centros')
 @section('content')
-    <div class="container">
+    <div class="container-fluid">
         <div class="row">
-            <div class="col-xs-12 col-sm-8 col-md-10 col-md-offset-1">
+            <div class="col">
                 <div class="panel panel-default">
                     <div class="panel panel-heading"><h4>Centro de atención {!! $centro->nomb_centro !!}</h4></div>
                     <div class="panel-body">
@@ -18,24 +18,25 @@
                                 {!! Form::model($centro,['id'=>'formulario2','route'=>['maestros.centros.update',$centro->id],'method'=>'PUT','class'=>'']) !!}
                                 {!!Form::hidden('centro',$centro->id,['id'=>'centroId'])!!}
                                 @include('maestros.centros.partials.fields_view')
-                                <div class="col-xs-12 col-sm-12 col-md-10 col-md-offset-5">
+                                <div class="">
 
-                                    {!! Form::button('Editar',['id'=>'editar','class'=>'btn btn-success','style'=>'margin-right:4px']) !!}
-                                    {!! Form::submit('Aceptar',['id'=>'aceptar','class'=>'btn btn-warning','style'=>'margin-right:-4px']) !!}
-                                    {!! Form::button('Eliminar',['id'=>'eliminar','class'=>'btn btn-danger']) !!}
-                                    {!! Html::link(route('maestros.centros.index'),'Cancelar',['id'=>'cancelar','class'=>'btn btn-primary']) !!}
+                                    {!! Form::button('Editar',['id'=>'editar','class'=>'btn btn-success col-lg-1 col-xs-12 col-sm-06 col-md-10','style'=>'margin-bottom:1%; margin-left:0.5%;']) !!}
+                                    {!! Form::submit('Aceptar',['id'=>'aceptar','class'=>'btn btn-warning col-lg-1 col-xs-12 col-sm-06 col-md-10','style'=>'margin-left:0.3%;margin-bottom:1%;']) !!}
+                                    {!! Form::button('Eliminar',['id'=>'eliminar','class'=>'btn btn-danger col-lg-1 col-xs-12 col-sm-06 col-md-10','style'=>'margin-left:0.3%;margin-bottom:1%;']) !!}
+                                    {!! Html::link(route('maestros.centros.index'),'Cancelar',['id'=>'cancelar','class'=>'btn btn-primary col-lg-1 col-xs-12 col-sm-06 col-md-10','style'=>'margin-left:0.3%']) !!}
 
                                   {!! Form::close() !!}
                                 </div>
                             </div>
                             <div id="serviciosdelcentro" class="tab-pane fade ">
                                <p>@include('maestros.centros.partials.fields2')</p>
-                                <div class="col-xs-12 col-sm-8 col-md-10 col-md-offset-8">
-                                {!! Form::button('Ver',['id'=>'ver','class'=>'btn btn-warning']) !!}
-                                {!! Form::button('Guardar',['id'=>'guardar','class'=>'btn btn-success']) !!}
-                                {!! Html::link(route('maestros.centros.index'),'Regresar',['id'=>'cancelar','class'=>'btn btn-primary']) !!}
+                                <div class="row">
+                                <div class="">
+                                {!! Form::button('Ver',['id'=>'ver','class'=>'btn btn-warning col-lg-1 col-xs-12 col-sm-06 col-md-10','style'=>'margin-bottom:1%; margin-left:0.5%;']) !!}
+                                {!! Form::button('Guardar',['id'=>'guardar','class'=>'btn btn-success col-lg-1 col-xs-12 col-sm-06 col-md-10','style'=>'margin-left:0.3%;margin-bottom:1%;']) !!}
+                                {!! Html::link(route('maestros.centros.index'),'Regresar',['id'=>'cancelar','class'=>'btn btn-primary col-lg-1 col-xs-12 col-sm-06 col-md-10','style'=>'margin-left:0.3%']) !!}
                                 </div>
-
+                                </div>
                                 </br>
                                 </br>
                                 <div class="panel-body">

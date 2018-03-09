@@ -37,12 +37,11 @@
 
                         </table>
                         {!! $estados->setPath('')->render() !!}
-                        <div>
-                        <div class="col-xs-12 col-sm-6 col-md-10 col-md-offset-9">
-                            <a href="{{route('maestros.estados.create')}}" class="btn btn-success" role="button">Incluir</a>
-                            <a href="" class="btn btn-primary ">Cancelar</a>
+                        <div class="row">
+                            <a href="{{route('maestros.estados.create')}}" class="btn btn-success col-lg-1 col-xs-12 col-sm-06 col-md-10" style="margin-bottom:1%; margin-left:0.5%;" role="button">Incluir</a>
+                            {!! Html::link('/','Cancelar',['target'=>'_parent','id'=>'reload','class'=>'btn btn-primary col-lg-1 col-xs-12 col-sm-06 col-md-10','style'=>'margin-left:0.3%; margin-right:0.5%;']) !!}
                         </div>
-                        </div>
+
 
                     </div>
 

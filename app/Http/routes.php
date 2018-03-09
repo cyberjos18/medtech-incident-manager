@@ -14,6 +14,7 @@
 Route::get('/', function () {
     return view('dashboard.inicio');
 });
+
 Route::group(['prefix'=>'maestros','namespace'=>'\Maestros'],function(){
     
     Route::resource('centros','CentroController');

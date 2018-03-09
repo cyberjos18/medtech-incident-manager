@@ -1,4 +1,5 @@
 $(document).ready(function(){
+   
    $(".link-eliminar").click(function () {
        var row=$(this).parents('tr');
        var id=row.data('id');
@@ -32,5 +33,6 @@ $(document).ready(function(){
          })
       }
       });
+
    });
 

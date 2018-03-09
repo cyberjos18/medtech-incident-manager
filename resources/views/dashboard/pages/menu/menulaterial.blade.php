@@ -16,8 +16,33 @@
             <li>
                 <a href="" id="reload"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
             </li>
+                <!--maestros de datos-->
+                <li>
+                    <a><i class="fa fa-sitemap fa-fw"></i> Maestros <span class="fa arrow"></span></a>
+                    <ul class="nav nav-second-level">
+                        <li>
+                            <a>Centros De Atención<span class="fa arrow"></span></a>
+                            <ul class="nav nav-third-level">
+                                <li>
+                                    {!! Html::link(route('maestros.categorias.index'),'Categoria Del Centros',['target'=>'centro']) !!}
+                                </li>
+                                <li>
+                                    {!! Html::link(route('maestros.centros.index'),'Registro Del Centro',['target'=>'centro']) !!}
+                                </li>
+                            </ul>
+                            <!-- /.nav-third-level -->
+                        </li>
+
+                        <li>
+                            {!! Html::link(route('maestros.estados.index'),'Estados',['target'=>'centro']) !!}
+                        </li>
+
+                    </ul>
+                    <!-- /.nav-second-level -->
+                </li>
+                <!--/end maestros-->
             <li>
-                <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Charts<span class="fa arrow"></span></a>
+                <a><i class="fa fa-bar-chart-o fa-fw"></i> Charts<span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level">
                     <li>
                         <a href="flot.html">Flot Charts</a>
@@ -88,18 +113,7 @@
                 </ul>
                 <!-- /.nav-second-level -->
             </li>
-            <li>
-                <a><i class="fa fa-sitemap fa-fw"></i> Maestros <span class="fa arrow"></span></a>
-                <ul class="nav nav-second-level">
-                    <li>
-                        {!! Html::link(route('maestros.estados.index'),'Estados',['target'=>'centro']) !!}
-                    </li>
-                    <li>
-                        <a href="#">Second Level Item</a>
-                    </li>
-                </ul>
-                <!-- /.nav-second-level -->
-            </li>
+
             <li>
                 <a href="#"><i class="fa fa-files-o fa-fw"></i> Sample Pages<span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level">

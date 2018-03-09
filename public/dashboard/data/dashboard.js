@@ -8,6 +8,7 @@ $(document).ready(function(){
     var $chardonut=$("#chartdonut");
     var $chat=$("#chat");
     var $cabecera=$("#cabecera");
+    var $rcancelar=$("#rca")
 
     function ocultarDivIframe()
     {
@@ -33,7 +34,8 @@ $(document).ready(function(){
     $(':link').click(function(){
        mostrarDivIframe();
     });
-    $('dash').click(function(){
+    $('reload').click(function(){
        location.reload();
     });
+
 });
