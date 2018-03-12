@@ -21,10 +21,10 @@
                             <table id="localidad" class="table">
                                 <thead>
                                 <tr>
-                                    <td>#</td>
-                                    <td>Estado</td>
-                                    <td>Localidad</td>
-                                    <td>Acción</td>
+                                    <th>#</th>
+                                    <th>Estado</th>
+                                    <th>Localidad</th>
+                                    <th>Acción</th>
                                 </tr>
                                 </thead>
                                 <tbody>

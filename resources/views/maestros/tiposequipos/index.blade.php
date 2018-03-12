@@ -21,9 +21,9 @@
                     <table id="tipoequipo" class="table">
                         <thead>
                         <tr>
-                            <td>#</td>
-                            <td>Tipo de Equipo</td>
-                            <td>Acción</td>
+                            <th>#</th>
+                            <th>Tipo de Equipo</th>
+                            <th>Acción</th>
                         </tr>
                         </thead>
                         <tbody>
