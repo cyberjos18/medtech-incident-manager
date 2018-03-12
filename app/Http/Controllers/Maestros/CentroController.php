@@ -26,7 +26,7 @@ class CentroController extends Controller
     {
         $centros = Centro::orderBy('nomb_centro', 'ASC')
             ->with('estado', 'localidad', 'categoria')
-            ->paginate(10);
+            ->get();
 
         return view('maestros.centros.index', compact('centros'));
 

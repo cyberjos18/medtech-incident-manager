@@ -1,10 +1,10 @@
 @extends('maestros.proveedores')
 @section('content')
-    <div class="container">
+    <div class="container-fluid">
         <div class="row">
-            <div class="col-xs-12 col-sm-06 col-md-10 col-md-offset-1">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <div class="panel panel-default">
-                    <div class="panel-heading"><h4>Lista de Proveedores</h4></div>
+                    <div class="panel-heading"><h4>Lista de proveedores</h4></div>
                     @if(Session::has('message') && Session::has('bandera'))
                         @if(Session::get('bandera')==='update')
                             @include('mensajes.update')
@@ -15,8 +15,9 @@
                         @endif
                     @endif
                     <div class="panel-body">
-                        <table class="table table-responsive">
-                            <tbody>
+                        <div class="table table-responsive">
+                        <table id="proveedor" class="table">
+                            <thead>
                             <tr>
                                 <th>#</th>
                                 <th>RIF</th>
@@ -26,7 +27,8 @@
                                 <th>Contacto</th>
                                 <th>Acción</th>
                             </tr>
-
+                            </thead>
+                            <tbody>
                             @foreach($proveedores as $proveedor)
                                 <tr data-id="{{$proveedor->id}}">
                                     <td>{{$proveedor->id}}</td>
@@ -45,11 +47,14 @@
                             </tbody>
 
                         </table>
-                        {!! $proveedores->setPath('')->render() !!}
+                        </div>
+                        {{--{!! $proveedores->setPath('')->render() !!}--}}
                         <div>
-                            <div class="col-xs-12 col-sm-12 col-md-10 col-md-offset-9">
-                                <a href="{{route('maestros.proveedores.create')}}" class="btn btn-success" role="button">Incluir</a>
-                                <a href="" class="btn btn-primary ">Cancelar</a>
+                            <div class="row">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                <a href="{{route('maestros.proveedores.create')}}" class="btn btn-success col-lg-1 col-xs-12 col-sm-2 col-md-2 incluir" role="button">Incluir</a>
+                                {!! Html::link('/','Cancelar',['target'=>'_parent','id'=>'Cancelar','class'=>'btn btn-primary col-lg-1 col-xs-12 col-sm-2 col-md-2 cancelar']) !!}
+                            </div>
                             </div>
                         </div>
 

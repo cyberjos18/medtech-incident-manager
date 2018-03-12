@@ -1,17 +1,17 @@
 @extends('maestros.tiposequipos')
 @section('content')
-    <div class="container">
+    <div class="container-fluid">
         <div class="row">
-            <div class="col-xs-12 col-sm-6 col-md-10 col-md-offset-1">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <div class="panel panel-default">
                     <div class="panel-heading"><h4>Descripción del tipo de equipo</h4></div>
                     <div class="panel-body">
                         @include('mensajes.validation')
                         {!! Form::open(['route'=>'maestros.tiposequipos.store','method'=>'POST','class'=>'']) !!}
                         @include('maestros.tiposequipos.partials.fields')
-                        <div class="col-xs-12 col-sm-6 col-md-10 col-md-offset-8">
-                            {!! Form::submit('Guardar',['id'=>'guardar','class'=>'btn btn-success']) !!}
-                            {!! Html::link(route('maestros.tiposequipos.index'),'Cancelar',['class'=>'btn btn-primary']) !!}
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                            {!! Form::submit('Guardar',['id'=>'guardar','class'=>'btn btn-success col-lg-1 col-xs-12 col-sm-2 col-md-2 incluir']) !!}
+                            {!! Html::link(route('maestros.tiposequipos.index'),'Cancelar',['class'=>'btn btn-primary col-lg-1 col-xs-12 col-sm-2 col-md-2 cancelar']) !!}
                         </div>
                         {!! Form::close() !!}
                     </div>

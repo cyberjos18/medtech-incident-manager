@@ -22,7 +22,7 @@ class EstadoController extends Controller
     {
 
         $estados=Estado::orderBy('nomb_estado','ASC')
-        ->paginate(10);
+        ->get();
         return view('maestros.estados.index',compact('estados'));
 
     }

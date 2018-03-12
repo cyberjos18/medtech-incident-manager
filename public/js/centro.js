@@ -1,5 +1,7 @@
 $(document).ready(function () {
     //$('#localidad_id').attr("disabled",true);
+    var $centro=$("#centro");
+
     function inhabilitar()
     {
         $('#nomb_centro').attr("disabled",true);
@@ -31,6 +33,7 @@ $(document).ready(function () {
         $('#localidad_id').attr("disabled",false);
     }
 
+    ////////////////////////// Llamamos Funciones /////////////////////////////////////
     inhabilitar();
 
     $('#editar').click(function(){
@@ -96,9 +99,10 @@ $(document).ready(function () {
                 $("#cancelar").html("Regresar");
                 
             },
-            error: function (e)
+            error: function (xhr)
             {
-                alert("Ocurrio un error al actualizar la informacion: "+e);
+                alert("Ocurrio un error al eliminar la informacion, favor ver la consola");
+                console.log(xhr.responseText);
             }
         });
         }
@@ -106,6 +110,33 @@ $(document).ready(function () {
         {
             inhabilitar();
         }
+    });
+    $centro.DataTable({
+        // "paging": false,
+        // "info": false,
+        //
+        "language": {
+            "search": "Buscar: ",
+            "searchPlaceholder": "Escriba los datos que desea buscar",
+            "sProcessing": "Procesando...",
+            "sLengthMenu": "Mostrar _MENU_ registros",
+            "sZeroRecords": "No se encontraron resultados",
+            "sEmptyTable": "Ningún dato disponible en esta tabla",
+            "sInfo": "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+            "sInfoEmpty": "Mostrando registros del 0 al 0 de un total de 0 registros",
+            "sInfoFiltered": "(filtrado de un total de _MAX_ registros)",
+            "sInfoPostFix": "",
+            "sUrl": "",
+            "sInfoThousands": ",",
+            "sLoadingRecords": "Cargando...",
+            "oPaginate": {
+                "sFirst": "Primero",
+                "sLast": "Último",
+                "sNext": "Siguiente",
+                "sPrevious": "Anterior"
+            }
+        }
+
     });
     /*$("#formulario").submit(function(){
        return true;

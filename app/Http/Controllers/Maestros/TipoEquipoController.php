@@ -19,7 +19,7 @@ class TipoEquipoController extends Controller
     public function index()
     {
         $tipos=TipoEquipo::orderBy('tipo_equipo','ASC')
-            ->paginate(10);
+            ->get();
         return view('maestros.tiposequipos.index',compact('tipos'));
     }
 

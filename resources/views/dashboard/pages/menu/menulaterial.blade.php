@@ -24,10 +24,10 @@
                             <a>Centros De Atención<span class="fa arrow"></span></a>
                             <ul class="nav nav-third-level">
                                 <li>
-                                    {!! Html::link(route('maestros.categorias.index'),'Categoria Del Centros',['target'=>'centro']) !!}
+                                    {!! Html::link(route('maestros.categorias.index'),'Categorias Del Centro',['target'=>'centro']) !!}
                                 </li>
                                 <li>
-                                    {!! Html::link(route('maestros.centros.index'),'Registro Del Centro',['target'=>'centro']) !!}
+                                    {!! Html::link(route('maestros.centros.index'),'Datos Del Centro',['target'=>'centro']) !!}
                                 </li>
                             </ul>
                             <!-- /.nav-third-level -->
@@ -36,19 +36,25 @@
                         <li>
                             {!! Html::link(route('maestros.estados.index'),'Estados',['target'=>'centro']) !!}
                         </li>
+                        <li>
+                            {!! Html::link(route('maestros.localidades.index'),'Localidades',['target'=>'centro']) !!}
+                        </li>
+                        <li>
+                            {!! Html::link(route('maestros.proveedores.index'),'Proveedores',['target'=>'centro']) !!}
+                        </li>
+                        <li>
+                            {!! Html::link(route('maestros.tiposequipos.index'),'Tipos De Equipos Medicos',['target'=>'centro']) !!}
+                        </li>
 
                     </ul>
                     <!-- /.nav-second-level -->
                 </li>
                 <!--/end maestros-->
             <li>
-                <a><i class="fa fa-bar-chart-o fa-fw"></i> Charts<span class="fa arrow"></span></a>
+                <a><i class="fa fa-archive fa-fw"></i> Inventario<span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level">
                     <li>
-                        <a href="flot.html">Flot Charts</a>
-                    </li>
-                    <li>
-                        <a href="morris.html">Morris.js Charts</a>
+                        {!! Html::link(route('inventario.equipos.index'),'Equipos Medicos',['target'=>'centro']) !!}
                     </li>
                 </ul>
                 <!-- /.nav-second-level -->

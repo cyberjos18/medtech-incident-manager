@@ -1,10 +1,10 @@
 @extends('maestros.tiposequipos')
 @section('content')
-<div class="container">
+<div class="container-fluid">
     <div class="row">
-        <div class="col-xs-12 col-sm-6 col-md-10 col-md-offset-1">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <div class="panel panel-default">
-                <div class="panel-heading"><h4>Lista de Tipos de Equipos</h4> </div>
+                <div class="panel-heading"><h4>Lista de tipos de equipos</h4> </div>
                 {!! Form::open(['route' => ['maestros.tiposequipos.destroy',':USER_ID'],'method' => 'DELETE','id'=>'form-delete']) !!}
                 {!! Form::close() !!}
                 @if(Session::has('message') && Session::has('bandera'))
@@ -17,13 +17,16 @@
                     @endif
                 @endif
                 <div class="panel-body">
-                    <table class="table table-responsive">
-                        <tbody>
+                    <div class="table table-responsive">
+                    <table id="tipoequipo" class="table">
+                        <thead>
                         <tr>
                             <td>#</td>
-                            <td>Tipos de Equipos</td>
+                            <td>Tipo de Equipo</td>
                             <td>Acción</td>
                         </tr>
+                        </thead>
+                        <tbody>
                         @foreach($tipos as $tipo)
                             <tr data-id="{{$tipo->id}}">
                                 <td>{{$tipo->id}}</td>
@@ -37,11 +40,12 @@
                         @endforeach
                         </tbody>
                     </table>
-                    {!! $tipos->setPath('')->render()!!}
-                    <div>
-                        <div class="col-xs-12 col-sm-6 col-md-10 col-md-offset-9">
-                            {!! Html::link(route('maestros.tiposequipos.create'),'Incluir',['class'=>'btn btn-success']) !!}
-                            {!! Html::link('#','Cancelar',['class'=>'btn btn-primary']) !!}
+                    </div>
+                    {{--{!! $tipos->setPath('')->render()!!}--}}
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                            {!! Html::link(route('maestros.tiposequipos.create'),'Incluir',['class'=>'btn btn-success col-xs-12 col-sm-2 col-md-2 incluir']) !!}
+                            {!! Html::link('/','Cancelar',['target'=>'_parent','class'=>'btn btn-primary col-lg-1 col-xs-12 col-sm-2 col-md-2 cancelar']) !!}
 
                         </div>
                     </div>

@@ -1,10 +1,10 @@
 @extends('maestros.estados')
 @section('content')
-<div class="container-fluid ">
+<div class="container-fluid">
     <div class="row">
-        <div class="col">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <div class="panel panel-default">
-                <div class="panel-heading"><h4>Lista de Estados</h4></div>
+                <div class="panel-heading"><h4>Lista de estados</h4></div>
                 @if(Session::has('message') && Session::has('bandera'))
                     @if(Session::get('bandera')==='update')
                         @include('mensajes.update')
@@ -15,13 +15,16 @@
                     @endif
                 @endif
                     <div class="panel-body">
-                        <table class="table table-responsive">
-                            <tbody>
+                        <div class="table table-responsive">
+                        <table id="estadoe" class="table">
+                            <thead>
                             <tr>
                                 <th>#</th>
                                 <th>Nombre del Estado</th>
                                 <th>Acción</th>
                             </tr>
+                            </thead>
+                            <tbody>
                             @foreach($estados as $estado)
                                 <tr data-id="{{$estado->id}}">
                                     <td>{{$estado->id}}</td>
@@ -36,10 +39,13 @@
                             </tbody>
 
                         </table>
-                        {!! $estados->setPath('')->render() !!}
+                        </div>
                         <div class="row">
-                            <a href="{{route('maestros.estados.create')}}" class="btn btn-success col-lg-1 col-xs-12 col-sm-06 col-md-10" style="margin-bottom:1%; margin-left:0.5%;" role="button">Incluir</a>
-                            {!! Html::link('/','Cancelar',['target'=>'_parent','id'=>'reload','class'=>'btn btn-primary col-lg-1 col-xs-12 col-sm-06 col-md-10','style'=>'margin-left:0.3%; margin-right:0.5%;']) !!}
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                <a href="{{route('maestros.estados.create')}}" class="btn btn-success col-lg-1 col-xs-12 col-sm-2 col-md-2 incluir">Incluir</a>
+                                {!! Html::link('/','Cancelar',['target'=>'_parent','id'=>'reload','class'=>'btn btn-primary col-lg-1 col-xs-12 col-sm-2 col-md-2 cancelar']) !!}
+                            </div>
+
                         </div>
 
 

@@ -2,7 +2,7 @@
 @section('content')
     <div class="container-fluid">
         <div class="row">
-            <div class="col">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <div class="panel panel-default">
                     <div class="panel panel-heading"><h4>Centro de atención {!! $centro->nomb_centro !!}</h4></div>
                     <div class="panel-body">
@@ -18,23 +18,24 @@
                                 {!! Form::model($centro,['id'=>'formulario2','route'=>['maestros.centros.update',$centro->id],'method'=>'PUT','class'=>'']) !!}
                                 {!!Form::hidden('centro',$centro->id,['id'=>'centroId'])!!}
                                 @include('maestros.centros.partials.fields_view')
-                                <div class="">
-
-                                    {!! Form::button('Editar',['id'=>'editar','class'=>'btn btn-success col-lg-1 col-xs-12 col-sm-06 col-md-10','style'=>'margin-bottom:1%; margin-left:0.5%;']) !!}
-                                    {!! Form::submit('Aceptar',['id'=>'aceptar','class'=>'btn btn-warning col-lg-1 col-xs-12 col-sm-06 col-md-10','style'=>'margin-left:0.3%;margin-bottom:1%;']) !!}
-                                    {!! Form::button('Eliminar',['id'=>'eliminar','class'=>'btn btn-danger col-lg-1 col-xs-12 col-sm-06 col-md-10','style'=>'margin-left:0.3%;margin-bottom:1%;']) !!}
-                                    {!! Html::link(route('maestros.centros.index'),'Cancelar',['id'=>'cancelar','class'=>'btn btn-primary col-lg-1 col-xs-12 col-sm-06 col-md-10','style'=>'margin-left:0.3%']) !!}
+                                <div class="row">
+                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                    {!! Form::button('Editar',['id'=>'editar','class'=>'btn btn-success col-lg-1 col-xs-12 col-sm-2 col-md-2 editar']) !!}
+                                    {!! Form::submit('Aceptar',['id'=>'aceptar','class'=>'btn btn-warning col-lg-1 col-xs-12 col-sm-2 col-md-2 editar']) !!}
+                                    {!! Form::button('Eliminar',['id'=>'eliminar','class'=>'btn btn-danger col-lg-1 col-xs-12 col-sm-2 col-md-2','style'=>'margin-bottom:1%;margin-left:0.3%;margin-right:0.3%;']) !!}
+                                    {!! Html::link(route('maestros.centros.index'),'Cancelar',['id'=>'cancelar','class'=>'btn btn-primary col-lg-1 col-xs-12 col-sm-2 col-md-2 cancelar']) !!}
 
                                   {!! Form::close() !!}
+                                </div>
                                 </div>
                             </div>
                             <div id="serviciosdelcentro" class="tab-pane fade ">
                                <p>@include('maestros.centros.partials.fields2')</p>
                                 <div class="row">
-                                <div class="">
-                                {!! Form::button('Ver',['id'=>'ver','class'=>'btn btn-warning col-lg-1 col-xs-12 col-sm-06 col-md-10','style'=>'margin-bottom:1%; margin-left:0.5%;']) !!}
-                                {!! Form::button('Guardar',['id'=>'guardar','class'=>'btn btn-success col-lg-1 col-xs-12 col-sm-06 col-md-10','style'=>'margin-left:0.3%;margin-bottom:1%;']) !!}
-                                {!! Html::link(route('maestros.centros.index'),'Regresar',['id'=>'cancelar','class'=>'btn btn-primary col-lg-1 col-xs-12 col-sm-06 col-md-10','style'=>'margin-left:0.3%']) !!}
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                {!! Form::button('Ver',['id'=>'ver','class'=>'btn btn-warning col-lg-1 col-xs-12 col-sm-2 col-md-2 editar']) !!}
+                                {!! Form::button('Guardar',['id'=>'guardar','class'=>'btn btn-success col-lg-1 col-xs-12 col-sm-2 col-md-2 editar']) !!}
+                                {!! Html::link(route('maestros.centros.index'),'Regresar',['id'=>'cancelar','class'=>'btn btn-primary col-lg-1 col-xs-12 col-sm-2 col-md-2 cancelar']) !!}
                                 </div>
                                 </div>
                                 </br>

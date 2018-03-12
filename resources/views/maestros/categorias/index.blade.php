@@ -1,10 +1,10 @@
 @extends('maestros.categorias')
 @section('content')
-    <div class="container">
+    <div class="container-fluid">
         <div class="row">
-            <div class="col-xs-12 col-sm-6 col-md-10 col-md-offset-1">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <div class="panel panel-default">
-                    <div class="panel-heading"><h4>Lista de Categorias</h4></div>
+                    <div class="panel-heading"><h4>Lista de categorías</h4></div>
                     {!! Form::open(['route' => ['maestros.categorias.destroy',':USER_ID'],'method' => 'DELETE','id'=>'form-delete']) !!}
                     {!! Form::close() !!}
                    @if(Session::has('message') && Session::has('bandera'))
@@ -19,13 +19,16 @@
 
 
                     <div class="panel-body">
-                        <table class="table table-responsive">
-                            <tbody>
+                        <div class="table table-responsive">
+                        <table id="categoria" class="table">
+                            <thead>
                             <tr>
                                 <th>#</th>
-                                <th>Categoria del centro</th>
+                                <th>Categoría del centro</th>
                                 <th>Acción</th>
                             </tr>
+                            </thead>
+                            <tbody>
                             @foreach($categorias as $categoria)
                                 <tr data-id="{{$categoria->id}}">
                                     <td>{{$categoria->id}}</td>
@@ -38,11 +41,12 @@
                             @endforeach
                             </tbody>
                         </table>
-                        {!! $categorias->setPath('')->render() !!}
-                        <div>
-                            <div class="col-xs-12 col-sm-6 col-md-10 col-md-offset-9">
-                                {!! Html::link(route('maestros.categorias.create'),'Incluir',['class'=>'btn btn-success']) !!}
-                                {!! Html::link('','Cancelar',['class'=>'btn btn-primary']) !!}
+                        </div>
+                        {{--{!! $categorias->setPath('')->render() !!}--}}
+                        <div class="row">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                {!! Html::link(route('maestros.categorias.create'),'Incluir',['class'=>'btn btn-success col-lg-1 col-xs-12 col-sm-2 col-md-2 incluir']) !!}
+                                {!! Html::link('','Cancelar',['class'=>'btn btn-primary col-lg-1 col-xs-12 col-sm-2 col-md-2 cancelar']) !!}
                             </div>
                         </div>
                     </div>

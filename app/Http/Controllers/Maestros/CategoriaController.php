@@ -29,7 +29,7 @@ class CategoriaController extends Controller
     public function index()
     {
         $categorias = Categoria::orderBy('nomb_categoria', 'ASC')
-            ->paginate(4);
+            ->get();
         return view('maestros.categorias.index', compact('categorias'));
     }
 

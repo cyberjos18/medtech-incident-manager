@@ -28,7 +28,7 @@ class LocalidadController extends Controller
     {
         $localidades=Localidad::orderBy('nomb_localidad','ASC')
         ->with('estado')
-        ->paginate(10);
+        ->get();
         return view('maestros.localidades.index',compact('localidades'));
     }
 

@@ -25,7 +25,7 @@ class InventarioController extends Controller
     {
         $equipos=Equipo::orderBy('tipoequipo_id','ASC')
             ->with('centro','servicio')
-            ->paginate(10);
+            ->get();
             return view('inventario.equipos.index',compact('equipos'));
     }
 
