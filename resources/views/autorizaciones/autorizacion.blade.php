@@ -19,7 +19,9 @@
     {!! Html::script('js/dataTables.bootstrap4.min.js') !!}
     {!! Html::style('/css/bootstrap.min.css') !!}
     {!! Html::style('/css/dataTables.bootstrap4.min.css') !!}
+    <meta name="csrf-token" content="{{csrf_token()}}">
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Autorizacion</title>
 </head>
 <body>

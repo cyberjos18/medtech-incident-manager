@@ -71,11 +71,13 @@
             </table>
 
         </div>
-        <div class="col-xs-12 col-sm-10 col-md-08 col-md-offset-8">
-            {!! Form::button('Editar',['id'=>'editar','class'=>'btn btn-success','style'=>'margin-right:4px']) !!}
-            {!! Form::submit('Aceptar',['id'=>'aceptar','class'=>'btn btn-warning']) !!}
+        <div class="row">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            {!! Form::button('Editar',['id'=>'editar','class'=>'btn btn-success col-lg-1 col-xs-12 col-sm-2 col-md-2 editar']) !!}
+            {!! Form::submit('Aceptar',['id'=>'aceptar','class'=>'btn btn-warning col-lg-1 col-xs-12 col-sm-2 col-md-2 incluir']) !!}
             {{--{!! Form::button('Eliminar',['id'=>'eliminar','class'=>'btn btn-danger']) !!}--}}
-            {!! Html::link(route('solicitudes.solicitudservicio.index'),'Cancelar',['class'=>'btn btn-primary']) !!}
+            {!! Html::link(route('solicitudes.solicitudservicio.index'),'Cancelar',['class'=>'btn btn-primary col-lg-1 col-xs-12 col-sm-2 col-md-2 cancelar']) !!}
+        </div>
         </div>
         </div>
 

@@ -1,8 +1,8 @@
 @extends('solicitudes.solicitudservicio')
 @section('content')
-    <div class="container">
+    <div class="container-fluid">
         <div class="row">
-           <div class="col">
+           <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                <div class="panel panel-default">
                    <div class="panel-heading"><h4>Solicitudes de Servicio</h4></div>
                    @if(Session::has('message') && Session::has('bandera'))
@@ -15,7 +15,8 @@
                        @endif
                    @endif
                    <div class="panel-body">
-                       <table class="table table-responsive" id="solicitud">
+                       <div class="table table-responsive">
+                       <table class="table" id="solicitud">
                            <thead>
                            <tr>
                                <th>#</th>
@@ -43,13 +44,14 @@
                            </tbody>
 
                        </table>
-
-                       <div class="col-xs-12 col-sm-06 col-md-10">
-                           <br>
-                           {!! Html::link(route('solicitudes.solicitudservicio.create'),'Incluir',['class'=>'btn btn-success']) !!}
-                           {!! Html::link('#','Cancelar',['class'=>'btn btn-primary']) !!}
                        </div>
-
+                       <div class="row">
+                       <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                           <br>
+                           {!! Html::link(route('solicitudes.solicitudservicio.create'),'Incluir',['class'=>'btn btn-success col-lg-1 col-xs-12 col-sm-2 col-md-2 incluir']) !!}
+                           {!! Html::link('/','Cancelar',['target'=>'_parent','class'=>'btn btn-primary col-lg-1 col-xs-12 col-sm-2 col-md-2 cancelar']) !!}
+                       </div>
+                       </div>
                        </div>
 
                    </div>

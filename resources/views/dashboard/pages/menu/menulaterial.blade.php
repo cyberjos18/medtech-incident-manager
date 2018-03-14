@@ -21,13 +21,13 @@
                     <a><i class="fa fa-sitemap fa-fw"></i> Maestros <span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
                         <li>
-                            <a>Centros De Atención<span class="fa arrow"></span></a>
+                            <a>Centros de atención<span class="fa arrow"></span></a>
                             <ul class="nav nav-third-level">
                                 <li>
-                                    {!! Html::link(route('maestros.categorias.index'),'Categorias Del Centro',['target'=>'centro']) !!}
+                                    {!! Html::link(route('maestros.categorias.index'),'Categorias del centro',['target'=>'centro']) !!}
                                 </li>
                                 <li>
-                                    {!! Html::link(route('maestros.centros.index'),'Datos Del Centro',['target'=>'centro']) !!}
+                                    {!! Html::link(route('maestros.centros.index'),'Datos del centro',['target'=>'centro']) !!}
                                 </li>
                             </ul>
                             <!-- /.nav-third-level -->
@@ -43,7 +43,7 @@
                             {!! Html::link(route('maestros.proveedores.index'),'Proveedores',['target'=>'centro']) !!}
                         </li>
                         <li>
-                            {!! Html::link(route('maestros.tiposequipos.index'),'Tipos De Equipos Medicos',['target'=>'centro']) !!}
+                            {!! Html::link(route('maestros.tiposequipos.index'),'Tipos de equipos medicos',['target'=>'centro']) !!}
                         </li>
 
                     </ul>
@@ -59,6 +59,24 @@
                 </ul>
                 <!-- /.nav-second-level -->
             </li>
+                <li>
+                    <a><i class="fa fa-clipboard fa-fw"></i> Solicitudes de servicio<span class="fa arrow"></span></a>
+                    <ul class="nav nav-second-level">
+                        <li>
+                            {!! Html::link(route('solicitudes.solicitudservicio.index'),'Registro de solicitud',['target'=>'centro']) !!}
+                        </li>
+                    </ul>
+                    <!-- /.nav-second-level -->
+                </li>
+                <li>
+                    <a><i class="fa fa-clipboard fa-fw"></i> Autorizaciones<span class="fa arrow"></span></a>
+                    <ul class="nav nav-second-level">
+                        <li>
+                            {!! Html::link(route('autorizaciones.autorizacionservicio.index'),'Registro de autorización',['target'=>'centro']) !!}
+                        </li>
+                    </ul>
+                    <!-- /.nav-second-level -->
+                </li>
             <li>
                 <a href="tables.html"><i class="fa fa-table fa-fw"></i> Tables</a>
             </li>

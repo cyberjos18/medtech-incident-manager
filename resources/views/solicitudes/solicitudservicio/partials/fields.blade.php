@@ -36,14 +36,18 @@
     {!! Form::text('observaciones',null,['id'=>'observaciones','class'=>'form-control','placeholder'=>'Describa por que la solicitud no procede']) !!}
 </div>
 <br>
-<div ><h5>Equipos reportados</h5></div>
+    <div class="row">
+        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+          <div><h5>Equipos reportados</h5></div>
+        </div>
+        <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+            {!! Form::button('+',['id'=>'mas','class'=>'btn btn-info col-lg-2 col-md-5 col-sm-5 col-xs-8 mas']) !!}
+            {!! Form::button('-',['id'=>'menos','class'=>'btn btn-info col-lg-2 col-md-5 col-sm-5 col-xs-8 menos']) !!}
+        </div>
+    </div>
+</div>
 <hr  style="color:#000000;" />
 <div class="form-group">
-    <div class="col-xs-12 col-sm-8 col-md-08 col-md-offset-10">
-        {!! Form::button('+',['id'=>'mas','class'=>'btn btn-info']) !!}
-        {!! Form::button('-',['id'=>'menos','class'=>'btn btn-info']) !!}
-    </div>
-
     </br>
     </br>
     <div class="panel-body">
@@ -66,9 +70,9 @@
             </table>
 
         </div>
-        <div class="col-xs-12 col-sm-10 col-md-08 col-md-offset-8">
-            {!! Form::submit('Guardar',['id'=>'guardar','class'=>'btn btn-success']) !!}
-            {!! Html::link(route('solicitudes.solicitudservicio.index'),'Cancelar',['class'=>'btn btn-primary']) !!}
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            {!! Form::submit('Guardar',['id'=>'guardar','class'=>'btn btn-success col-lg-1 col-xs-12 col-sm-2 col-md-2 incluir']) !!}
+            {!! Html::link(route('solicitudes.solicitudservicio.index'),'Cancelar',['class'=>'btn btn-primary col-lg-1 col-xs-12 col-sm-2 col-md-2 cancelar']) !!}
         </div>
         </div>
 
