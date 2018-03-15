@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <!-- jQuery -->
-{!! Html::script('/js/jquery-3.0.0.min.js') !!}
+{!! Html::script('/js/jquery-3.1.1.min.js') !!}
 <!-- Bootstrap Core JavaScript -->
 {!! Html::script('/js/bootstrap.min.js') !!}
 <!-- Metis Menu Plugin JavaScript -->

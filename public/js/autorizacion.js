@@ -10,6 +10,7 @@ $(document).ready(function(){
         // "paging": false,
         // "info": false,
         //
+        
         "language": {
             "search": "Buscar: ",
             "searchPlaceholder": "Escriba los datos que desea buscar",

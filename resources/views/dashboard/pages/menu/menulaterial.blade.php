@@ -69,7 +69,7 @@
                     <!-- /.nav-second-level -->
                 </li>
                 <li>
-                    <a><i class="fa fa-clipboard fa-fw"></i> Autorizaciones<span class="fa arrow"></span></a>
+                    <a><i class="fa fa-share-square fa-fw"></i> Autorizaciones<span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
                         <li>
                             {!! Html::link(route('autorizaciones.autorizacionservicio.index'),'Registro de autorización',['target'=>'centro']) !!}
