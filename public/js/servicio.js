@@ -42,7 +42,7 @@ $(document).ready(function(){
 
                                 $("#contenido").html('');
                                 $.each(data.resultado,function (index,value) {
-                                    $("#contenido").fadeIn("slow").append("<tr><td>"+value.id+"</td><td>"+value.nomb_servicio+"</td><td><a  href='http://127.0.0.1/dgmtm/public/maestros/servicios/"+value.id+"/edit'>Editar</a></td></tr>");
+                                    $("#contenido").fadeIn("slow").append("<tr><td>"+value.id+"</td><td>"+value.nomb_servicio+"</td><td><a  href='/dgmtm/public/maestros/servicios/"+value.id+"/edit'>Editar</a></td></tr>");
                                 })
 
 

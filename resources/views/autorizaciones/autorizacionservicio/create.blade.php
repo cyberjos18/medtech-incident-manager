@@ -1,8 +1,8 @@
 @extends('autorizaciones.autorizacion')
 @section('content')
-    <div class="container">
+    <div class="container-fluid">
         <div class="row">
-            <div class="col">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <div class="panel panel-default">
                     <div class="panel-heading"><h4>Registro de Autorizacion</h4></div>
                     <div class="panel-body">

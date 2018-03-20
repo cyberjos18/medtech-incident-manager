@@ -27,9 +27,10 @@
     {!! Form::label('seguimiento','Seguimiento') !!}
     {!! Form::textarea('seguimiento',null,['segumiento','cols'=>'5','rows'=>'3','class'=>'form-control','placeholder'=>'Por favor ingrese el seguimiento que esta haciendo al caso']) !!}
 </div>
-<div class="">
-    {!! Form::button('Editar',['id'=>'editar','class'=>'btn btn-success col-xs-12 col-sm-12 col-md-12 col-lg-1','style'=>'margin-right:0.18%']) !!}
-    {!! Form::submit('Aceptar',['id'=>'aceptar','class'=>'btn btn-warning col-xs-12 col-sm-12 col-md-12 col-lg-1']) !!}
-    {!! Html::link(route('autorizaciones.autorizacionservicio.index'),'Cancelar',['id'=>'cancelar','class'=>'btn btn-primary col-lg-1 col-xs-12 col-sm-06 col-md-10','style'=>'margin-left:0.18%']) !!}
+<div class="row">
+<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+    {!! Form::button('Editar',['id'=>'editar','class'=>'btn btn-success col-lg-1 col-xs-12 col-sm-2 col-md-2 editar']) !!}
+    {!! Form::submit('Aceptar',['id'=>'aceptar','class'=>'btn btn-warning col-lg-1 col-xs-12 col-sm-2 col-md-2 incluir ']) !!}
+    {!! Html::link(route('autorizaciones.autorizacionservicio.index'),'Cancelar',['id'=>'cancelar','class'=>'btn btn-primary col-lg-1 col-xs-12 col-sm-2 col-md-2 cancelar']) !!}
 </div>
-
+</div>
