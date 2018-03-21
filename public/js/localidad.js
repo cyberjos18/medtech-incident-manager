@@ -14,7 +14,7 @@ $(document).ready(function () {
                 alert(result.message);
 
             }).fail(function () {
-                alert('No se pudo eliminar el registro');
+                alert('No se pudo eliminar el usuarios');
                 row.show();
 
             });

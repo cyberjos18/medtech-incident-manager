@@ -106,8 +106,8 @@ return [
         'message' =>
         [
             'delete' => 'Se ha eliminado de los registros',
-            'update'=> ' Se ha actualizado el registro',
-            'insert' => ' Se ha creado el registro',
+            'update'=> ' Se ha actualizado el usuarios',
+            'insert' => ' Se ha creado el usuarios',
             'error' => 'Ha ocurrido un error '
 
         ]

@@ -28,7 +28,7 @@ $(document).ready(function(){
 
             },
             error: function (e) {
-               alert("No se pudo eliminar el registro: " + e);
+               alert("No se pudo eliminar el usuarios: " + e);
                row.show();
             }
 

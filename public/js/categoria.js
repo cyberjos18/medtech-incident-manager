@@ -14,7 +14,7 @@ $(document).ready(function () {
                 alert(result.message);
 
             }).fail(function (xhr) {
-                alert('No se pudo eliminar el registro, ver la consola');
+                alert('No se pudo eliminar el usuarios, ver la consola');
                 console.log(xhr.responseText);
                 row.show();
 

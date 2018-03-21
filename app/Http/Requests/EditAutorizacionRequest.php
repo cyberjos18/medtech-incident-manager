@@ -52,7 +52,7 @@ class EditAutorizacionRequest extends Request
                 'numero_autorizacion.required'     => 'Necesitamos el numero de autorizacion',
                 'numero_autorizacion.max'          => 'El numero de autorizacion debe contener maximo 11 caracteres',
                 'numero_autorizacion.unique'       => 'El numero de autorizacion ya existe !!!',
-                'fecha_autorizacion.required'      => 'Necesitamos la fecha de registro de autorizacion',
+                'fecha_autorizacion.required'      => 'Necesitamos la fecha de usuarios de autorizacion',
                 'fecha_autorizacion.date_format'   => 'El formato de la fecha es incorrecto debe ser: DD-MM-YYYY, DD-MM-YY',
                 'solicitud_id.required'            => 'Necesitamos que seleccione el numero de solicitud',
                 'solicitud_id.unique'              => 'El numero de solicitud que intentas asociar ya esta asignado a una autorizacion !!!',

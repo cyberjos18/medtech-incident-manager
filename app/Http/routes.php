@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('dashboard.inicio');
+    return view('ingreso.acceso.login');
 });
 
 Route::group(['prefix'=>'maestros','namespace'=>'\Maestros'],function(){
@@ -24,6 +24,7 @@ Route::group(['prefix'=>'maestros','namespace'=>'\Maestros'],function(){
     Route::resource('proveedores','ProveedorController');
     Route::resource('servicios','ServicioController');
     Route::resource('tiposequipos','TipoEquipoController');
+    Route::resource('usuarios','UserController');
     Route::get('estado','EstadoController@eliminar');
     Route::get('proveedorDelete','ProveedorController@eliminar');
     Route::get('buscarLocalidad','CentroController@buscarLocalidades');
@@ -32,7 +33,7 @@ Route::group(['prefix'=>'maestros','namespace'=>'\Maestros'],function(){
     Route::get('servicioListar','ServicioController@index');
     Route::get('servicioEliminar','ServicioController@destroy');
     Route::get('tipoDelete','TipoEquipoController@destroy');
-});
+    });
 Route::group(['prefix'=>'inventario','namespace'=>'\Inventario'],function() {
     
     Route::resource('equipos','InventarioController' );
