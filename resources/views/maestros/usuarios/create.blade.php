@@ -1,4 +1,4 @@
-@extends('maestros.usuarios.usuarios')
+@extends('maestros.usuarios')
 @section('content')
     <div class="container-fluid">
         <div class="row">
@@ -11,7 +11,7 @@
                         <div class="row">
                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                 {!! Form::submit('Guardar',['id'=>'guardar','class'=>'btn btn-success col-lg-1 col-xs-12 col-sm-2 col-md-2 incluir']) !!}
-                                {!! Html::link(route('maestros.tiposequipos.index'),'Cancelar',['class'=>'btn btn-primary col-lg-1 col-xs-12 col-sm-2 col-md-2 cancelar']) !!}
+                                {!! Html::link(route('maestros.usuarios.index'),'Cancelar',['class'=>'btn btn-primary col-lg-1 col-xs-12 col-sm-2 col-md-2 cancelar']) !!}
                             </div>
                         </div>
                         {!! Form::close() !!}

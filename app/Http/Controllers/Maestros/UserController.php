@@ -2,6 +2,7 @@
 
 namespace dgmtm\Http\Controllers\Maestros;
 
+use dgmtm\User;
 use Illuminate\Http\Request;
 
 use dgmtm\Http\Requests;
@@ -16,7 +17,9 @@ class UserController extends Controller
      */
     public function index()
     {
-        
+        $usuarios=User::orderBy('id','DESC')
+            ->get();
+        return view('maestros.usuarios.index',compact('usuarios'));
     }
 
     /**
