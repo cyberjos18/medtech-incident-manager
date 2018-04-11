@@ -45,7 +45,6 @@
                                 <a href="{{route('maestros.estados.create')}}" class="btn btn-success col-lg-1 col-xs-12 col-sm-2 col-md-2 incluir">Incluir</a>
                                 {!! Html::link('/','Cancelar',['target'=>'_parent','id'=>'reload','class'=>'btn btn-primary col-lg-1 col-xs-12 col-sm-2 col-md-2 cancelar']) !!}
                             </div>
-
                         </div>
 
 
