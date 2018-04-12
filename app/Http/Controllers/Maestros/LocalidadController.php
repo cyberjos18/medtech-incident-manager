@@ -14,6 +14,7 @@ use dgmtm\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Session;
 
 use Illuminate\Support\Facades\Validator;
+use Route;
 
 
 class LocalidadController extends Controller
@@ -154,56 +155,9 @@ class LocalidadController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(EditLocalidadRequest $request, $id)
     {
 
-        $data=
-            [
-                'estado_id' => $request->estado_id,
-                'nomb_localidad' => $request->nomb_localidad
-            ];
-        $rules=
-            [
-                'estado_id' => 'required',
-
-
-            ];
-        $messages=
-            [
-                'estado_id.required' => 'Necesitamos que elija un estado',
-                'nomb_localidad.required' => 'Necesitamos el nombre de la localidad',
-                'nomb_localidad.unique' => 'La localidad ya esta registrada para este estado'
-
-            ];
-
-        $v=Validator::make($data,$rules,$messages);
-        $v->sometimes('nomb_localidad','required|unique:localidades,nomb_localidad,9',function($input)
-        {
-
-            $estado=Localidad::select('estado_id','nomb_localidad')
-                ->where('estado_id','=',$input->estado_id)
-                ->where('nomb_localidad','=',$input->nomb_localidad)
-                ->selectRaw('count(*) as cantidad')
-                ->first();
-
-
-            $valor=$estado->cantidad;
-
-            if($valor>1)
-            {
-                return $input->estado_id=$estado->estado_id;
-            }
-
-        });
-
-        if ($v->fails())
-        {
-            return redirect()->back()
-                ->withErrors($v->errors())
-                ->withInput();
-        }
-        else
-        {
             $localidad=Localidad::findOrFail($id);
             $localidad->estado_id=$request->estado_id;
             $localidad->nomb_localidad=mb_strtoupper($request->nomb_localidad);
@@ -215,7 +169,7 @@ class LocalidadController extends Controller
             return redirect()->route('maestros.localidades.index');
 
 
-        }
+
 
 
 
