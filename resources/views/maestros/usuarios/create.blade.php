@@ -5,6 +5,7 @@
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <div class="panel panel-default">
                     <div class="panel-heading"><h4>Registro de usuario</h4></div>
+                    @include('mensajes.validation')
                     <div class="panel-body">
                         {!! Form::open(['route'=>'maestros.usuarios.store','method'=>'POST','class'=>'']) !!}
                         @include('maestros.usuarios.partials.field')

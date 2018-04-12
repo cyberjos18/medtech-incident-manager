@@ -12,7 +12,8 @@
 */
 
 Route::get('/', function () {
-    return view('ingreso.acceso.login');
+//    return view('ingreso.acceso.login');
+    return view('dashboard.inicio');
 });
 
 Route::group(['prefix'=>'maestros','namespace'=>'\Maestros'],function(){

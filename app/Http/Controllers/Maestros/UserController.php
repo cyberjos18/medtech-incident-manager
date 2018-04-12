@@ -2,6 +2,7 @@
 
 namespace dgmtm\Http\Controllers\Maestros;
 
+use dgmtm\Http\Requests\CreateUserRequest;
 use dgmtm\User;
 use Illuminate\Http\Request;
 
@@ -38,7 +39,7 @@ class UserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CreateUserRequest $request)
     {
         //
     }
