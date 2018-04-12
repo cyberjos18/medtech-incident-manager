@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 
 use dgmtm\Http\Requests;
 use dgmtm\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Session;
 
 class UserController extends Controller
 {
@@ -41,7 +42,17 @@ class UserController extends Controller
      */
     public function store(CreateUserRequest $request)
     {
-        //
+        $usuario=new User();
+        $usuario->name=mb_strtoupper($request->name);
+        $usuario->email=$request->email;
+        $usuario->password=$request->password;
+        $usuario->perfil_user=$request->perfil_user;
+        $usuario->save();
+        $insert=trans('validation.attributes.message.insert');
+        $bandera='insert';
+        Session::flash('bandera',$bandera);
+        Session::flash('message',$insert);
+        return redirect()->route('maestros.usuarios.index');
     }
 
     /**
