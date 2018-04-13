@@ -27,6 +27,10 @@ class AuthController extends Controller
      *
      * @return void
      */
+    //entre comillas la ruta a la que deseas redireccionar
+    
+    protected $redirectTo = '/';
+    
     public function __construct()
     {
         $this->middleware('guest', ['except' => 'getLogout']);
@@ -59,12 +63,9 @@ class AuthController extends Controller
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
+
         ]);
     }
 
-    public function postLogin()
-    {
-
-    }
-
+   
 }

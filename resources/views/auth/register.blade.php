@@ -1,20 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    {!! Html::script('/js/jquery-3.1.1.min.js') !!}
-    {!! Html::script('/js/usuario.js') !!}
-    {!! Html::script('/js/bootstrap.min.js') !!}
-    {!! Html::script('/js/jquery.dataTables.min.js') !!}
-    {!! Html::script('js/dataTables.bootstrap4.min.js') !!}
-    {!! Html::style('/css/bootstrap.min.css') !!}
-    {!! Html::style('/css/dataTables.bootstrap4.min.css') !!}
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="csrf-token" content="{{csrf_token()}}" >
-    <title>Usuarios</title>
-</head>
-<body>
-</br>
+@extends('auth.app')
+@section('content')
 <div class="container-fluid">
     <div class="row">
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -22,7 +7,7 @@
                 <div class="panel-heading"><h4>Registro de usuario</h4></div>
                 @include('mensajes.validation')
                 <div class="panel-body">
-                    {!! Form::open(['route'=>'maestros.usuarios.store','method'=>'POST','class'=>'']) !!}
+                    {!! Form::open(['route' => 'auth/register', 'class' => 'form']) !!}
                     <div class="form-group">
                         {!! Form::label('name','Nombre') !!}
                         {!! Form::text('name',null,['id'=>'name','class'=>'form-control','placeholder'=>'Por favor escriba el nombre del usuario']) !!}
@@ -58,5 +43,4 @@
     </div>
 
 </div>
-</body>
-</html>
+@endsection

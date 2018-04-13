@@ -1,29 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    {!! Html::script('/js/jquery-3.1.1.min.js') !!}
-    <!-- Bootstrap Core JavaScript -->
-    {!! Html::script('/js/bootstrap.min.js') !!}
-    <!-- Metis Menu Plugin JavaScript -->
-    {!! Html::script('/dashboard/vendor/metisMenu/metisMenu.min.js') !!}
-    <!-- Custom Theme JavaScript -->
-    {!! Html::script('/dashboard/dist/js/sb-admin-2.js') !!}
-    <!-- Bootstrap Core CSS -->
-    {!! Html::style('/css/bootstrap.css') !!}
-    <!-- MetisMenu CSS -->
-    {!! Html::style('/dashboard/vendor/metisMenu/metisMenu.min.css') !!}
-    <!-- Custom CSS -->
-    {!! Html::style('/dashboard/dist/css/sb-admin-2.css') !!}
-    <!-- Custom Fonts -->
-    {!! Html::style('/dashboard/vendor/font-awesome/css/font-awesome.min.css') !!}
-
-
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="csrf-token" content="{{csrf_token()}}" >
-    <title>Inicio de sesion</title>
-</head>
-<body>
+@extends('auth.app')
+@section('content')
 <div class="container-fluid">
     <div class="row">
         <div class="col-md-4 col-md-offset-4">
@@ -32,15 +8,15 @@
                     <h3 class="panel-title">Ingrese al sistema</h3>
                 </div>
                 <div class="panel-body">
-
-                    <form method="POST" action="../auth/login">
+                    @include('mensajes.validation')
+                    {!! Form::open(['route' => 'auth/login', 'class' => 'form']) !!}
                         {!! csrf_field() !!}
                         <fieldset>
                             <div class="form-group">
-                                <input class="form-control" placeholder="E-mail" name="email" type="email" autofocus>
+                                {!! Form::email('email', '', ['class'=> 'form-control']) !!}
                             </div>
                             <div class="form-group">
-                                <input class="form-control" placeholder="Password" name="password" type="password" value="">
+                                {!! Form::password('password', ['class'=> 'form-control']) !!}
                             </div>
                             <div class="checkbox">
                                 <label>
@@ -50,12 +26,11 @@
                             <!-- Change this to a button or input when using this as a form -->
                             {!! Form::submit('Login',['id'=>'login','class'=>'btn btn-lg btn-success btn-block']) !!}
                         </fieldset>
-                    </form>
+                  {!! Form::close() !!}
 
                 </div>
             </div>
         </div>
     </div>
 </div>
-</body>
-</html>
+@endsection
