@@ -11,10 +11,11 @@
 |
 */
 
-Route::get('/', function () {
-//    return view('ingreso.acceso.login');
-    return view('dashboard.inicio');
-});
+//Route::get('/', function () {
+//
+//    return view('dashboard.inicio');
+//});
+Route::resource('/','Home\HomeController');
 // Authentication routes...
 Route::get('auth/login', 'Auth\AuthController@getLogin');
 Route::post('auth/login', 'Auth\AuthController@postLogin');
