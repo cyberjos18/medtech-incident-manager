@@ -7,7 +7,7 @@
                 <div class="panel-heading"><h4>Registro de usuario</h4></div>
                 @include('mensajes.validation')
                 <div class="panel-body">
-                    {!! Form::open(['route' => 'auth/register', 'class' => 'form']) !!}
+                    {!! Form::open(['route' => 'maestros.usuarios.store', 'class' => 'form']) !!}
                     <div class="form-group">
                         {!! Form::label('name','Nombre') !!}
                         {!! Form::text('name',null,['id'=>'name','class'=>'form-control','placeholder'=>'Por favor escriba el nombre del usuario']) !!}

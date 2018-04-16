@@ -8,7 +8,13 @@ $(document).ready(function(){
     var $chardonut=$("#chartdonut");
     var $chat=$("#chat");
     var $cabecera=$("#cabecera");
-    var $rcancelar=$("#rca")
+    var $rcancelar=$("#rca");
+
+    // Nos preocupamos por conocer el perfil de usuario asi como identificar los distintos modulos de la aplicacion
+
+    var $perfil=$("#perfil");
+    var $maestros=$("#maestros");
+    var $inventarios=$("#inventarios");
 
     function ocultarDivIframe()
     {
@@ -30,6 +36,22 @@ $(document).ready(function(){
 ////////////////////////////////////// Llamar funciones ///////////////////////////////////
 
     ocultarDivIframe();
+
+    switch($perfil.val())
+    {
+        case 'Usuario':
+            $maestros.hide();
+            $inventarios.hide();
+            break;
+        case 'Administrador':
+            $maestros.show();
+            $inventarios.show();
+            break;
+        default:alert("Este perfil de usuario no existe en los registros");
+            location.href='auth/login';
+
+    }
+    
 
     $(':link').click(function(){
        mostrarDivIframe();

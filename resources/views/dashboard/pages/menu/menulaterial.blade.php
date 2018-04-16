@@ -18,7 +18,7 @@
             </li>
                 <!--maestros de datos-->
                 <li>
-                    <a><i class="fa fa-sitemap fa-fw"></i> Maestros <span class="fa arrow"></span></a>
+                    <a id="maestros"><i class="fa fa-sitemap fa-fw"></i> Maestros <span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
                         <li>
                             <a>Centros de atención<span class="fa arrow"></span></a>
@@ -51,7 +51,7 @@
                 </li>
                 <!--/end maestros-->
             <li>
-                <a><i class="fa fa-archive fa-fw"></i> Inventario<span class="fa arrow"></span></a>
+                <a id="inventarios"><i class="fa fa-archive fa-fw"></i> Inventario<span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level">
                     <li>
                         {!! Html::link(route('inventario.equipos.index'),'Equipos Medicos',['target'=>'centro']) !!}

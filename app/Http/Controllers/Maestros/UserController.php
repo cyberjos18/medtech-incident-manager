@@ -12,6 +12,10 @@ use Illuminate\Support\Facades\Session;
 
 class UserController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -31,7 +35,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        return view('maestros.usuarios.create');
+        return view('auth.register');
     }
 
     /**
@@ -45,7 +49,7 @@ class UserController extends Controller
         $usuario=new User();
         $usuario->name=mb_strtoupper($request->name);
         $usuario->email=$request->email;
-        $usuario->password=$request->password;
+        $usuario->password=bcrypt($request->password);
         $usuario->perfil_user=$request->perfil_user;
         $usuario->save();
         $insert=trans('validation.attributes.message.insert');

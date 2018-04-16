@@ -38,6 +38,7 @@ class CreateUserRequest extends Request
                 "name.required"         => 'Necesitamos el nombre del usuario',
                 "email.required"        => 'Necesitamos un correo electronico',
                 "email.email"           => 'Este email no cumple con un formato valido ej: email@dominio.com',
+                "email.unique"          => 'El email que intenta registrar ya existe, verifique e intente de nuevo',
                 "password.required"     => 'Necesitamos que coloque un password',
                 'password.confirmed'    => 'El password ingresado no coincide',
                 'perfil_user.required'  => 'Seleccione el perfil del usuario'
