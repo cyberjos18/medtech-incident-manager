@@ -75,6 +75,7 @@
                 </div>
                 <div>
                     {!! Form::hidden('perfil',Auth::user()->perfil_user,['id'=>'perfil']) !!}
+
                 </div>
                 <br>
 
