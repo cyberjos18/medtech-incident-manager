@@ -5,6 +5,7 @@ namespace dgmtm\Http\Controllers\Auth;
 use dgmtm\User;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Validator;
 use dgmtm\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
@@ -32,6 +33,8 @@ class AuthController extends Controller
    //entre comillas la ruta a la que deseas redireccionar
    
     protected $redirectPath = '/';
+    protected $loginPath = 'auth/login';
+
 
     public function __construct()
     {
