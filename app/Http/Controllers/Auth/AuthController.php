@@ -31,7 +31,7 @@ class AuthController extends Controller
      * @return void
      */
    //entre comillas la ruta a la que deseas redireccionar
-   
+    
     protected $redirectPath = '/';
     protected $loginPath = 'auth/login';
 

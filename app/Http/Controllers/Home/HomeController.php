@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 
 use dgmtm\Http\Requests;
 use dgmtm\Http\Controllers\Controller;
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Session;
 
 class HomeController extends Controller
@@ -30,7 +31,10 @@ class HomeController extends Controller
         $estatus=Auth::user()->estatus;
         if($estatus==='Activo' && Auth::check())
         {
+            
             return view('dashboard.inicio');
+            
+            
         }
         else
             if($estatus==='Inactivo')

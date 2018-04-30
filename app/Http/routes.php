@@ -15,6 +15,7 @@
 //
 //    return view('dashboard.inicio');
 //});
+
 Route::resource('/','Home\HomeController');
 
 // Authentication routes...

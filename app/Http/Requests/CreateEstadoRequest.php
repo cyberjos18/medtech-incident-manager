@@ -28,13 +28,13 @@ class CreateEstadoRequest extends Request
             'nomb_estado'=>'required|unique:estados'
         ];
     }
-    public function messages()
-    {
-
-        return [
-            'nomb_estado.required'=>'Necesitamos el nombre de un estado',
-            'nomb_estado.unique'=>'El estado que intentas registrar ya existe'
-        ];
-        
-    }
+//    public function messages()
+//    {
+//
+//        return [
+//            'nomb_estado.required'=>'Necesitamos el nombre de un estado',
+//            'nomb_estado.unique'=>'El estado que intentas registrar ya existe'
+//        ];
+//
+//    }
 }

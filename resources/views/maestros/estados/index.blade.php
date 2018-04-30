@@ -14,14 +14,15 @@
                         @include('mensajes.success')
                     @endif
                 @endif
+
                     <div class="panel-body">
                         <div class="table table-responsive">
                         <table id="estadoe" class="table">
                             <thead>
                             <tr>
                                 <th>#</th>
-                                <th>Nombre del Estado</th>
-                                <th>Acción</th>
+                                <th>@lang('attributes.estate')</th>
+                                <th>@lang('attributes.action')</th>
                             </tr>
                             </thead>
                             <tbody>
