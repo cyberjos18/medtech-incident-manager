@@ -9,20 +9,25 @@
                 </div>
                 <div class="panel-body">
                     @include('mensajes.validation')
-                    {!! Form::open(['route' => 'auth/login', 'class' => 'form']) !!}
+                    @if(Session::has('message') && Session::has('bandera'))
+                        @if(Session::get('bandera')==='info')
+                            @include('mensajes.info')
+                        @endif
+                    @endif
+                    {!! Form::open(['route' => 'auth/login', 'class' => 'form','id'=>'formulariousuario']) !!}
                         {!! csrf_field() !!}
                         <fieldset>
                             <div class="form-group">
-                                {!! Form::email('email', '', ['class'=> 'form-control']) !!}
+                                {!! Form::email('email', '', ['id'=>'email','class'=> 'form-control']) !!}
                             </div>
                             <div class="form-group">
                                 {!! Form::password('password', ['class'=> 'form-control']) !!}
                             </div>
-                            <div class="checkbox">
-                                <label>
-                                    <input name="remember" type="checkbox" value="Remember Me">Remember Me
-                                </label>
-                            </div>
+                            {{--<div class="checkbox">--}}
+                                {{--<label>--}}
+                                    {{--<input name="remember" type="checkbox" value="Remember Me">Remember Me--}}
+                                {{--</label>--}}
+                            {{--</div>--}}
                             <!-- Change this to a button or input when using this as a form -->
                             {!! Form::submit('Iniciar Sesión',['id'=>'login','class'=>'btn btn-lg btn-success btn-block']) !!}
                         </fieldset>

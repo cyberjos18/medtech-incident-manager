@@ -2,10 +2,12 @@
 
 namespace dgmtm\Http\Controllers\Home;
 
+use Auth;
 use Illuminate\Http\Request;
 
 use dgmtm\Http\Requests;
 use dgmtm\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Session;
 
 class HomeController extends Controller
 {
@@ -20,7 +22,38 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('dashboard.inicio');
+        if(Auth::viaRemember())
+        {
+            return view('dashboard.inicio');
+        }
+
+        $estatus=Auth::user()->estatus;
+        if($estatus==='Activo' && Auth::check())
+        {
+            return view('dashboard.inicio');
+        }
+        else
+            if($estatus==='Inactivo')
+        {
+            $message='El usuario esta inactivo, contacte al administrador';
+            $info=$message;
+            $bandera='info';
+            Session::flash('bandera',$bandera);
+            Session::flash('message',$info);
+            Auth::logout();
+            return redirect()->route('auth/login');
+        }
+        else
+        {
+            $message='El usuario no  tiene un estatus valido!!!';
+            $info=$message;
+            $bandera='info';
+            Session::flash('bandera',$bandera);
+            Session::flash('message',$info);
+            Auth::logout();
+            return redirect()->route('auth/login');
+        }
+
     }
 
     /**

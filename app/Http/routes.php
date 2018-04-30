@@ -33,7 +33,7 @@ Route::post('password/email', 'Auth\PasswordController@postEmail');
 // Password reset routes...
 Route::get('password/reset/{token}', 'Auth\PasswordController@getReset');
 Route::post('password/reset', 'Auth\PasswordController@postReset');
-
+Route::post('verEstatus',['as'=>'verEstatus','uses'=>'VerEstatusController@verEstatus']);
 
 Route::group(['prefix'=>'maestros','namespace'=>'\Maestros'],function(){
     
@@ -53,7 +53,8 @@ Route::group(['prefix'=>'maestros','namespace'=>'\Maestros'],function(){
     Route::get('servicioListar','ServicioController@index');
     Route::get('servicioEliminar','ServicioController@destroy');
     Route::get('tipoDelete','TipoEquipoController@destroy');
-    });
+
+});
 Route::group(['prefix'=>'inventario','namespace'=>'\Inventario'],function() {
     
     Route::resource('equipos','InventarioController' );
