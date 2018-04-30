@@ -7,7 +7,19 @@
                     <div class="panel-heading"><h4>Restaurar datos inicio sesión</h4></div>
                     @include('mensajes.validation')
                     <div class="panel-body">
+                        <form method="POST" action={{route('password/email')}}>
+                            {!! csrf_field() !!}
+                            <div>
+                                Email
+                                <input type="email" class="form-control" name="email" value="{{ old('email') }}">
+                            </div>
 
+                            <div>
+                                <button type="submit" class="btn btn-success">
+                                    Send Password Reset Link
+                                </button>
+                            </div>
+                        </form>
                     </div>
 
                 </div>
