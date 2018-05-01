@@ -1,4 +1,5 @@
 <!--top menu -->
+
 <!-- icon message-->
     <ul class="nav navbar-top-links navbar-right">
         <li class="dropdown">
@@ -52,7 +53,6 @@
         <!-- /.dropdown-messages -->
         </li>
         <!--/end icon message-->
-
         <!-- /.dropdown -->
 
         <!-- icon task-->
@@ -218,6 +218,21 @@
         </li>
         <!-- /.dropdown -->
         <!-- /end icon user log -->
+        <!--Internacionalizacion-->
+        <li class="dropdown">
+            <a class="dropdown-toggle" data-toggle="dropdown">
+                <i class="fa fa-globe fa-fw"></i> <i class="fa fa-caret-down"></i>
+            </a>
+            <ul class="dropdown-menu dropdown-messages">
+                <li><a href={{ url('lang', ['es']) }}>Español</a>
+                </li>
+                <li><a href={{ url('lang', ['en']) }}>English</a>
+                </li>
+            </ul>
+            <!-- /.dropdown-Internacionalizacion -->
+        </li>
+        <!--/end icon Internacionalizacion-->
+        <!--/endInternacionalizacion-->
     </ul>
 <!-- /.navbar-top-links -->
 <!--/ end top menu -->
