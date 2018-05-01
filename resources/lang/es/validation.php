@@ -150,5 +150,6 @@ return [
         'time' => 'hora',
         'subject' => 'asunto',
         'message' => 'mensaje',
+        'nomb_estado' => 'Nombre del estado'
     ],
 ];

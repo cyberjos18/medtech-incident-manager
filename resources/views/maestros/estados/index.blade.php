@@ -16,6 +16,7 @@
                 @endif
 
                     <div class="panel-body">
+                        {!! Form::hidden('lenguaje',Session::get('lang'),['id'=>'lenguaje']) !!}
                         <div class="table table-responsive">
                         <table id="estadoe" class="table">
                             <thead>

@@ -18,10 +18,10 @@
                         {!! csrf_field() !!}
                         <fieldset>
                             <div class="form-group">
-                                {!! Form::email('email', '', ['id'=>'email','class'=> 'form-control']) !!}
+                                <i class="fa fa-user fa-fw"></i>{!! Form::email('email', '', ['id'=>'email','class'=> 'form-control']) !!}
                             </div>
                             <div class="form-group">
-                                {!! Form::password('password', ['class'=> 'form-control']) !!}
+                                <i class="fa fa-key fa-fw"></i>{!! Form::password('password', ['class'=> 'form-control']) !!}
                             </div>
                             {{--<div class="checkbox">--}}
                                 {{--<label>--}}
