@@ -16,12 +16,22 @@
                     @endif
                     {!! Form::open(['route' => 'auth/login', 'class' => 'form','id'=>'formulariousuario']) !!}
                         {!! csrf_field() !!}
-                        <fieldset>
+
                             <div class="form-group">
-                                <i class="fa fa-user fa-fw"></i>{!! Form::email('email', '', ['id'=>'email','class'=> 'form-control']) !!}
+                            <div class="input-group">
+                            <span class="input-group-addon">
+                            <i class="glyphicon glyphicon-envelope"></i>
+                           </span>
+                            {!! Form::email('email', '', ['id'=>'email','class'=> 'form-control']) !!}
+                            </div>
                             </div>
                             <div class="form-group">
-                                <i class="fa fa-key fa-fw"></i>{!! Form::password('password', ['class'=> 'form-control']) !!}
+                            <div class="input-group">
+                            <span class="input-group-addon">
+                            <i class="glyphicon glyphicon-lock"></i>
+                            </span>
+                               {!! Form::password('password', ['class'=> 'form-control']) !!}
+                            </div>
                             </div>
                             {{--<div class="checkbox">--}}
                                 {{--<label>--}}
@@ -29,8 +39,9 @@
                                 {{--</label>--}}
                             {{--</div>--}}
                             <!-- Change this to a button or input when using this as a form -->
+                            <br>
                             {!! Form::submit('Iniciar Sesión',['id'=>'login','class'=>'btn btn-lg btn-success btn-block']) !!}
-                        </fieldset>
+
                   {!! Form::close() !!}
 
                 </div>
