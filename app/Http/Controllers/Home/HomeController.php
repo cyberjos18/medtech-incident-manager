@@ -23,6 +23,7 @@ class HomeController extends Controller
      */
     public function index()
     {
+        
         if(Auth::viaRemember())
         {
             return view('dashboard.inicio');
