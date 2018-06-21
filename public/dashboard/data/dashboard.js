@@ -37,20 +37,20 @@ $(document).ready(function(){
 
     ocultarDivIframe();
 
-    switch($perfil.val())
-    {
-        case 'Usuario':
-            $maestros.hide();
-            $inventarios.hide();
-            break;
-        case 'Administrador':
-            $maestros.show();
-            $inventarios.show();
-            break;
-        default:alert("Este perfil de usuario no existe en los registros");
-            location.href='auth/login';
-
-    }
+    // switch($perfil.val())
+    // {
+    //     case 'Usuario':
+    //         $maestros.hide();
+    //         $inventarios.hide();
+    //         break;
+    //     case 'Administrador':
+    //         $maestros.show();
+    //         $inventarios.show();
+    //         break;
+    //     default:alert("Este perfil de usuario no existe en los registros");
+    //         location.href='auth/login';
+    //
+    // }
     
 
     $(':link').click(function(){

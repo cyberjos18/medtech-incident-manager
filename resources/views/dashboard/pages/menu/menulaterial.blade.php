@@ -16,9 +16,10 @@
             <li>
                 <a href="" id="reload"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
             </li>
+                @if(auth()->user()->perfil_user=='Administrador')
                 <!--maestros de datos-->
                 <li>
-                    <a id="maestros"><i class="fa fa-sitemap fa-fw"></i> Maestros <span class="fa arrow"></span></a>
+                    <a id="oldmaestros"><i class="fa fa-sitemap fa-fw"></i> Maestros <span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
                         <li>
                             <a>Centros de atención<span class="fa arrow"></span></a>
@@ -50,8 +51,10 @@
                     <!-- /.nav-second-level -->
                 </li>
                 <!--/end maestros-->
+                @endif
+                @if(auth()->user()->perfil_user=='Usuario' || auth()->user()->perfil_user=='Administrador' )
             <li>
-                <a id="inventarios"><i class="fa fa-archive fa-fw"></i> Inventario<span class="fa arrow"></span></a>
+                <a id="oldinventarios"><i class="fa fa-archive fa-fw"></i> Inventario<span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level">
                     <li>
                         {!! Html::link(route('inventario.equipos.index'),'Equipos Medicos',['target'=>'centro']) !!}
@@ -77,6 +80,9 @@
                     </ul>
                     <!-- /.nav-second-level -->
                 </li>
+                    @endif
+
+
          </ul>
          </div>
 
