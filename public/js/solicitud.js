@@ -137,7 +137,7 @@ $(document).ready(function () {
         }
         else
         {
-            //eventualmente se lo vamos a enviar por PHP por ajax de una forma bastante simple y además convertiremos el array en json para evitar cualquier incidente con compativilidades.
+            //eventualmente se lo vamos a enviar por PHP por ajax de una forma bastante simple y además convertiremos el array en json para evitar cualquier incidente con compatibilidades.
             aInfo 	= JSON.stringify(DATA);
             console.log(aInfo);
             $.ajax
