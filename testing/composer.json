@@ -1,0 +1,19 @@
+{
+    "name": "dgmtm/testing",
+    "description": "Proyecto Composer aislado solo para Pest. Laravel 5.1 (proyecto raiz) fija symfony/console en 2.7, incompatible con symfony/console ^5 que requiere Pest via nunomaduro/collision. Este arbol de dependencias separado permite usar Pest sin tocar el stack de la app.",
+    "type": "project",
+    "require-dev": {
+        "pestphp/pest": "^1.22",
+        "mockery/mockery": "^1.0"
+    },
+    "config": {
+        "platform": {
+            "php": "7.4.33"
+        },
+        "allow-plugins": {
+            "pestphp/pest-plugin": true
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}

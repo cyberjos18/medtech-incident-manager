@@ -1,96 +1,96 @@
 # DGMTM
 
-Aplicación web para la **gestión de solicitudes de mantenimiento de equipos**: registro de equipos por centro/localidad, creación y seguimiento de solicitudes de servicio, autorizaciones y reportes de proveedores.
+Web application for **managing equipment maintenance requests**: equipment registration by center/location, creation and tracking of service requests, authorizations, and provider reports.
 
-Construida sobre **Laravel 5.1** (PHP), siguiendo el patrón **MVC** clásico del framework.
+Built on **Laravel 5.1** (PHP), following the framework's classic **MVC** pattern.
 
-## Contenido
+## Contents
 
-- [Stack técnico](#stack-técnico)
-- [Arquitectura y módulos](#arquitectura-y-módulos)
-- [Requisitos](#requisitos)
-- [Instalación](#instalación)
-- [Configuración](#configuración)
-- [Comandos útiles](#comandos-útiles)
-- [Estructura del proyecto](#estructura-del-proyecto)
-- [Multilenguaje](#multilenguaje)
+- [Tech stack](#tech-stack)
+- [Architecture and modules](#architecture-and-modules)
+- [Requirements](#requirements)
+- [Installation](#installation)
+- [Configuration](#configuration)
+- [Useful commands](#useful-commands)
+- [Project structure](#project-structure)
+- [Multilanguage](#multilanguage)
 - [Tests](#tests)
 
-## Stack técnico
+## Tech stack
 
-| Componente | Tecnología |
+| Component | Technology |
 |---|---|
 | Framework | Laravel 5.1 (`laravel/framework`) |
-| Lenguaje | PHP >= 5.5.9 |
-| Autenticación | `laravel/framework` Auth (guard por sesión) |
-| Vistas | Blade — plantilla admin **SB Admin 2** (Bootstrap) |
-| Assets | Gulp + Laravel Elixir (compilación de LESS) |
-| Base de datos | MySQL (ver `config/database.php`) |
-| Multilenguaje | Middleware propio `LangMiddleware` (es/en) |
-| Generación de modelos | `ignasbernotas/laravel-model-generator` |
-| Testing | [Pest](https://pestphp.com) (ver [Tests](#tests)) |
+| Language | PHP >= 5.5.9 |
+| Authentication | `laravel/framework` Auth (session guard) |
+| Views | Blade — **SB Admin 2** admin template (Bootstrap) |
+| Assets | Gulp + Laravel Elixir (LESS compilation) |
+| Database | MySQL (see `config/database.php`) |
+| Multilanguage | Custom `LangMiddleware` middleware (es/en) |
+| Model generation | `ignasbernotas/laravel-model-generator` |
+| Testing | [Pest](https://pestphp.com) (see [Tests](#tests)) |
 
-## Arquitectura y módulos
+## Architecture and modules
 
-El proyecto sigue **MVC**: `app/Http/Controllers` (Controladores), `app/*.php` (Modelos Eloquent en el namespace raíz `dgmtm`) y `resources/views` (Vistas Blade).
+The project follows **MVC**: `app/Http/Controllers` (Controllers), `app/*.php` (Eloquent models in the root `dgmtm` namespace), and `resources/views` (Blade views).
 
-Los controladores están organizados por módulo de negocio bajo `app/Http/Controllers`:
+Controllers are organized by business module under `app/Http/Controllers`:
 
-- **`Auth/`** — Login, logout y recuperación de contraseña.
-- **`Home/`** — Dashboard principal (`HomeController`), valida el estatus del usuario (Activo/Inactivo) antes de mostrar el panel.
-- **`Maestros/`** — Catálogos maestros: `Centro`, `Estado`, `Localidad`, `Categoria`, `Proveedor`, `Servicio`, `TipoEquipo`, `User` (usuarios).
-- **`Inventario/`** — Gestión del inventario de `Equipo`s.
-- **`Solicitudes/`** — Alta y seguimiento de `Solicitud`es de servicio sobre uno o varios equipos (tabla pivote `EquipoSolicitud`).
-- **`Autorizaciones/`** — Aprobación/autorización de solicitudes (`Autorizacion`).
+- **`Auth/`** — Login, logout, and password recovery.
+- **`Home/`** — Main dashboard (`HomeController`), validates the user's status (Active/Inactive) before showing the panel.
+- **`Maestros/`** — Master catalogs: `Centro`, `Estado`, `Localidad`, `Categoria`, `Proveedor`, `Servicio`, `TipoEquipo`, `User` (users).
+- **`Inventario/`** — Management of the `Equipo` inventory.
+- **`Solicitudes/`** — Creation and tracking of `Solicitud`es (service requests) for one or more pieces of equipment (pivot table `EquipoSolicitud`).
+- **`Autorizaciones/`** — Approval/authorization of requests (`Autorizacion`).
 
-### Modelo de dominio (resumen)
+### Domain model (summary)
 
-`Centro` (con `Localidad`) → tiene `Equipo`s (de un `TipoEquipo`, en una `Categoria`, atendidos por un `Proveedor`) → sobre los que se abren `Solicitud`es de `Servicio` → que pasan por `Estado`s y requieren `Autorizacion` → y generan `ReporteProveedor`.
+`Centro` (with `Localidad`) → has `Equipo`s (of a `TipoEquipo`, in a `Categoria`, serviced by a `Proveedor`) → on which `Solicitud`es for a `Servicio` are opened → which go through `Estado`s and require `Autorizacion` → and generate a `ReporteProveedor`.
 
-Las rutas (`app/Http/routes.php`) están agrupadas por prefijo y namespace por módulo (`maestros`, `inventario`, `solicitudes`, `autorizaciones`), todas bajo el middleware `language`.
+Routes (`app/Http/routes.php`) are grouped by prefix and namespace per module (`maestros`, `inventario`, `solicitudes`, `autorizaciones`), all under the `language` middleware.
 
-## Requisitos
+## Requirements
 
-- **PHP 7.4** (recomendado). Laravel 5.1 usa APIs internas (resolución de dependencias por reflexión) incompatibles con PHP 8+: bajo PHP 8.x, `php artisan` falla con un error fatal. Usa una instalación de PHP 7.x para `artisan`, Composer y los tests de este proyecto (con WAMP: `wamp64/bin/php/php7.4.33/php.exe`).
+- **PHP 7.4** (recommended). Laravel 5.1 uses internal APIs (reflection-based dependency resolution) that are incompatible with PHP 8+: under PHP 8.x, `php artisan` fails with a fatal error. Use a PHP 7.x installation for `artisan`, Composer, and this project's tests (with WAMP: `wamp64/bin/php/php7.4.33/php.exe`).
 - Composer
 - MySQL
-- Node.js + npm (solo si se van a recompilar los assets con Gulp)
-- Servidor web (Apache/WAMP o `php artisan serve`)
+- Node.js + npm (only if assets need to be recompiled with Gulp)
+- Web server (Apache/WAMP or `php artisan serve`)
 
-## Instalación
+## Installation
 
 ```bash
-# 1. Instalar dependencias PHP (usando un PHP 7.4, ver Requisitos)
+# 1. Install PHP dependencies (using PHP 7.4, see Requirements)
 composer install
 
-# 2. Copiar el archivo de entorno y generar la clave de la app
+# 2. Copy the environment file and generate the app key
 cp .env.example .env
 php artisan key:generate
 
-# 3. Configurar la base de datos en .env (ver sección Configuración)
+# 3. Configure the database in .env (see the Configuration section)
 
-# 4. Ejecutar las migraciones
+# 4. Run the migrations
 php artisan migrate
 
-# 5. (Opcional) Cargar datos de prueba
+# 5. (Optional) Load sample data
 php artisan db:seed
 
-# 6. Instalar dependencias front-end y compilar assets (opcional)
+# 6. Install front-end dependencies and compile assets (optional)
 npm install
 gulp
 ```
 
-Levanta el servidor de desarrollo con:
+Start the development server with:
 
 ```bash
 php artisan serve
 ```
 
-O configura un VirtualHost apuntando a la carpeta `public/`.
+Or configure a VirtualHost pointing to the `public/` folder.
 
-## Configuración
+## Configuration
 
-Variables principales del archivo `.env`:
+Main variables in the `.env` file:
 
 ```
 APP_ENV=local
@@ -114,89 +114,89 @@ MAIL_PASSWORD=
 MAIL_ENCRYPTION=
 ```
 
-> El usuario administrador inicial y su contraseña se definen al ejecutar el seeder de la base de datos; no se documentan credenciales en este README por seguridad.
+> The initial admin user and password are set when running the database seeder; credentials are not documented in this README for security reasons.
 
-## Comandos útiles
+## Useful commands
 
 ```bash
-php artisan migrate            # Ejecutar migraciones pendientes
-php artisan migrate:rollback   # Revertir última tanda de migraciones
-php artisan db:seed            # Cargar datos iniciales
-php artisan route:list         # Ver todas las rutas registradas
-php artisan clear-compiled     # Limpiar clases compiladas
-php artisan optimize           # Optimizar el autoloader/framework
+php artisan migrate            # Run pending migrations
+php artisan migrate:rollback   # Roll back the last batch of migrations
+php artisan db:seed            # Load initial data
+php artisan route:list         # List all registered routes
+php artisan clear-compiled     # Clear compiled classes
+php artisan optimize           # Optimize the autoloader/framework
 ```
 
-## Estructura del proyecto
+## Project structure
 
 ```
 app/
 ├── Http/
 │   ├── Controllers/
-│   │   ├── Auth/            # Autenticación y contraseñas
+│   │   ├── Auth/            # Authentication and passwords
 │   │   ├── Home/            # Dashboard
-│   │   ├── Maestros/        # Catálogos: centros, estados, localidades, etc.
-│   │   ├── Inventario/      # Equipos
-│   │   ├── Solicitudes/     # Solicitudes de servicio
-│   │   └── Autorizaciones/  # Autorizaciones
+│   │   ├── Maestros/        # Catalogs: centers, states, locations, etc.
+│   │   ├── Inventario/      # Equipment
+│   │   ├── Solicitudes/     # Service requests
+│   │   └── Autorizaciones/  # Authorizations
 │   ├── Middleware/          # Auth, LangMiddleware, CSRF, etc.
 │   └── routes.php
-├── *.php                    # Modelos Eloquent (Centro, Equipo, Solicitud, ...)
+├── *.php                    # Eloquent models (Centro, Equipo, Solicitud, ...)
 database/
 ├── migrations/
 └── seeds/
 resources/
 ├── lang/                    # es/en
-└── views/                   # Blade, plantilla SB Admin 2
+└── views/                   # Blade, SB Admin 2 template
 ```
 
-## Multilenguaje
+## Multilanguage
 
-La aplicación soporta **español** e **inglés**. El idioma se guarda en sesión y se cambia desde la ruta `lang/{es|en}`; el middleware `LangMiddleware` aplica el locale en cada request. Las traducciones están en `resources/lang/es` y `resources/lang/en`.
+The application supports **Spanish** and **English**. The language is stored in the session and changed via the `lang/{es|en}` route; the `LangMiddleware` middleware applies the locale on every request. Translations live in `resources/lang/es` and `resources/lang/en`.
 
 ## Tests
 
-Los tests usan **[Pest](https://pestphp.com)**, pero viven en un **proyecto Composer aislado** dentro de `testing/`, con su propio `vendor/`. Es necesario porque Pest depende (vía `nunomaduro/collision`) de `symfony/console` ^5, mientras que Laravel 5.1 fija `symfony/console` en la v2.7: ambos no pueden convivir en el mismo `vendor/`. `testing/tests/TestCase.php` arranca la app real (`bootstrap/app.php`) a mano dentro de cada test y expone helpers de request (`get`, `post`) y de sesión (`actingAs`, `withCsrfToken`).
+Tests use **[Pest](https://pestphp.com)**, but live in an **isolated Composer project** inside `testing/`, with its own `vendor/`. This is necessary because Pest depends (via `nunomaduro/collision`) on `symfony/console` ^5, while Laravel 5.1 pins `symfony/console` to v2.7: the two cannot coexist in the same `vendor/`. `testing/tests/TestCase.php` boots the real app (`bootstrap/app.php`) manually within each test and exposes request helpers (`get`, `post`) and session helpers (`actingAs`, `withCsrfToken`).
 
-Los tests corren contra una base de datos MySQL de prueba dedicada (se recrea desde cero en cada test aplicando las migraciones), no contra SQLite, para evitar diferencias de compatibilidad con `ENUM`, motor `InnoDB` y claves foráneas.
+Tests run against a dedicated MySQL test database (recreated from scratch on each test by applying the migrations), not SQLite, to avoid compatibility differences with `ENUM`, the `InnoDB` engine, and foreign keys.
 
-### Preparar el entorno de test (una sola vez)
+### Setting up the test environment (one-time)
 
 ```bash
-# Base de datos y usuario dedicados para los tests
+# Dedicated database and user for tests
 mysql -u root -e "CREATE DATABASE IF NOT EXISTS dgmtm_testing CHARACTER SET utf8 COLLATE utf8_unicode_ci;
 CREATE USER IF NOT EXISTS 'dgmtm_test'@'localhost' IDENTIFIED BY 'dgmtm_test';
 GRANT ALL PRIVILEGES ON dgmtm_testing.* TO 'dgmtm_test'@'localhost';"
 
-# Instalar Pest en su arbol de dependencias aislado
+# Install Pest in its isolated dependency tree
 cd testing
-php7.4 composer.phar install   # o: composer install, usando un PHP 7.4
+php7.4 composer.phar install   # or: composer install, using PHP 7.4
 ```
 
-Las credenciales se pueden sobrescribir con las variables de entorno `DB_TEST_HOST`, `DB_TEST_DATABASE`, `DB_TEST_USERNAME`, `DB_TEST_PASSWORD` (conexión de la app) y `DB_TEST_ROOT_USERNAME`/`DB_TEST_ROOT_PASSWORD` (usadas solo para recrear la base de datos antes de cada test).
+Credentials can be overridden with the environment variables `DB_TEST_HOST`, `DB_TEST_DATABASE`, `DB_TEST_USERNAME`, `DB_TEST_PASSWORD` (app connection) and `DB_TEST_ROOT_USERNAME`/`DB_TEST_ROOT_PASSWORD` (used only to recreate the database before each test).
 
-### Ejecutar la suite
+### Running the suite
 
 ```bash
 cd testing
 php7.4 vendor/bin/pest
 ```
 
-(sustituye `php7.4` por la ruta a tu binario de PHP 7.x si no está en el `PATH`, p. ej. `wamp64/bin/php/php7.4.33/php.exe`).
+(replace `php7.4` with the path to your PHP 7.x binary if it's not on the `PATH`, e.g. `wamp64/bin/php/php7.4.33/php.exe`).
 
-### Estructura
+### Structure
 
 ```
 testing/
-├── composer.json      # solo pestphp/pest y mockery, aislado del composer.json raiz
+├── composer.json      # only pestphp/pest and mockery, isolated from the root composer.json
 ├── phpunit.xml
 └── tests/
     ├── Pest.php
-    ├── TestCase.php    # arranca la app, helpers de request/BD/factories
-    ├── Unit/           # Modelos, reglas de validacion, middleware
-    └── Feature/        # Login, dashboard, end-to-end via el HTTP Kernel
+    ├── TestCase.php    # boots the app, request/DB/factory helpers
+    ├── Unit/           # Models, validation rules, middleware
+    └── Feature/        # Login, dashboard, end-to-end via the HTTP Kernel
 ```
 
-## Créditos
+## Credits
 
-Plantilla de administración basada en [SB Admin 2](http://startbootstrap.com/template-overviews/sb-admin-2/) por Start Bootstrap, sobre el framework [Laravel](https://laravel.com).
+Admin template based on [SB Admin 2](http://startbootstrap.com/template-overviews/sb-admin-2/) by Start Bootstrap, on top of the [Laravel](https://laravel.com) framework.
