@@ -15,7 +15,7 @@ class CreateEquipoSolicitudTable extends Migration
         Schema::create('equipo_solicitud', function (Blueprint $table) {
             $table->engine='InnoDB';
             $table->increments('id');
-            $table->int('solicitud_id')->unsigned();
+            $table->integer('solicitud_id')->unsigned();
             $table->integer('equipo_id')->unsigned();
             $table->foreign('solicitud_id')->references('id')->on('solicitudes')->onUpdate('cascade')->onDelete('restrict');
             $table->foreign('equipo_id')->references('id')->on('equipos')->onUpdate('cascade')->onDelete('restrict');

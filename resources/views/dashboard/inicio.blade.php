@@ -74,7 +74,7 @@
             <div id="page-wrapper">
                 </br>
                 <div id="cabecera">
-                    <h1 class="page-header">Dashboard</h1>
+                    <h1 class="page-header">@lang('validation.dashboard')</h1>
                 </div>
                 <div>
                     {!! Form::hidden('perfil',Auth::user()->perfil_user,['id'=>'perfil']) !!}

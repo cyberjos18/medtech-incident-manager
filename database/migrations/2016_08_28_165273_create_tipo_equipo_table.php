@@ -12,7 +12,8 @@ class CreateTipoEquipoTable extends Migration
      */
     public function up()
     {
-        Schema::create('TiposEquipos', function (Blueprint $table) {
+        Schema::create('tiposequipos', function (Blueprint $table) {
+            $table->engine = 'InnoDB';
             $table->increments('id');
             $table->string('tipo_equipo',50);
             $table->timestamps();
@@ -26,6 +27,6 @@ class CreateTipoEquipoTable extends Migration
      */
     public function down()
     {
-        Schema::drop('TiposEquipos');
+        Schema::drop('tiposequipos');
     }
 }
