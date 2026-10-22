@@ -34,7 +34,7 @@ class Solicitud extends Model
     
     public function autorizacion()
     {
-        return $this->belongsTo('dgmtm\Autorizacion');
+        return $this->hasOne('dgmtm\Autorizacion');
     }
     
     public function equipo()

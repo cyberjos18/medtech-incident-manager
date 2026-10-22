@@ -1,5 +1,0 @@
-suites:
-    main:
-        namespace: dgmtm
-        psr4_prefix: dgmtm
-        src_path: app

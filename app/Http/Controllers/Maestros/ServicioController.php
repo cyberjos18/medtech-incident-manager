@@ -3,6 +3,7 @@
 namespace dgmtm\Http\Controllers\Maestros;
 
 use dgmtm\Estado;
+use dgmtm\Http\Requests\CreateServicioRequest;
 use dgmtm\Servicio;
 use Illuminate\Http\Request;
 
@@ -50,10 +51,10 @@ class ServicioController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  CreateServicioRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CreateServicioRequest $request)
     {
         if($request ->ajax())
         {
@@ -62,8 +63,8 @@ class ServicioController extends Controller
             $servicio->nomb_servicio=mb_strtoupper($request->nombServicio);
             $servicio->save();
             $insert=trans('validation.attributes.message.insert');
-            
-            
+
+
             return response()->json([
                'message' => $insert
             ]);

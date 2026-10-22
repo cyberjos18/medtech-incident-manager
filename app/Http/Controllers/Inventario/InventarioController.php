@@ -152,7 +152,8 @@ class InventarioController extends Controller
             $equipo=Equipo::findOrFail($request->id);
             $equipo->delete();
             $message=trans('validation.attributes.message.delete');
-            $delete=$message.' al equipo '.$equipo->nomb_equipo;
+            $nombre=$equipo->marca_equipo.' '.$equipo->modelo_equipo.' (Serial: '.$equipo->serial_equipo.')';
+            $delete=$message.' al equipo '.$nombre;
             return response()->json([
                 'message'=>$delete,
             ]);

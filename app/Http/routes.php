@@ -41,7 +41,6 @@ Route::post('password/email',['as'=>'password/email','uses'=>'Auth\PasswordContr
 // Password reset routes...
 Route::get('password/reset/{token}', 'Auth\PasswordController@getReset');
 Route::post('password/reset', 'Auth\PasswordController@postReset');
-Route::post('verEstatus',['as'=>'verEstatus','uses'=>'VerEstatusController@verEstatus']);
 
 Route::group(['prefix'=>'maestros','namespace'=>'\Maestros'],function(){
     
